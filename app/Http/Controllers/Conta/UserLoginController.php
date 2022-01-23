@@ -13,4 +13,14 @@ class UserLoginController extends Controller
             'title' => 'My Finance | Entrar'
         ]);
     }
+
+    public function recoverPass()
+    {
+        
+    }
+
+    public function createUserAcount()
+    {
+        
+    }
 }
