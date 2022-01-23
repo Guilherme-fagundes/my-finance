@@ -14,3 +14,4 @@ const mix = require('laravel-mix');
 mix
     .sass('resources/views/conta/css/reset.scss', 'public/conta/css/styles.css').version()
     .sass('resources/views/conta/css/login.scss', 'public/conta/css/styles.css').version()
+    .sass('node_modules/bootstrap/scss/bootstrap.scss', 'public/conta/css/bootstrap/bootstrap.css').version()

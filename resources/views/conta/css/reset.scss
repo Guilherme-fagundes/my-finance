@@ -2,7 +2,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Open Sans", Serif;
+    font-family: "Open Sans", Serif!important;
     box-shadow: none!important;
     outline: 0!important;
+}
+.form-label{
+    color: #888;
+
+}
+
+.btn-primary{
+    font-family: "Open Sans", Serif;
+    border: none!important;
+    background-color: #0078ff;
+    font-weight: normal;
 }

@@ -16,11 +16,11 @@ class UserLoginController extends Controller
 
     public function recoverPass()
     {
-        
+
     }
 
     public function createUserAcount()
     {
-        
+
     }
 }

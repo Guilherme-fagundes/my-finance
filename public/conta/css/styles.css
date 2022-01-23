@@ -2,9 +2,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Open Sans", Serif;
+  font-family: "Open Sans", Serif !important;
   box-shadow: none !important;
   outline: 0 !important;
+}
+
+.form-label {
+  color: #888;
+}
+
+.btn-primary {
+  font-family: "Open Sans", Serif;
+  border: none !important;
+  background-color: #0078ff;
+  font-weight: normal;
 }
 .sessLogin {
   width: 100%;
@@ -37,68 +48,23 @@
 .sessLogin .loginBox .loginBoxBody p {
   text-align: center;
   color: #333;
+  font-size: 1.1em;
 }
-.sessLogin .loginBox .loginBoxBody form {
-  width: 100%;
-}
-.sessLogin .loginBox .loginBoxBody form .field {
-  width: 100%;
-  margin: 1em 0;
-}
-.sessLogin .loginBox .loginBoxBody form .field label {
-  display: block;
-  color: #888;
-  font-size: 0.7em;
-  padding-left: 5px;
-}
-.sessLogin .loginBox .loginBoxBody form .field a.esqueciSenha {
+.sessLogin .loginBox .loginBoxBody form .field-esqueciSenha a.esqueciSenha {
   color: #0078ff;
-  font-size: 0.7em;
   text-decoration: none;
-  text-align: right;
 }
-.sessLogin .loginBox .loginBoxBody form .field input[type=text],
-.sessLogin .loginBox .loginBoxBody form .field input[type=password] {
-  border: none;
-  padding: 8px 5px;
-  border-bottom: 1px solid #888;
-  display: block;
-  width: 100%;
-  font-size: 0.7em;
-}
-.sessLogin .loginBox .loginBoxBody form .field input[type=text]:focus,
-.sessLogin .loginBox .loginBoxBody form .field input[type=password]:focus {
-  border-bottom: 1px solid #0078ff;
-}
-.sessLogin .loginBox .loginBoxBody form .field input[type=submit] {
-  border: none;
-  background-color: #0078ff;
-  color: #f1f1f1;
-  display: block;
-  padding: 1em 1em;
-  width: 100%;
-  font-size: 0.7em;
-}
-.sessLogin .loginBox .loginBoxBody form .field input[type=submit]:hover {
-  background-color: blue;
-  cursor: pointer;
-}
-.sessLogin .loginBox .loginBoxBody form .field-recover {
-  display: flex;
-  justify-content: flex-end;
-}
-.sessLogin .loginBox .loginBoxBody form .field-recover a.esqueciSenha:hover {
-  color: blue;
+.sessLogin .loginBox .loginBoxBody form .field-esqueciSenha a.esqueciSenha:hover {
   text-decoration: underline;
 }
 .sessLogin .loginBox .loginBoxBody form .field-create-acount span {
-  font-size: 0.7em;
+  color: #333;
+  font-size: 0.9em;
 }
-.sessLogin .loginBox .loginBoxBody form .field-create-acount span a.criarConta {
-  color: #0078ff;
+.sessLogin .loginBox .loginBoxBody form .field-create-acount span a {
   text-decoration: none;
+  color: #0078ff;
 }
-.sessLogin .loginBox .loginBoxBody form .field-create-acount span a.criarConta:hover {
-  color: blue;
+.sessLogin .loginBox .loginBoxBody form .field-create-acount span a:hover {
   text-decoration: underline;
 }

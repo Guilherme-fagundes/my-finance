@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url(mix('conta/css/bootstrap/bootstrap.css')) }}">
     <link rel="stylesheet" href="{{ url(mix('conta/css/styles.css')) }}">
 
     <title>{{ $title }}</title>
@@ -19,23 +20,26 @@
                 <p>Entrar na minha conta</p>
 
                 <form method="post" action="">
-                    <div class="field">
-                        <label>E-mail</label>
-                        <input type="text" name="email">
+                    <div class="field mb-3">
+                        <label class="form-label">E-mail</label>
+                        <input class="form-control" type="text" name="email">
                     </div>
-                    <div class="field">
-                        <label>Senha</label>
-                        <input type="password" name="pass">
+                    <div class="field mb-3">
+                        <label class="form-label">Senha</label>
+                        <input class="form-control" type="password" name="pass">
 
                     </div>
-                    <div class="field field-recover">
+                    <div class="field field-esqueciSenha mb-3 d-flex justify-content-end">
 
                         <a class="esqueciSenha" href="#" title="Recuperar senha">Esqueci minha senha</a>
 
                     </div>
-                    <div class="field field-btn-login">
+                    <div class="field mb-3">
 
-                        <input type="submit" name="entrar" value="Entrar">
+                        <div class="d-grid gap-2">
+                            <input class="btn btn-primary" type="submit" name="sendLogin" value="Fazer login"/>
+
+                        </div>
 
                     </div>
 
