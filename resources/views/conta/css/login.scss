@@ -1,0 +1,105 @@
+.sessLogin{
+    width: 100%;
+    height: 100vh;
+    background-color: #2d3748;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .loginBox{
+        width: 35%;
+        margin: 0 auto;
+        padding: 1em 1em;
+        min-width: 320px;
+        .loginBoxHeader{
+            padding: 1em 0;
+            text-align: center;
+            h1{
+                color: white;
+                font-size: 2.5em;
+                margin: 1em 0;
+            }
+        }
+        .loginBoxBody{
+            padding: 1em 1em;
+            background-color: white;
+            border-radius: 3px;
+            p{
+                text-align: center;
+                color: #333;
+            }
+            form{
+                width: 100%;
+                .field{
+                    width: 100%;
+
+                    margin: 1em 0;
+                    label{
+                        display: block;
+                        color: #888;
+                        font-size: .7em;
+                        padding-left: 5px;
+                    }
+                    a.esqueciSenha{
+                        color: #0078ff;
+                        font-size: .7em;
+                        text-decoration: none;
+                        text-align: right;
+
+                    }
+                    input[type='text'],
+                    input[type='password']{
+                        border: none;
+                        padding: 8px 5px;
+                        border-bottom: 1px solid #888;
+                        display: block;
+                        width: 100%;
+                        font-size: .7em;
+                        &:focus{
+                            border-bottom: 1px solid #0078ff;
+                        }
+                    }
+                    input[type='submit']{
+                        border: none;
+                        background-color: #0078ff;
+                        color: #f1f1f1;
+                        display: block;
+                        padding: 1em 1em;
+                        width: 100%;
+                        font-size: .7em;
+                        &:hover{
+                            background-color: blue;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .field-recover{
+                    display: flex;
+                    justify-content: flex-end;
+                    a.esqueciSenha{
+                        &:hover{
+                            color: blue;
+                            text-decoration: underline;
+                        }
+
+                    }
+                }
+                .field-create-acount{
+                    span{
+                        font-size: .7em;
+                        a.criarConta{
+                            color: #0078ff;
+                            text-decoration: none;
+                            &:hover{
+                                color: blue;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+}
