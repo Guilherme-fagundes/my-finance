@@ -16,7 +16,9 @@ class UserLoginController extends Controller
 
     public function recoverPass()
     {
-
+        return view('conta.esqueci-senha', [
+            'title' => 'My Finance | Esqueci minha senha'
+        ]);
     }
 
     public function createUserAcount()

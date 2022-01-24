@@ -31,7 +31,7 @@
                     </div>
                     <div class="field field-esqueciSenha mb-3 d-flex justify-content-end">
 
-                        <a class="esqueciSenha" href="#" title="Recuperar senha">Esqueci minha senha</a>
+                        <a class="esqueciSenha" href="{{ route('user.recoverpass') }}" title="Recuperar senha">Esqueci minha senha</a>
 
                     </div>
                     <div class="field mb-3">

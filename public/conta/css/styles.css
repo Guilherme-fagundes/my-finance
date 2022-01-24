@@ -11,11 +11,14 @@
   color: #888;
 }
 
+.btn {
+  font-weight: normal;
+}
+
 .btn-primary {
   font-family: "Open Sans", Serif;
   border: none !important;
   background-color: #0078ff;
-  font-weight: normal;
 }
 .sessLogin {
   width: 100%;
@@ -55,6 +58,62 @@
   text-decoration: none;
 }
 .sessLogin .loginBox .loginBoxBody form .field-esqueciSenha a.esqueciSenha:hover {
+  text-decoration: underline;
+}
+.sessLogin .loginBox .loginBoxBody form .field-create-acount span {
+  color: #333;
+  font-size: 0.9em;
+}
+.sessLogin .loginBox .loginBoxBody form .field-create-acount span a {
+  text-decoration: none;
+  color: #0078ff;
+}
+.sessLogin .loginBox .loginBoxBody form .field-create-acount span a:hover {
+  text-decoration: underline;
+}
+.sessLogin {
+  width: 100%;
+  height: 100vh;
+  background-color: #2d3748;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sessLogin .loginBox {
+  width: 35%;
+  margin: 0 auto;
+  padding: 1em 1em;
+  min-width: 320px;
+}
+.sessLogin .loginBox .loginBoxHeader {
+  padding: 1em 0;
+  text-align: center;
+}
+.sessLogin .loginBox .loginBoxHeader h1 {
+  color: white;
+  font-size: 2.5em;
+  margin: 1em 0;
+}
+.sessLogin .loginBox .loginBoxBody {
+  padding: 1em 1em;
+  background-color: white;
+  border-radius: 3px;
+}
+.sessLogin .loginBox .loginBoxBody p.titleRecover {
+  text-align: center;
+  color: #333;
+  font-size: 1.1em;
+}
+.sessLogin .loginBox .loginBoxBody p.subTitleRecover {
+  font-size: 0.9em;
+  color: forestgreen;
+  font-style: italic;
+}
+.sessLogin .loginBox .loginBoxBody form .field-voltar-para-login a.voltarParaLogin {
+  color: #0078ff;
+  text-decoration: none;
+}
+.sessLogin .loginBox .loginBoxBody form .field-voltar-para-login a.voltarParaLogin:hover {
   text-decoration: underline;
 }
 .sessLogin .loginBox .loginBoxBody form .field-create-acount span {

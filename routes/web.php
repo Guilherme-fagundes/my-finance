@@ -19,5 +19,6 @@ Route::get('/', function () {
 });
 
 Route::prefix('conta')->group(function (){
-    Route::get('/login', [UserLoginController::class, 'login']);
+    Route::get('/login', [UserLoginController::class, 'login'])->name('user.login');
+    Route::get('/esqueci-minha-senha', [UserLoginController::class, 'recoverPass'])->name('user.recoverpass');
 });
