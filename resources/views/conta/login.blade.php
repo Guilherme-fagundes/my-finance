@@ -45,7 +45,7 @@
 
                     <div class="field field-create-acount">
 
-                        <span>Não tem uma conta? <a class="criarConta" href="#" title="Criar conta">Criar minha conta agora</a></span>
+                        <span>Não tem uma conta? <a class="criarConta" href="{{ route('user.createNewAcount') }}" title="Criar conta">Criar minha conta agora</a></span>
 
                     </div>
 

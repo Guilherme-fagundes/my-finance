@@ -23,6 +23,8 @@ class UserLoginController extends Controller
 
     public function createUserAcount()
     {
-
+        return view('conta.nova-conta', [
+            'title' => 'My Finance | Criar minha conta'
+        ]);
     }
 }

@@ -1,0 +1,52 @@
+.sessNewAcount{
+    width: 100%;
+    height: 100%;
+    background-color: #2d3748;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .newAcountBox{
+        width: 35%;
+        margin: 0 auto;
+        padding: 1em 1em;
+        min-width: 320px;
+        .newAcountBoxHeader{
+            padding: 1em 0;
+            text-align: center;
+            h1{
+                color: white;
+                font-size: 2.5em;
+                margin: 1em 0;
+            }
+        }
+        .newAcountBoxBody{
+            padding: 1em 1em;
+            background-color: white;
+            border-radius: 3px;
+            p{
+                text-align: center;
+                color: #333;
+                font-size: 1.1em;
+            }
+
+            form{
+                .field-create-acount{
+                    span{
+                        color: #333;
+                        font-size: .9em;
+                        a{
+                            text-decoration: none;
+                            color: #0078ff;
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+}
