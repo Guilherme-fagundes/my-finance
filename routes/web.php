@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Conta\ContaController;
 use App\Http\Controllers\Conta\UserLoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,6 @@ Route::prefix('conta')->group(function (){
     Route::get('/login', [UserLoginController::class, 'login'])->name('user.login');
     Route::get('/esqueci-minha-senha', [UserLoginController::class, 'recoverPass'])->name('user.recoverpass');
     Route::get('/criar-minha-conta', [UserLoginController::class, 'createUserAcount'])->name('user.createNewAcount');
+    Route::get('/', [ContaController::class, 'home'])->name('conta.home');
+
 });
