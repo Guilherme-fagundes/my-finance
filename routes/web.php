@@ -20,9 +20,11 @@ Route::get('/', function () {
 });
 
 Route::prefix('conta')->group(function (){
+    Route::get('/pagina-inicial', [ContaController::class, 'home'])->name('conta.home');
     Route::get('/login', [UserLoginController::class, 'login'])->name('user.login');
     Route::get('/esqueci-minha-senha', [UserLoginController::class, 'recoverPass'])->name('user.recoverpass');
     Route::get('/criar-minha-conta', [UserLoginController::class, 'createUserAcount'])->name('user.createNewAcount');
-    Route::get('/', [ContaController::class, 'home'])->name('conta.home');
+    Route::post('/criar-minha-conta/post', [UserLoginController::class, 'createUserAcountPost'])->name('user.createNewAcount.post');
+
 
 });

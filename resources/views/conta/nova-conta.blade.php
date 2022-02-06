@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url(mix('conta/css/styles.css')) }}">
 
     <title>{{ $title }}</title>
+    {!! htmlScriptTagJsApi() !!}
 </head>
 <body>
 
@@ -19,7 +20,8 @@
         <div class="newAcountBoxBody">
             <p>Crie sua conta</p>
 
-            <form method="post" action="">
+            <form method="post" action="{{ route('user.createNewAcount.post') }}" id="">
+                @csrf
                 <div class="field mb-3">
                     <label class="form-label">E-mail</label>
                     <input class="form-control" type="text" name="email">
@@ -46,7 +48,16 @@
 
                     <div class="d-grid gap-2">
                         <input class="btn btn-primary" type="submit" name="sendCreate" value="Criar minha conta"/>
+                        {!! htmlFormSnippet([
+                                "theme" => "light",
+
+                                 "tabindex" => "3",
+                                 "callback" => "callbackFunction",
+                                 "expired-callback" => "expiredCallbackFunction",
+                                 "error-callback" => "errorCallbackFunction",
+ ]) !!}
                         <p><small>Ao clicar em cadastrar, você automaticamente aceita <a href="#">os termos de uso e de privacidade</a></small></p>
+
 
                     </div>
 
@@ -64,5 +75,17 @@
 
     </div>
 </div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script type="text/javascript">
+    // var onloadCallback = function() {
+    //     alert("grecaptcha is ready!");
+    // };
+</script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+</script>
+
+
 </body>
 </html>
