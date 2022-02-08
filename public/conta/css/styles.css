@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Open Sans", Serif !important;
+  font-family: "Open Sans", Serif;
   box-shadow: none !important;
   outline: 0 !important;
 }
@@ -170,4 +170,75 @@
 }
 .sessNewAcount .newAcountBox .newAcountBoxBody form .field-create-acount span a:hover {
   text-decoration: underline;
+}
+.leftSiderBar {
+  background-color: #261C2C;
+}
+.leftSiderBar .articleDashboard .articleDashboardHeader {
+  padding: 1em 0;
+}
+.leftSiderBar .articleDashboard .articleDashboardHeader p.userE-mail {
+  font-size: 0.8em;
+  margin-top: -5px;
+}
+.leftSiderBar .articleDashboard .articleDashboardBody {
+  padding: 1em 0;
+}
+.leftSiderBar .articleDashboard .articleDashboardBody .leftMenu a {
+  text-decoration: none;
+  display: block;
+  padding: 8px 1.2em;
+  color: #f1f1f1;
+  font-size: 0.8em;
+}
+.leftSiderBar .articleDashboard .articleDashboardBody .leftMenu a:hover {
+  background-color: #2d3748;
+}
+.leftSiderBar .articleDashboard .articleDashboardBody .leftMenu a .icon {
+  color: #f1f1f1;
+  margin-right: 10px;
+}
+.leftSiderBar .articleDashboard .articleDashboardBody .leftMenu .dashDropDown a {
+  color: #2d3748;
+  background-color: white;
+}
+.leftSiderBar .articleDashboard .articleDashboardBody .leftMenu .dashDropDown a:hover {
+  background-color: #f0f0f0;
+}
+
+.main-header {
+  background-color: white;
+  margin-bottom: 1em;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) !important;
+}
+.main-header .main-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-header .main-header-content .header-action .logout {
+  text-decoration: none;
+  color: white;
+  padding: 5px 1.2em;
+  background-color: darkseagreen;
+  font-size: 0.8em;
+}
+.main-header .main-header-content .header-action .logout:hover {
+  background-color: forestgreen;
+}
+.sessionHome .statisticas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+.sessionHome .statisticas .despesas {
+  background-color: red;
+  color: #f0f0f0;
+}
+.sessionHome .statisticas .receitas {
+  background-color: forestgreen;
+  color: #f0f0f0;
+}
+.sessionHome .statisticas .saldo {
+  color: #f0f0f0;
 }

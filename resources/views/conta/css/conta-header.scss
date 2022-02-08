@@ -1,0 +1,66 @@
+.leftSiderBar{
+    background-color: #261C2C;
+    .articleDashboard{
+        .articleDashboardHeader{
+            padding: 1em 0;
+            p.userE-mail{
+                font-size: .8em;
+                margin-top: -5px;
+            }
+        }
+        .articleDashboardBody{
+            padding: 1em 0;
+            .leftMenu{
+
+                a{
+                    text-decoration: none;
+                    display: block;
+                    padding: 8px 1.2em;
+                    color: #f1f1f1;
+                    font-size: .8em;
+                    &:hover{
+                        background-color: #2d3748;
+                    }
+                    .icon{
+                        color: #f1f1f1;
+                        margin-right: 10px;
+                    }
+                }
+                .dashDropDown{
+                    a{
+                        color: #2d3748;
+                        background-color: white;
+                        &:hover{
+                            background-color: #f0f0f0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.main-header{
+    background-color: white;
+    margin-bottom: 1em;
+    //border-bottom: 1px solid rgba(0,0,0,.7);
+    box-shadow: 0 0 5px rgba(0,0,0,.5)!important;
+    .main-header-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .header-action{
+            .logout{
+                text-decoration: none;
+                color: white;
+                padding: 5px 1.2em;
+                background-color: darkseagreen;
+                font-size: .8em;
+                &:hover{
+                    background-color: forestgreen;
+                }
+            }
+        }
+    }
+}

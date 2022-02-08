@@ -19,8 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('conta')->group(function (){
-    Route::get('/pagina-inicial', [ContaController::class, 'home'])->name('conta.home');
+Route::prefix('app')->group(function (){
+    Route::get('/', [ContaController::class, 'home'])->name('conta.home');
     Route::get('/login', [UserLoginController::class, 'login'])->name('user.login');
     Route::get('/esqueci-minha-senha', [UserLoginController::class, 'recoverPass'])->name('user.recoverpass');
     Route::get('/criar-minha-conta', [UserLoginController::class, 'createUserAcount'])->name('user.createNewAcount');

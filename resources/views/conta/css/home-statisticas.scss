@@ -1,0 +1,18 @@
+.sessionHome{
+    .statisticas{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+        .despesas{
+            background-color: red;
+            color: #f0f0f0;
+        }
+        .receitas{
+            background-color: forestgreen;
+            color: #f0f0f0;
+        }
+        .saldo{
+            color: #f0f0f0;
+        }
+    }
+}
