@@ -42,6 +42,10 @@
                                 <span class="icon"><i class="fas fa-user"></i></span>
                                 <span class="text">Perfil</span>
                             </a>
+                            <a href="#">
+                                <span class="icon"><i class="fas fa-wallet"></i></span>
+                                <span class="text">Carteiras</span>
+                            </a>
                             <div class="dropdown show">
                                 <a href="#" class="dropdown-toggle" role="link" id="dropdownMenuLink" data-toggle="dropdown">
                                     <span class="icon"><i class="fas fa-cog"></i></span>
