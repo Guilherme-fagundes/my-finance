@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::prefix('app')->group(function (){
-    Route::get('/', [ContaController::class, 'home'])->name('conta.home');
+    Route::get('/', [ContaController::class, 'home'])->middleware(['checkuserlogin'])->name('conta.home');
     Route::get('/login', [UserLoginController::class, 'login'])->name('user.login');
     Route::get('/esqueci-minha-senha', [UserLoginController::class, 'recoverPass'])->name('user.recoverpass');
     Route::get('/criar-minha-conta', [UserLoginController::class, 'createUserAcount'])->name('user.createNewAcount');

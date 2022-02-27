@@ -32,21 +32,33 @@ class UserLoginController extends Controller
 
     public function createUserAcountPost(Request $request)
     {
+        $json['error'] = false;
+
         if ($request->all()){
-            var_dump($request->all());
+            if ($request->ajax()){
 
-            $validator = Validator::make(\request()->all(), [
-                'g-recaptcha-response' => 'recaptcha',
-            ]);
-
-            if ($validator->fails()){
-                $errors = $validator->errors();
-
-                var_dump($errors);
+                if ($request->input('g-recaptcha-response') == null){
+                    $json['message'] = 'Recapcha não verificado';
+                    $json['error'] = true;
+                }
 
             }
 
+
+//            $validator = Validator::make(\request()->all(), [
+//                'g-recaptcha-response' => 'recaptcha',
+//            ]);
+//
+//            if ($validator->fails()){
+//                $errors = $validator->errors();
+//
+//                var_dump($errors);
+//
+//            }
+
         }
+
+        echo json_encode($json);
 
     }
 }
