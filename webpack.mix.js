@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const {js} = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -20,5 +21,8 @@ mix
     .sass('resources/views/conta/css/home-statisticas.scss', 'public/conta/css/styles.css').version()
     .sass('node_modules/bootstrap/scss/bootstrap.scss', 'public/conta/css/bootstrap/bootstrap.css').version()
     .sass('node_modules/bootstrap-icons/font/bootstrap-icons.scss', 'public/conta/icons/bootstrap/bootstrap-icons.css').version()
+    .sass('node_modules/toastr/toastr.scss', 'public/conta/toastr/toastr.css').version()
 
-    .js('node_modules/bootstrap/dist/js/bootstrap.bundle.js', 'public/conta/js/bootstrap/bootstrap.bundle.js').version();
+    .js('node_modules/bootstrap/dist/js/bootstrap.bundle.js', 'public/conta/js/bootstrap/bootstrap.bundle.js').version()
+    .js('resources/views/conta/js/criar-minha-conta.js', 'public/conta/js/scripts.js').version()
+    .js('node_modules/toastr/build/toastr.min.js', 'public/conta/js/toastr/toastr.min.js').version();
