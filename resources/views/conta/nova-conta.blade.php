@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url(mix('conta/css/bootstrap/bootstrap.css')) }}">
     <link rel="stylesheet" href="{{ url(mix('conta/css/styles.css')) }}">
+    <link rel="stylesheet" href="{{ url(mix('conta/toastr/toastr.css')) }}">
 
     <title>{{ $title }}</title>
     {!! htmlScriptTagJsApi() !!}
@@ -22,6 +23,7 @@
 
             <form method="post" action="{{ route('user.createNewAcount.post') }}" id="createnewUser">
                 @csrf
+                <div class="j-alert" role="alert"></div>
                 <div class="field mb-3">
                     <label class="form-label">E-mail</label>
                     <input class="form-control" type="text" name="email">
@@ -89,6 +91,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{{ url(mix('conta/js/toastr/toastr.min.js')) }}"></script>
 
 <script>
     $(function () {
@@ -102,7 +105,11 @@
                 data: dados,
                 dataType: 'json',
                 success: function (response) {
-                    console.log(response)
+                    if (response.error == true){
+                        $('.j-alert').addClass('alert alert-warning').html(response.message);
+                    }else{
+                        $('.j-alert').addClass('alert alert-primary').html(response.message);
+                    }
                 }
             });
         })
