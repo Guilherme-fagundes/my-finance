@@ -19,6 +19,12 @@
             <div class="loginBoxBody">
                 <p>Entrar na minha conta</p>
 
+                @if($errors->all())
+                    <div class="alert alert-info" role="alert">
+                        {{ $errors->all()[0] }}
+                    </div>
+                @endif
+
                 <form method="post" action="">
                     <div class="field mb-3">
                         <label class="form-label">E-mail</label>

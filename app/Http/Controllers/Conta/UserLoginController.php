@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Conta;
 
 use App\Http\Controllers\Controller;
+use App\Mail\CreateUserAcount;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class UserLoginController extends Controller
@@ -81,6 +83,8 @@ class UserLoginController extends Controller
                             $json['message'] = "Sua conta foi cadastrada, agora falta pouco. Ative sua conta atraves de seu e-mail cadastrado";
                             $json['error'] = false;
 
+                            Mail::send(new CreateUserAcount($createUser));
+
 
                         }
                     }
@@ -92,5 +96,18 @@ class UserLoginController extends Controller
 
         echo json_encode($json);
 
+    }
+
+    public function confirmUserAcount (Request $request)
+    {
+        if (!$request->get('email')){
+            return redirect()->route('user.login');
+        }
+
+        $activateUserAcount = DB::table('users')
+            ->update(['status' => 1]);
+        if ($activateUserAcount){
+            return redirect()->route('user.login')->withErrors(['success' => 'Sua conta foi ativada! Tudo certo para controlar suas finanças']);
+        }
     }
 }
