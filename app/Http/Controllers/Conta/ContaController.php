@@ -13,4 +13,15 @@ class ContaController extends Controller
             'title' => 'Conta | Home'
         ]);
     }
+
+    public function logount(Request $request)
+    {
+        if ($request->session()->has('userId')){
+            $request->session()->forget('userId');
+            $request->session()->flush();
+
+            return redirect()->route('conta.home');
+        }
+
+    }
 }

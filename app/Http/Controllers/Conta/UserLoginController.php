@@ -16,9 +16,54 @@ class UserLoginController extends Controller
     public function login()
     {
 
+        var_dump(session()->all());
         return view('conta.login', [
             'title' => 'My Finance | Entrar'
         ]);
+    }
+
+    public function loginPost(Request $request)
+    {
+        $json['error'] = false;
+
+        if ($request->all()){
+            if ($request->ajax()){
+
+                if (in_array('', $request->all())){
+                    $json['error'] = true;
+                    $json['message'] = "Para fazer login você precisa preencher todos os campos";
+                }elseif (!filter_var($request->email, FILTER_VALIDATE_EMAIL)){
+
+                    $json['error'] = true;
+                    $json['message'] = "O formato de email está inválido";
+                }else{
+
+                    $email = DB::table('users')
+                        ->where('email', '=', $request->email)->first();
+
+
+                    $pass = Hash::check($request->pass, $email->pass);
+
+                    if (!$email || !$pass){
+                        $json['error'] = true;
+                        $json['message'] = "E-mail ou senha invalidos";
+                    }else{
+                        $json['error'] = false;
+                        $json['message'] = "Seja bem vindo {$email->nome}";
+
+                        $request->session()->put('userId', $email->id);
+
+
+                    }
+
+                }
+
+
+            }
+        }
+
+        echo json_encode($json);
+
     }
 
     public function recoverPass()
