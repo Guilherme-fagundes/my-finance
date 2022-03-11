@@ -16,7 +16,10 @@ class UserLoginController extends Controller
     public function login()
     {
 
-        var_dump(session()->all());
+        if (session()->has('userId') == true){
+            return redirect()->route('conta.home');
+        }
+
         return view('conta.login', [
             'title' => 'My Finance | Entrar'
         ]);

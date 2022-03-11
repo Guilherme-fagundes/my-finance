@@ -15,11 +15,6 @@
 </head>
 <body>
 
-{{--<header class="contaHeader">--}}
-{{--    <div class="contaHeaderContent">--}}
-
-{{--    </div>--}}
-{{--</header>--}}
 
 <section class="sessionMain container-fluid">
     <div class="sessionMainContent">
