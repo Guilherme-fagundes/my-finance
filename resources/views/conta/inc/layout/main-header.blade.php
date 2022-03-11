@@ -7,7 +7,7 @@
                 <div class="main-header-content">
                     <i class="fas fa-bars"></i>
                     <div class="header-action">
-                        <a href="#" class="nav-item logout">
+                        <a href="{{ route('conta.logount') }}" class="nav-item logout">
                             <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
                             <span class="text"> sair</span>
                         </a>

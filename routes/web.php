@@ -21,7 +21,9 @@ Route::get('/', function () {
 
 Route::prefix('app')->group(function (){
     Route::get('/', [ContaController::class, 'home'])->middleware(['checkuserlogin'])->name('conta.home');
+    Route::get('/sair', [ContaController::class, 'logount'])->middleware(['checkuserlogin'])->name('conta.logount');
     Route::get('/login', [UserLoginController::class, 'login'])->name('user.login');
+    Route::any('/login/post', [UserLoginController::class, 'loginPost'])->name('user.login.post');
     Route::get('/esqueci-minha-senha', [UserLoginController::class, 'recoverPass'])->name('user.recoverpass');
     Route::get('/criar-minha-conta', [UserLoginController::class, 'createUserAcount'])->name('user.createNewAcount');
     Route::get('/ativar-conta', [UserLoginController::class, 'confirmUserAcount'])->name('user.confirmAcount');
