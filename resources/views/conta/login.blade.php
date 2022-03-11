@@ -25,7 +25,9 @@
                     </div>
                 @endif
 
-                <form method="post" action="">
+                <form method="post" action="" class="j-loginForm">
+                    @csrf
+                    <div class="j-alert" role="alert"></div>
                     <div class="field mb-3">
                         <label class="form-label">E-mail</label>
                         <input class="form-control" type="text" name="email">
@@ -61,5 +63,32 @@
 
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $('.j-loginForm').submit(function (e) {
+            e.preventDefault();
+            var formData = $(this).serialize();
+
+            $.ajax({
+                url: 'login/post',
+                type: 'POST',
+                dataType: 'json',
+                data: formData,
+                success: function (response) {
+
+                    if (response.error == true){
+                        $('.j-alert').addClass('alert alert-warning').html(response.message);
+                    }else{
+                        $('.j-alert').addClass('alert alert-primary').html(response.message);
+                        window.location.href="{{ route('conta.home') }}"
+                    }
+
+                }
+            });
+
+        });
+
+    </script>
 </body>
 </html>
