@@ -9,6 +9,8 @@ class ContaController extends Controller
 {
     public function home()
     {
+
+
         return view('conta.home', [
             'title' => 'Conta | Home'
         ]);
