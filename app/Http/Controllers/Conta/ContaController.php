@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Conta;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ContaController extends Controller
@@ -10,6 +11,7 @@ class ContaController extends Controller
     public function home()
     {
 
+//        dd(User::find(session()->get('userId'))->address()->first());
 
         return view('conta.home', [
             'title' => 'Conta | Home'

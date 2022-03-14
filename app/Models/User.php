@@ -11,6 +11,6 @@ class User extends Model
 
     public function address()
     {
-
+        return $this->hasOne(Address::class, 'user_id', 'id');
     }
 }
