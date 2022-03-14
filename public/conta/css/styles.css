@@ -9,6 +9,7 @@
 
 .form-label {
   color: #888;
+  font-size: 0.8em;
 }
 
 .btn {
@@ -207,7 +208,7 @@
 }
 
 .main-header {
-  background-color: white;
+  background-color: #0078ff;
   margin-bottom: 1em;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) !important;
 }
@@ -215,6 +216,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.main-header .main-header-content .mobileResizer {
+  cursor: pointer;
+  color: white;
 }
 .main-header .main-header-content .header-action .logout {
   text-decoration: none;
@@ -265,4 +270,12 @@
 .sessionCarteira .statisticas .saldo p.title {
   font-size: 0.9em;
   margin-bottom: 0;
+}
+.sessProfile .rowTitleProfile {
+  border-bottom: 2px solid brown;
+}
+.sessProfile .tituloMeuPerfil {
+  font-weight: 300;
+  font-size: 2em;
+  color: brown;
 }
