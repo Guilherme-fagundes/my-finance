@@ -1,4 +1,4 @@
-@extends('conta.inc.layout.template')
+@extends('conta.inc.layout.template', ["user" => $user])
 @extends('conta.inc.layout.main-header')
 
 
@@ -29,8 +29,12 @@
                 </div>
 
             </div>
+
            <form method="post" action="">
                <div class="row py-5 meusDados">
+                   <div class="col-12 col-md-12 titleMeusDados">
+                       <h3 class="pb-0">Meus dados</h3>
+                   </div>
                    <div class="col-12 col-md-12">
                        <div class="mb-3">
                            <label class="form-label">Selecione a foto de perfil</label>
@@ -62,6 +66,9 @@
 
                        </div>
 
+                   </div>
+                   <div class="col-12">
+                       <button type="submit" class="btn btn-primary">Salvar</button>
                    </div>
                </div>
            </form>

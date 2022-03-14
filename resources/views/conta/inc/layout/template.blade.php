@@ -15,7 +15,6 @@
 </head>
 <body>
 
-
 <section class="sessionMain container-fluid">
     <div class="sessionMainContent">
         <div class="row">
@@ -23,9 +22,9 @@
             <div class="col-2 leftSiderBar position-fixed vh-100 px-0 overflow-auto">
                 <article class="articleDashboard">
                     <div class="articleDashboardHeader text-center">
-                        <img src="{{ asset('storage/conta/default_empty.jpg') }}" width="80" height="80" class="rounded-circle">
-                        <p class="userName mt-3 mb-0 text-white"><small>Guilherme K Fagundes</small></p>
-                        <p class="userE-mail mt-1 text-white"><small>guilhermekfagundes259@gmail.com</small></p>
+                        <img src="{{ $user->foto ?? asset('storage/conta/default_empty.jpg') }}" width="80" height="80" class="rounded-circle">
+                        <p class="userName mt-3 mb-0 text-white"><small>{{ $user->nome ?? '' }} {{ $user->sobrenome ?? '' }}</small></p>
+                        <p class="userE-mail mt-1 text-white"><small>{{ $user->email }}</small></p>
                     </div>
                     <div class="articleDashboardBody">
                         <div class="leftMenu">

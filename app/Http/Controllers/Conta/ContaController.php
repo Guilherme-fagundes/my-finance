@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class ContaController extends Controller
 {
+
     public function home()
     {
 
@@ -20,14 +21,18 @@ class ContaController extends Controller
         }
 
         return view('conta.home', [
-            'title' => 'Conta | Home'
+            'title' => 'Conta | Home',
+            "user" => $userLogged
         ]);
     }
 
     public function perfil()
     {
+        $userLogged = DB::table('users')->where('id', session()->get('userId'))->first();
+
         return view('conta.perfil.perfil', [
             'title' => "My Finance | Meu perfil",
+            'user' => $userLogged
         ]);
 
     }
