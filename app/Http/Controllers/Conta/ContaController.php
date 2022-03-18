@@ -43,6 +43,11 @@ class ContaController extends Controller
 
         if ($request->all()){
             if ($request->ajax()){
+
+                //Atualização de foto
+
+
+                //Atualização de dados
                 if (in_array('', $request->except('_token'))){
                     $json['error'] = true;
                     $json['message'] = "Parece que tem campos em branco";

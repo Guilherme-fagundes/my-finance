@@ -30,7 +30,7 @@
 
             </div>
 
-           <form method="post" action="" class="j-formSalvarDados">
+           <form method="post" action="" class="j-formSalvarDados" enctype="multipart/form-data">
                <div class="j-alertSaveData"></div>
                @csrf
                <div class="row py-5 meusDados">
