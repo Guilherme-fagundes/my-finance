@@ -37,6 +37,35 @@ class ContaController extends Controller
 
     }
 
+    public function perfilSalvarDados(Request $request)
+    {
+        $json['error'] = false;
+
+        if ($request->all()){
+            if ($request->ajax()){
+                if (in_array('', $request->except('_token'))){
+                    $json['error'] = true;
+                    $json['message'] = "Parece que tem campos em branco";
+                }elseif (!filter_var($request->email, FILTER_VALIDATE_EMAIL)){
+                    $json['error'] = true;
+                    $json['message'] = "E-mail informado é inválido";
+                }else{
+
+                    $userUpdate = DB::table('users')
+                        ->where('id', '=', session()->get('userId'))
+                        ->update($request->except('_token'));
+                    if ($userUpdate){
+                        $json['error'] = false;
+                        $json['message'] = "Dados atualizados";
+                    }
+                }
+
+            }
+        }
+
+        echo json_encode($json);
+    }
+
     public function logount(Request $request)
     {
         if ($request->session()->has('userId')){

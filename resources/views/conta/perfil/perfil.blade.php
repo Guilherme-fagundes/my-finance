@@ -10,7 +10,7 @@
 
                 @if($errors->all())
                     @foreach($errors->all() as $msg)
-                        <div class="alert alert-danger" role="alert"><i class="fas fa-info-circle"></i> {{ $msg }}</div>
+                        <div class="alert alert-danger j-alert" role="alert"><i class="fas fa-info-circle"></i> {{ $msg }}</div>
                     @endforeach
                 @endif
 
@@ -30,7 +30,9 @@
 
             </div>
 
-           <form method="post" action="">
+           <form method="post" action="" class="j-formSalvarDados">
+               <div class="j-alertSaveData"></div>
+               @csrf
                <div class="row py-5 meusDados">
                    <div class="col-12 col-md-12 titleMeusDados">
                        <h3 class="pb-0">Meus dados</h3>
@@ -38,7 +40,7 @@
                    <div class="col-12 col-md-12">
                        <div class="mb-3">
                            <label class="form-label">Selecione a foto de perfil</label>
-                           <input class="form-control" type="file" name="nome">
+                           <input class="form-control" type="file" name="foto">
 
                        </div>
 
@@ -46,7 +48,7 @@
                    <div class="col-12 col-md-6">
                        <div class="mb-3">
                            <label class="form-label">Nome</label>
-                           <input class="form-control" type="text" name="nome">
+                           <input class="form-control" type="text" name="nome" value="{{ $user->nome ?? '' }}">
 
                        </div>
 
@@ -54,7 +56,7 @@
                    <div class="col-12 col-md-6">
                        <div class="mb-3">
                            <label class="form-label">Sobrenome</label>
-                           <input class="form-control" type="text" name="sobrenome">
+                           <input class="form-control" type="text" name="sobrenome" value="{{ $user->sobrenome ?? '' }}">
 
                        </div>
 
@@ -62,13 +64,13 @@
                    <div class="col-12">
                        <div class="mb-3">
                            <label class="form-label">E-mail</label>
-                           <input class="form-control" name="email">
+                           <input class="form-control" name="email" value="{{ $user->email ?? '' }}">
 
                        </div>
 
                    </div>
                    <div class="col-12">
-                       <button type="submit" class="btn btn-primary">Salvar</button>
+                       <button type="submit" class="btn btn-primary">Atualizar meus dados</button>
                    </div>
                </div>
            </form>
@@ -76,6 +78,43 @@
 
     </section>
 
+    <script>
+
+        $(document).ready(function () {
+            $('.j-alert').fadeOut(5000, function () {
+                $(this.removeClass('alert-danger'));
+
+            });
+
+        });
+
+        $(function () {
+            $('.j-formSalvarDados').submit(function (e) {
+                e.preventDefault();
+                var data = $(this).serialize();
+
+                $.ajax({
+                    url: "perfil/post",
+                    type: 'post',
+                    dataType: "json",
+                    data: data,
+                    success: function (response) {
+                        console.log(response)
+                        if (response.error == true){
+                            $('.j-alertSaveData').html("<div class=\"alert alert-danger\"><i class=\"fa-solid fa-circle-exclamation\"></i> "+response.message+"</div>")
+                            .addClass('mb-0 mt-3');
+
+                        }else{
+                            $('.j-alertSaveData').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> "+response.message+"</div>")
+                                .addClass('mb-0 mt-3');
+                            window.location.href="{{ route('conta.home') }}";
+                        }
+                    }
+                });
+            });
+
+        })
+    </script>
 
 @endsection
 
