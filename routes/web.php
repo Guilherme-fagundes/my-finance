@@ -21,8 +21,9 @@ Route::get('/', function () {
 
 Route::prefix('app')->group(function (){
     Route::get('/', [ContaController::class, 'home'])->middleware(['checkuserlogin'])->name('conta.home');
-    Route::get('/perfil', [ContaController::class, 'perfil'])->middleware(['checkuserlogin'])->name('conta.perfil');
+    Route::any('/perfil', [ContaController::class, 'perfil'])->middleware(['checkuserlogin'])->name('conta.perfil');
     Route::post('/perfil/post', [ContaController::class, 'perfilSalvarDados'])->middleware(['checkuserlogin'])->name('conta.perfil.salvarDados');
+    Route::any('/perfil/altera-foto', [ContaController::class, 'perfilAlterarFoto'])->middleware(['checkuserlogin'])->name('conta.perfil.alteraFoto');
     Route::get('/sair', [ContaController::class, 'logount'])->middleware(['checkuserlogin'])->name('conta.logount');
     Route::get('/login', [UserLoginController::class, 'login'])->name('user.login');
     Route::any('/login/post', [UserLoginController::class, 'loginPost'])->name('user.login.post');

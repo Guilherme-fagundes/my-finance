@@ -29,51 +29,72 @@
                 </div>
 
             </div>
+            <div class="j-alertSaveData"></div>
 
-           <form method="post" action="" class="j-formSalvarDados" enctype="multipart/form-data">
-               <div class="j-alertSaveData"></div>
-               @csrf
-               <div class="row py-5 meusDados">
-                   <div class="col-12 col-md-12 titleMeusDados">
-                       <h3 class="pb-0">Meus dados</h3>
-                   </div>
-                   <div class="col-12 col-md-12">
-                       <div class="mb-3">
-                           <label class="form-label">Selecione a foto de perfil</label>
-                           <input class="form-control" type="file" name="foto">
+            <div class="row mt-3 mb-0">
+                <div class="col-12 col-md-12 titleMeusDados">
+                    <h3 class="pb-0 mt-3 mb-4">Meus dados</h3>
+                    <form class="j-alteraFoto" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <img src="{{ asset('storage/conta/default_empty.jpg') }}" class="rounded-circle" width="100" height="100">
+                        <input type="file" name="foto" id="userAlterFoto" class="d-none">
+                        <p class="mt-4"><label for="userAlterFoto" class="btn btn-link jBtnSelectUserPhoto">Selecione sua foto de perfil</label></p>
+                        <button type="submit">Enviar nova foto</button>
+                    </form>
+                </div>
 
-                       </div>
+            </div>
 
-                   </div>
-                   <div class="col-12 col-md-6">
-                       <div class="mb-3">
-                           <label class="form-label">Nome</label>
-                           <input class="form-control" type="text" name="nome" value="{{ $user->nome ?? '' }}">
+            <div class="row">
+                <div class="col-12 ">
+                    <form method="post" action="" class="j-formSalvarDados" enctype="multipart/form-data">
 
-                       </div>
+                        @csrf
+                        <div class="row py-5 meusDados">
 
-                   </div>
-                   <div class="col-12 col-md-6">
-                       <div class="mb-3">
-                           <label class="form-label">Sobrenome</label>
-                           <input class="form-control" type="text" name="sobrenome" value="{{ $user->sobrenome ?? '' }}">
+                            <div class="col-12 col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Selecione a foto de perfil</label>
+                                    <input class="form-control" type="file" name="foto">
 
-                       </div>
+                                </div>
 
-                   </div>
-                   <div class="col-12">
-                       <div class="mb-3">
-                           <label class="form-label">E-mail</label>
-                           <input class="form-control" name="email" value="{{ $user->email ?? '' }}">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nome</label>
+                                    <input class="form-control" type="text" name="nome" value="{{ $user->nome ?? '' }}">
 
-                       </div>
+                                </div>
 
-                   </div>
-                   <div class="col-12">
-                       <button type="submit" class="btn btn-primary">Atualizar meus dados</button>
-                   </div>
-               </div>
-           </form>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Sobrenome</label>
+                                    <input class="form-control" type="text" name="sobrenome" value="{{ $user->sobrenome ?? '' }}">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">E-mail</label>
+                                    <input class="form-control" name="email" value="{{ $user->email ?? '' }}">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Atualizar meus dados</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+
         </div>
 
     </section>
@@ -111,6 +132,34 @@
                         }
                     }
                 });
+            });
+
+            $('.j-alteraFoto').submit(function (e) {
+                e.preventDefault();
+
+                var fileTarget = e.target.files;
+                var formData = $(this).serialize();
+
+                $(this).ajaxSubmit({
+
+                    url: 'perfil/altera-foto',
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data)
+
+                    },
+                    error: function (error) {
+                        console.log(error);
+
+                    }
+                });
+
+
+
+
+
             });
 
         })

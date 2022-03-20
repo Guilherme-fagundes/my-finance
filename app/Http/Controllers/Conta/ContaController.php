@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Conta;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Bus\DatabaseBatchRepository;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Bus\DatabaseBatchRepository;
 
 class ContaController extends Controller
 {
@@ -15,7 +17,7 @@ class ContaController extends Controller
     {
 
         $userLogged = DB::table('users')->where('id', session()->get('userId'))->first();
-        if ($userLogged->nome == null || $userLogged->sobrenome == null){
+        if ($userLogged->nome == null || $userLogged->sobrenome == null) {
             return redirect()->route('conta.perfil')->withErrors(['error' => 'Complete seu perfil']);
 
         }
@@ -41,25 +43,22 @@ class ContaController extends Controller
     {
         $json['error'] = false;
 
-        if ($request->all()){
-            if ($request->ajax()){
-
-                //Atualização de foto
-
+        if ($request->all()) {
+            if ($request->ajax()) {
 
                 //Atualização de dados
-                if (in_array('', $request->except('_token'))){
+                if (in_array('', $request->except('_token'))) {
                     $json['error'] = true;
                     $json['message'] = "Parece que tem campos em branco";
-                }elseif (!filter_var($request->email, FILTER_VALIDATE_EMAIL)){
+                } elseif (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
                     $json['error'] = true;
                     $json['message'] = "E-mail informado é inválido";
-                }else{
+                } else {
 
                     $userUpdate = DB::table('users')
                         ->where('id', '=', session()->get('userId'))
                         ->update($request->except('_token'));
-                    if ($userUpdate){
+                    if ($userUpdate) {
                         $json['error'] = false;
                         $json['message'] = "Dados atualizados";
                     }
@@ -71,9 +70,42 @@ class ContaController extends Controller
         echo json_encode($json);
     }
 
+    public function perfilAlterarFoto(Request $request)
+    {
+        $json = [];
+        if ($request->ajax()) {
+
+            if (in_array('', $request->all())) {
+                return Response()->json([
+                    'error' => true,
+                    'message' => "Selecione uma imagem"
+                ]);
+            }elseif ($request->file('foto')->getClientOriginalExtension() != "png"){
+                return Response()->json([
+                    'error' => true,
+                    'message' => "Tipo de arquivo inválido"
+                ]);
+            }else {
+
+                $uploadedUserPicture = $request->file('foto')
+                    ->store('conta/usuario/' . $request->session()->get('userId'));
+
+                if ($uploadedUserPicture){
+                    return Response()->json([
+                        'error' => false,
+                        'message' => "Imagem atualizada com sucesso"
+                    ]);
+                }
+            }
+
+        }
+
+//        echo json_encode($json);
+    }
+
     public function logount(Request $request)
     {
-        if ($request->session()->has('userId')){
+        if ($request->session()->has('userId')) {
             $request->session()->forget('userId');
             $request->session()->flush();
 
