@@ -50,6 +50,9 @@ class UserLoginController extends Controller
                     if (!$email || !$pass){
                         $json['error'] = true;
                         $json['message'] = "E-mail ou senha invalidos";
+                    }elseif ($email->status == 0){
+                        $json['error'] = true;
+                        $json['message'] = "Sua conta não esta ativada";
                     }else{
                         $json['error'] = false;
                         $json['message'] = "Seja bem vindo {$email->nome}";
