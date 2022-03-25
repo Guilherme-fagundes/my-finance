@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Bus\DatabaseBatchRepository;
+use Illuminate\Support\Facades\Validator;
 
 class ContaController extends Controller
 {
@@ -73,30 +74,37 @@ class ContaController extends Controller
     public function perfilAlterarFoto(Request $request)
     {
         $json = [];
-        if ($request->ajax()) {
 
-            if (in_array('', $request->all())) {
+        if ($request->ajax()){
+            $validation = Validator::make($request->all(), [
+                'foto' => 'required|mimes:jpeg,jpg,png'
+            ]);
+
+            if ($validation->fails()){
                 return Response()->json([
                     'error' => true,
-                    'message' => "Selecione uma imagem"
+                    'errors' => $validation->errors()
                 ]);
-            }elseif ($request->file('foto')->getClientOriginalExtension() != "png"){
-                return Response()->json([
-                    'error' => true,
-                    'message' => "Tipo de arquivo inválido"
-                ]);
-            }else {
+            }else{
 
-                $uploadedUserPicture = $request->file('foto')
-                    ->store('conta/usuario/' . $request->session()->get('userId'));
+                $image = $request->file('foto');
+                $newName = md5(time()).'.'. $image->getClientOriginalExtension();
 
-                if ($uploadedUserPicture){
+                $uploaded = $image->move(public_path('storage/conta/usuario/'.session()->get('userId')), $newName);
+                if ($uploaded){
+                    DB::table('users')
+                        ->where('id', '=', session()->get('userId'))
+                        ->update([
+                            'foto' => 'storage/conta/usuario/'.session()->get('userId').'/'.$newName
+                        ]);
                     return Response()->json([
                         'error' => false,
-                        'message' => "Imagem atualizada com sucesso"
+                        'message' => 'Foto atualizada com sucesso'
                     ]);
                 }
+
             }
+
 
         }
 

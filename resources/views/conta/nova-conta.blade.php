@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url(mix('conta/css/bootstrap/bootstrap.css')) }}">
     <link rel="stylesheet" href="{{ url(mix('conta/css/styles.css')) }}">
-    <link rel="stylesheet" href="{{ url(mix('conta/toastr/toastr.css')) }}">
 
     <title>{{ $title }}</title>
     {!! htmlScriptTagJsApi() !!}

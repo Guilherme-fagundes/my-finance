@@ -36,7 +36,7 @@
                     <h3 class="pb-0 mt-3 mb-4">Meus dados</h3>
                     <form class="j-alteraFoto" method="post" enctype="multipart/form-data">
                         @csrf
-                        <img src="{{ asset('storage/conta/default_empty.jpg') }}" class="rounded-circle" width="100" height="100">
+                        <img src="{{ asset('storage/default_empty.jpg') ?? asset('storage/conta/usuario/'.$user->id.'/'.$user->foto) }}" class="rounded-circle" width="100" height="100">
                         <input type="file" name="foto" id="userAlterFoto" class="d-none">
                         <p class="mt-4"><label for="userAlterFoto" class="btn btn-link jBtnSelectUserPhoto">Selecione sua foto de perfil</label></p>
                         <button type="submit">Enviar nova foto</button>

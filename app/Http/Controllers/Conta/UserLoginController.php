@@ -52,7 +52,7 @@ class UserLoginController extends Controller
                         $json['message'] = "E-mail ou senha invalidos";
                     }elseif ($email->status == 0){
                         $json['error'] = true;
-                        $json['message'] = "Sua conta não esta ativada";
+                        $json['message'] = "Sua conta não esta ativada! Para ativa-la clique no link >> <a href=\"".route('user.reenviarEmail', ['email' => $email->email])."\">Reenviar email</a>" ;
                     }else{
                         $json['error'] = false;
                         $json['message'] = "Seja bem vindo {$email->nome}";
@@ -69,6 +69,23 @@ class UserLoginController extends Controller
         }
 
         echo json_encode($json);
+
+    }
+
+    public function reenviarEmail($email)
+    {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            return redirect()->back()->withErrors(['error' => 'Parametro inválido']);
+        }
+        if ($email == null){
+            return redirect()->back()->withErrors(['error' => 'Parametro inválido']);
+        }
+
+        $ativateuser = User::where('email', $email)->first();
+
+        Mail::send(new CreateUserAcount($ativateuser));
+
+        return redirect()->back()->withErrors(['success' => 'Um email foi enviado com instruções para ativar sua conta']);
 
     }
 
