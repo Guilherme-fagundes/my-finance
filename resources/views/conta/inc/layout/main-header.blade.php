@@ -1,11 +1,11 @@
 @section('main-header')
 
-    <header class="main-header px-0">
+    <header class="main-header">
         <div class="container">
             <div class="row py-3">
 
                 <div class="main-header-content">
-                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-bars mobileResizer"></i>
                     <div class="header-action">
                         <a href="{{ route('conta.logount') }}" class="nav-item logout">
                             <span class="icon"><i class="fas fa-sign-out-alt"></i></span>

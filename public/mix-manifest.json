@@ -1,5 +1,10 @@
 {
+<<<<<<< HEAD
     "/conta/js/bootstrap/bootstrap.bundle.js": "/conta/js/bootstrap/bootstrap.bundle.js?id=7d941ae634a3fdf680ce",
     "/conta/css/styles.css": "/conta/css/styles.css?id=a5b898dade7143387e8c",
+=======
+    "/conta/js/bootstrap/bootstrap.bundle.js": "/conta/js/bootstrap/bootstrap.bundle.js?id=37bd28135a3ca2ee147f",
+    "/conta/css/styles.css": "/conta/css/styles.css?id=edb805af9ae5680b7b33",
+>>>>>>> 0ea1c420b9bd3491bcff6d33822b41d34b7cb9b5
     "/conta/css/bootstrap/bootstrap.css": "/conta/css/bootstrap/bootstrap.css?id=a6cbad80d306eb3c0bb4"
 }

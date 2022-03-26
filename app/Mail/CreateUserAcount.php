@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use phpDocumentor\Reflection\Types\Mixed_;
 use PhpParser\Node\Expr\Cast\Object_;
 
 class CreateUserAcount extends Mailable

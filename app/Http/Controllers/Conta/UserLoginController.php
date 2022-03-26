@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Conta;
 
 use App\Http\Controllers\Controller;
 use App\Mail\CreateUserAcount;
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,10 @@ class UserLoginController extends Controller
     public function login()
     {
 
-        var_dump(session()->all());
+        if (session()->has('userId') == true){
+            return redirect()->route('conta.home');
+        }
+
         return view('conta.login', [
             'title' => 'My Finance | Entrar'
         ]);
@@ -47,6 +51,9 @@ class UserLoginController extends Controller
                     if (!$email || !$pass){
                         $json['error'] = true;
                         $json['message'] = "E-mail ou senha invalidos";
+                    }elseif ($email->status == 0){
+                        $json['error'] = true;
+                        $json['message'] = "Sua conta não esta ativada! Para ativa-la clique no link >> <a href=\"".route('user.reenviarEmail', ['email' => $email->email])."\">Reenviar email</a>" ;
                     }else{
                         $json['error'] = false;
                         $json['message'] = "Seja bem vindo {$email->nome}";
@@ -63,6 +70,23 @@ class UserLoginController extends Controller
         }
 
         echo json_encode($json);
+
+    }
+
+    public function reenviarEmail($email)
+    {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            return redirect()->back()->withErrors(['error' => 'Parametro inválido']);
+        }
+        if ($email == null){
+            return redirect()->back()->withErrors(['error' => 'Parametro inválido']);
+        }
+
+        $ativateuser = User::where('email', $email)->first();
+
+        Mail::send(new CreateUserAcount($ativateuser));
+
+        return redirect()->back()->withErrors(['success' => 'Um email foi enviado com instruções para ativar sua conta']);
 
     }
 
@@ -127,6 +151,10 @@ class UserLoginController extends Controller
                         if ($createUser->save()){
                             $json['message'] = "Sua conta foi cadastrada, agora falta pouco. Ative sua conta atraves de seu e-mail cadastrado";
                             $json['error'] = false;
+
+                            $address = new Address();
+                            $address->user_id = $createUser->id;
+                            $address->save();
 
                             Mail::send(new CreateUserAcount($createUser));
 
