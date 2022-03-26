@@ -1,0 +1,23 @@
+body{
+    background-color: #eee;
+}
+.sessProfile{
+    .rowTitleProfile{
+        border-bottom: 2px solid brown;
+    }
+    .titleMeusDados{
+        margin-bottom: 1em;
+        h3{
+            font-weight: 300;
+            font-size: 1.5em;
+        }
+    }
+    #perfilEndereco{
+        border-top: 2px solid brown;
+    }
+    .tituloMeuPerfil{
+        font-weight: 300;
+        font-size: 2em;
+        color: brown;
+    }
+}
