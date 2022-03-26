@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Conta;
 
 use App\Http\Controllers\Controller;
 use App\Mail\CreateUserAcount;
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -150,6 +151,10 @@ class UserLoginController extends Controller
                         if ($createUser->save()){
                             $json['message'] = "Sua conta foi cadastrada, agora falta pouco. Ative sua conta atraves de seu e-mail cadastrado";
                             $json['error'] = false;
+
+                            $address = new Address();
+                            $address->user_id = $createUser->id;
+                            $address->save();
 
                             Mail::send(new CreateUserAcount($createUser));
 

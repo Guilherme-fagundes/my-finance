@@ -24,6 +24,7 @@ Route::prefix('app')->group(function (){
     Route::any('/perfil', [ContaController::class, 'perfil'])->middleware(['checkuserlogin'])->name('conta.perfil');
     Route::post('/perfil/post', [ContaController::class, 'perfilSalvarDados'])->middleware(['checkuserlogin'])->name('conta.perfil.salvarDados');
     Route::any('/perfil/altera-foto', [ContaController::class, 'perfilAlterarFoto'])->middleware(['checkuserlogin'])->name('conta.perfil.alteraFoto');
+    Route::any('/perfil/altera-endereco', [ContaController::class, 'perfilAlterarEndereco'])->middleware(['checkuserlogin'])->name('conta.perfil.alteraEndereco');
     Route::get('/sair', [ContaController::class, 'logount'])->middleware(['checkuserlogin'])->name('conta.logount');
     Route::get('/login', [UserLoginController::class, 'login'])->name('user.login');
     Route::get('/reenviar-email/{email}', [UserLoginController::class, 'reenviarEmail'])->name('user.reenviarEmail');

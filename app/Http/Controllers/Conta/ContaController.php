@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Conta;
 
+use App\Models\Address;
 use App\Models\User;
 use http\Env\Response;
 use Illuminate\Http\Request;
@@ -33,10 +34,12 @@ class ContaController extends Controller
     public function perfil()
     {
         $userLogged = DB::table('users')->where('id', session()->get('userId'))->first();
+        $addressUser = DB::table('addresses')->where('user_id', $userLogged->id)->first();
 
         return view('conta.perfil.perfil', [
             'title' => "My Finance | Meu perfil",
-            'user' => $userLogged
+            'user' => $userLogged,
+            'addressUser' => $addressUser
         ]);
 
     }
@@ -126,6 +129,49 @@ class ContaController extends Controller
         }
 
 //        echo json_encode($json);
+    }
+
+    public function perfilAlterarEndereco(Request $request)
+    {
+        if ($request->ajax()){
+
+            if ($request->all()){
+                if (in_array('', $request->all())){
+                    return Response()->json([
+                        'error' => true,
+                        'message' => 'Não pode ter campos em branco'
+                    ]);
+
+                }else{
+
+                    $checkExistAddress = DB::table('addresses')
+                        ->where('user_id', '=', session()->get('userId'))->first();
+                    if ($checkExistAddress){
+
+                        $addressUpdate = DB::table('addresses')
+                            ->where('user_id', session()->get('userId'))
+                            ->update($request->except('_token', 'user_id'));
+
+
+                        if (!$addressUpdate){
+                            return Response()->json([
+                                'error' => false,
+                                'message' => "Endereço atualizado"
+                            ]);
+                        }else{
+                            return Response()->json([
+                                'error' => true,
+                                'message' => "Erro ao atualizar"
+                            ]);
+                        }
+
+                    }
+
+                }
+            }
+
+        }
+
     }
 
     public function logount(Request $request)

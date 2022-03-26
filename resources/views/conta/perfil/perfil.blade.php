@@ -93,7 +93,7 @@
             <div class="row">
                 <div class="col-12 titleMeusDados" id="perfilEndereco">
                     <h3 class="pb-0 mb-0 mt-3 mb-4">Meu endereço</h3>
-                    <form method="post" action="" class="j-formSalvarDados" enctype="multipart/form-data">
+                    <form method="post" action="" class="j-formSalvarEndereco" enctype="multipart/form-data">
 
                         @csrf
                         <div class="row py-2 meusDados">
@@ -101,7 +101,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Cep</label>
-                                    <input class="form-control" type="text" name="cep" placeholder="Informe seu cep" id="cep">
+                                    <input class="form-control" type="text" name="cep" value="{{ $addressUser->cep ?? '' }}" placeholder="Informe seu cep" id="cep">
 
                                 </div>
 
@@ -109,7 +109,7 @@
                             <div class="col-12 col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Estado</label>
-                                    <input class="form-control" type="text" readonly name="uf" id="uf">
+                                    <input class="form-control" value="{{ $addressUser->uf ?? '' }}" type="text" name="uf" id="uf">
 
                                 </div>
 
@@ -117,7 +117,7 @@
                             <div class="col-12 col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Cidade</label>
-                                    <input class="form-control" type="text" readonly name="localidade" id="localidade">
+                                    <input class="form-control" value="{{ $addressUser->localidade ?? '' }}" type="text" name="localidade" id="localidade">
 
                                 </div>
 
@@ -125,7 +125,7 @@
                             <div class="col-12 col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Bairro</label>
-                                    <input class="form-control" name="bairro" readonly id="bairro">
+                                    <input class="form-control" value="{{ $addressUser->bairro ?? '' }}" name="bairro" id="bairro">
 
                                 </div>
 
@@ -133,7 +133,7 @@
                             <div class="col-12 col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Logradrouro</label>
-                                    <input class="form-control" name="logradouro" readonly id="logradouro">
+                                    <input class="form-control" value="{{ $addressUser->logradouro ?? '' }}" name="logradouro" id="logradouro">
 
                                 </div>
 
@@ -141,7 +141,7 @@
                             <div class="col-12 col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Complemento</label>
-                                    <input class="form-control" name="complemenbto" readonly id="complemento">
+                                    <input class="form-control" value="{{ ($addressUser->complemento ?? '') }}" name="complemento" id="complemento">
 
                                 </div>
 
@@ -149,13 +149,13 @@
                             <div class="col-12 col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Numero</label>
-                                    <input class="form-control" name="numero" id="numero">
+                                    <input class="form-control" value="{{ $addressUser->numero ?? '' }}" name="numero" id="numero">
 
                                 </div>
 
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-arrow-rotate-right"></i> Atualizar meus dados</button>
+                                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-arrow-rotate-right"></i> Atualizar meu endereço</button>
                             </div>
                         </div>
                     </form>
@@ -256,7 +256,32 @@
                        $("#complemento").val(response.complemento);
                    });
                }
-            })
+            });
+
+            $(".j-formSalvarEndereco").submit(function (e) {
+                e.preventDefault();
+
+                var data = $(this).serialize();
+
+                $.ajax({
+                    url: "{{ route('conta.perfil.alteraEndereco') }}",
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: data,
+                    success: function (data) {
+                        if (data.error == true){
+                            $('.j-alertSaveData').html("<div class=\"alert alert-danger\"><i class=\"fa-solid fa-circle-exclamation\"></i> "+data.message+"</div>")
+                                .addClass('mb-0 mt-3');
+
+                        }else{
+                            $('.j-alertSaveData').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> "+data.message+"</div>")
+                                .addClass('mb-0 mt-3');
+                            window.location.href="{{ route('conta.perfil') }}";
+                        }
+
+                    }
+                });
+            });
 
         })
     </script>
