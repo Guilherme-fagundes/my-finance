@@ -7,6 +7,7 @@ use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Bus\DatabaseBatchRepository;
 use Illuminate\Support\Facades\Validator;
@@ -80,30 +81,40 @@ class ContaController extends Controller
                 'foto' => 'required|mimes:jpeg,jpg,png'
             ]);
 
-            if ($validation->fails()){
-                return Response()->json([
-                    'error' => true,
-                    'errors' => $validation->errors()
-                ]);
-            }else{
+           if ($request->file('foto')->isValid()){
 
-                $image = $request->file('foto');
-                $newName = md5(time()).'.'. $image->getClientOriginalExtension();
 
-                $uploaded = $image->move(public_path('storage/conta/usuario/'.session()->get('userId')), $newName);
-                if ($uploaded){
-                    DB::table('users')
-                        ->where('id', '=', session()->get('userId'))
-                        ->update([
-                            'foto' => 'storage/conta/usuario/'.session()->get('userId').'/'.$newName
-                        ]);
-                    return Response()->json([
-                        'error' => false,
-                        'message' => 'Foto atualizada com sucesso'
-                    ]);
-                }
 
-            }
+               if ($validation->fails()){
+                   return Response()->json([
+                       'error' => true,
+                       'errors' => $validation->errors()
+                   ]);
+               }else{
+
+                   $image = $request->file('foto');
+                   $fileName = rand().'.'. $image->getClientOriginalExtension();
+
+                  if(File::exists(public_path('storage/conta'))){
+                      File::delete(public_path('storage/conta'));
+                  }
+
+                   $uploaded = $image->move(public_path('storage/conta/usuario/'.session()->get('userId')), $fileName);
+                   if ($uploaded){
+
+                       DB::table('users')
+                           ->where('id', '=', session()->get('userId'))
+                           ->update([
+                               'foto' => 'storage/conta/usuario/'.session()->get('userId').'/'.$fileName
+                           ]);
+                       return Response()->json([
+                           'error' => false,
+                           'message' => 'Foto atualizada com sucesso'
+                       ]);
+                   }
+
+               }
+           }
 
 
         }
