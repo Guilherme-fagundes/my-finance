@@ -24,7 +24,7 @@
 
             <div class="row py-2 rowTitleProfile">
                 <div class="col-12">
-                    <h1 class="tituloMeuPerfil mb-0">Meu perfil</h1>
+                    <h1 class="tituloMeuPerfil mb-0"><i class="fas fa-user"></i> Meu perfil</h1>
 
                 </div>
 
@@ -43,7 +43,7 @@
                         @endif
                         <input type="file" name="foto" id="userAlterFoto" class="d-none">
                         <p class="mt-4"><label for="userAlterFoto" class="btn btn-link jBtnSelectUserPhoto">Selecione sua foto de perfil</label></p>
-                        <button type="submit">Enviar nova foto</button>
+                        <button type="submit" class="btn btn-success btn-sm"><i class="fa-solid fa-arrow-up"></i> Enviar nova foto</button>
                     </form>
                 </div>
 
@@ -56,14 +56,6 @@
                         @csrf
                         <div class="row py-5 meusDados">
 
-                            <div class="col-12 col-md-12">
-                                <div class="mb-3">
-                                    <label class="form-label">Selecione a foto de perfil</label>
-                                    <input class="form-control" type="file" name="foto">
-
-                                </div>
-
-                            </div>
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Nome</label>
@@ -89,7 +81,81 @@
 
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary">Atualizar meus dados</button>
+                                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-arrow-rotate-right"></i> Atualizar meus dados</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-12 titleMeusDados" id="perfilEndereco">
+                    <h3 class="pb-0 mb-0 mt-3 mb-4">Meu endereço</h3>
+                    <form method="post" action="" class="j-formSalvarDados" enctype="multipart/form-data">
+
+                        @csrf
+                        <div class="row py-2 meusDados">
+
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Cep</label>
+                                    <input class="form-control" type="text" name="cep" placeholder="Informe seu cep" id="cep">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Estado</label>
+                                    <input class="form-control" type="text" readonly name="uf" id="uf">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Cidade</label>
+                                    <input class="form-control" type="text" readonly name="localidade" id="localidade">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Bairro</label>
+                                    <input class="form-control" name="bairro" readonly id="bairro">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Logradrouro</label>
+                                    <input class="form-control" name="logradouro" readonly id="logradouro">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Complemento</label>
+                                    <input class="form-control" name="complemenbto" readonly id="complemento">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Numero</label>
+                                    <input class="form-control" name="numero" id="numero">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-arrow-rotate-right"></i> Atualizar meus dados</button>
                             </div>
                         </div>
                     </form>
@@ -152,7 +218,7 @@
                     dataType: 'json',
                     success: function (data) {
 
-                        if (data.error == true){
+                        if (data.error === true){
 
                             $('.j-alertSaveData').html("<div class=\"alert alert-danger\"><i class=\"fa-solid fa-circle-exclamation\"></i> "+data.errors.foto[0]+"</div>")
                                 .addClass('mb-0 mt-3');
@@ -174,6 +240,23 @@
 
 
             });
+            $("#cep").mask("00000-000");
+            $('#cep').keyup(function (e) {
+                var cep = $(this).val();
+                var cepArr = cep.split('-');
+                var cepUnion = cepArr.join("");
+
+               if (cepUnion.length == 8){
+                   $.getJSON("https://viacep.com.br/ws/"+cepUnion+"/json/", function (response) {
+                       console.log(response)
+                       $("#uf").val(response.uf);
+                       $("#localidade").val(response.localidade);
+                       $("#bairro").val(response.bairro);
+                       $("#logradouro").val(response.logradouro);
+                       $("#complemento").val(response.complemento);
+                   });
+               }
+            })
 
         })
     </script>
