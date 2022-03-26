@@ -92,20 +92,26 @@ class ContaController extends Controller
                    ]);
                }else{
 
+                   $user = User::where('id', '=', session()->get('userId'))->first();
+
                    $image = $request->file('foto');
-                   $fileName = rand().'.'. $image->getClientOriginalExtension();
+                   if (empty($user->foto)){
+                       $fileName = $user->id.'-'.$user->nome .'.'. $image->getClientOriginalExtension();
 
-                  if(File::exists(public_path('storage/conta'))){
-                      File::delete(public_path('storage/conta'));
-                  }
+                   }else{
+                       $fileName = $user->id.'-'.$user->nome .'.'. $image->getClientOriginalExtension();
+//
+                   }
 
-                   $uploaded = $image->move(public_path('storage/conta/usuario/'.session()->get('userId')), $fileName);
+
+
+                   $uploaded = $image->storeAs('conta/usuario/'. session()->get('userId'), $fileName);
                    if ($uploaded){
 
                        DB::table('users')
                            ->where('id', '=', session()->get('userId'))
                            ->update([
-                               'foto' => 'storage/conta/usuario/'.session()->get('userId').'/'.$fileName
+                               'foto' => $fileName
                            ]);
                        return Response()->json([
                            'error' => false,

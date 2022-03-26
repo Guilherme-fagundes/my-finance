@@ -37,7 +37,7 @@
                     <form class="j-alteraFoto" method="post" enctype="multipart/form-data">
                         @csrf
                         @if (!empty($user->foto))
-                            <img src="{{ asset($user->foto) }}" class="rounded-circle" width="100" height="100">
+                            <img src="{{ asset('storage/conta/usuario/'.session()->get('userId').'/'. $user->foto) }}" class="rounded-circle" width="100" height="100">
                         @else
                             <img src="{{ asset('storage/default_empty.jpg') }}" class="rounded-circle" width="100" height="100">
                         @endif
@@ -151,7 +151,16 @@
                     data: formData,
                     dataType: 'json',
                     success: function (data) {
-                        console.log(data)
+
+                        if (data.error == true){
+
+                            $('.j-alertSaveData').html("<div class=\"alert alert-danger\"><i class=\"fa-solid fa-circle-exclamation\"></i> "+data.errors.foto[0]+"</div>")
+                                .addClass('mb-0 mt-3');
+                        }else {
+                            $('.j-alertSaveData').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> "+data.message+"</div>")
+                                .addClass('mb-0 mt-3');
+                            window.location.href="{{ route('conta.perfil') }}";
+                        }
 
                     },
                     error: function (error) {

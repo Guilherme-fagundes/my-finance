@@ -25,7 +25,7 @@
                 <article class="articleDashboard">
                     <div class="articleDashboardHeader text-center">
                         @if (!empty($user->foto))
-                            <img src="{{ asset($user->foto) }}" class="rounded-circle" width="100" height="100">
+                            <img src="{{ asset('storage/conta/usuario/'.session()->get('userId').'/'. $user->foto) }}" class="rounded-circle" width="100" height="100">
                         @else
                             <img src="{{ asset('storage/default_empty.jpg') }}" class="rounded-circle" width="100" height="100">
                         @endif
