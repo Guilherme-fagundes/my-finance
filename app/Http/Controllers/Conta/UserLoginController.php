@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Conta;
 
 use App\Http\Controllers\Controller;
 use App\Mail\CreateUserAcount;
+use App\Mail\RecoverUserAcount;
 use App\Models\Address;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -99,15 +100,41 @@ class UserLoginController extends Controller
 
     public function recoverPassPost(Request $request)
     {
-        if ($request->all()){
-            $validation = Validator::make($request->all(), [
-                'email' => ['required', 'email']
-            ]);
+        if ($request->ajax()){
 
-            if ($validation->fails()){
-                return redirect()->back()->withErrors($validation->errors());
+            if ($request->all()){
 
+                $validation = Validator::make($request->all(), [
+                    'email' => ['required', 'email']
+                ]);
+
+                if ($validation->fails()){
+                    return Response()->json([
+                        'error' => true,
+                        'message' => $validation->getMessageBag()->first()
+                    ]);
+
+                }else{
+
+                    $email = DB::table('users')
+                        ->where('email', '=', $request->email)->first();
+
+                    if (!$email){
+                        return Response()->json([
+                            'error' => true,
+                            'message' => 'Este email não foi encontrado.'
+                        ]);
+                    }
+
+                    Mail::send(new RecoverUserAcount($email));
+
+                    return Response()->json([
+                        'error' => false,
+                        'message' => 'Um email com instruções de recuperar sua conta foi enviado para '. $request->email
+                    ]);
+                }
             }
+
         }
     }
 
