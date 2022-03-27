@@ -21,16 +21,22 @@ Route::get('/', function () {
 
 Route::prefix('app')->group(function (){
     Route::get('/', [ContaController::class, 'home'])->middleware(['checkuserlogin'])->name('conta.home');
+
     Route::any('/perfil', [ContaController::class, 'perfil'])->middleware(['checkuserlogin'])->name('conta.perfil');
     Route::post('/perfil/post', [ContaController::class, 'perfilSalvarDados'])->middleware(['checkuserlogin'])->name('conta.perfil.salvarDados');
     Route::any('/perfil/altera-foto', [ContaController::class, 'perfilAlterarFoto'])->middleware(['checkuserlogin'])->name('conta.perfil.alteraFoto');
     Route::any('/perfil/altera-endereco', [ContaController::class, 'perfilAlterarEndereco'])->middleware(['checkuserlogin'])->name('conta.perfil.alteraEndereco');
+
     Route::get('/sair', [ContaController::class, 'logount'])->middleware(['checkuserlogin'])->name('conta.logount');
     Route::get('/login', [UserLoginController::class, 'login'])->name('user.login');
     Route::get('/reenviar-email/{email}', [UserLoginController::class, 'reenviarEmail'])->name('user.reenviarEmail');
     Route::any('/login/post', [UserLoginController::class, 'loginPost'])->name('user.login.post');
+
     Route::get('/esqueci-minha-senha', [UserLoginController::class, 'recoverPass'])->name('user.recoverpass');
     Route::post('/esqueci-minha-senha/post', [UserLoginController::class, 'recoverPassPost'])->name('user.recoverpass.post');
+    Route::get('/nova-senha', [UserLoginController::class, 'newPass'])->name('user.newPass');
+
+
     Route::get('/criar-minha-conta', [UserLoginController::class, 'createUserAcount'])->name('user.createNewAcount');
     Route::get('/ativar-conta', [UserLoginController::class, 'confirmUserAcount'])->name('user.confirmAcount');
     Route::post('/criar-minha-conta/post', [UserLoginController::class, 'createUserAcountPost'])->name('user.createNewAcount.post');

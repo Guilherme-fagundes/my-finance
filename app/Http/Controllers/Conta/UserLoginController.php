@@ -23,7 +23,7 @@ class UserLoginController extends Controller
         }
 
         return view('conta.login', [
-            'title' => 'My Finance | Entrar'
+            'title' => env('APP_NAME').' | Entrar'
         ]);
     }
 
@@ -94,7 +94,7 @@ class UserLoginController extends Controller
     public function recoverPass()
     {
         return view('conta.esqueci-senha', [
-            'title' => 'My Finance | Esqueci minha senha'
+            'title' => env('APP_NAME').' | Esqueci minha senha'
         ]);
     }
 
@@ -223,5 +223,12 @@ class UserLoginController extends Controller
         if ($activateUserAcount){
             return redirect()->route('user.login')->withErrors(['success' => 'Sua conta foi ativada! Tudo certo para controlar suas finanças']);
         }
+    }
+
+    public function newPass()
+    {
+        return view('conta.nova-senha', [
+            'title' => env('APP_NAME'). " | Nova senha"
+        ]);
     }
 }
