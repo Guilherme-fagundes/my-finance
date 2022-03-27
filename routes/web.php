@@ -34,7 +34,8 @@ Route::prefix('app')->group(function (){
 
     Route::get('/esqueci-minha-senha', [UserLoginController::class, 'recoverPass'])->name('user.recoverpass');
     Route::post('/esqueci-minha-senha/post', [UserLoginController::class, 'recoverPassPost'])->name('user.recoverpass.post');
-    Route::get('/nova-senha', [UserLoginController::class, 'newPass'])->name('user.newPass');
+    Route::any('/nova-senha', [UserLoginController::class, 'newPass'])->name('user.newPass');
+    Route::post('/nova-senha/post', [UserLoginController::class, 'newPassPost'])->name('user.newPass.post');
 
 
     Route::get('/criar-minha-conta', [UserLoginController::class, 'createUserAcount'])->name('user.createNewAcount');

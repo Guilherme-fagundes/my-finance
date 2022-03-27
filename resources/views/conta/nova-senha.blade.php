@@ -19,12 +19,6 @@
         <div class="loginBoxBody">
             <p>Crie sua nova senha</p>
 
-{{--            @if($errors->all())--}}
-{{--                <div class="alert alert-info" role="alert">--}}
-{{--                    {{ $errors->all()[0] }}--}}
-{{--                </div>--}}
-{{--            @endif--}}
-
             <form method="post" action="" class="j-newPassForm">
                 @csrf
                 <div class="j-alert" role="alert"></div>
@@ -39,6 +33,8 @@
                     <input class="form-control" type="password" name="Cpass">
 
                 </div>
+                <input class="form-control" type="hidden" name="email" value="{{ $email }}">
+                <input class="form-control" type="hidden" name="id" value="{{ $id }}">
 
                 <div class="field mb-3">
 
@@ -59,7 +55,29 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
+    $(".j-newPassForm").submit(function (e) {
+        e.preventDefault();
 
+        var data = $(this).serialize();
+
+        $.ajax({
+            url: "{{ route('user.newPass.post') }}",
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            success: function (response) {
+
+                if (response.error == true){
+                    $('.j-alert').removeClass('alert-primary');
+                    $('.j-alert').addClass('alert alert-warning').html(response.message);
+                }else{
+                    $('.j-alert').removeClass('alert-warning');
+                    $('.j-alert').addClass('alert alert-primary').html(response.message);
+                }
+            }
+        });
+
+    });
 
 </script>
 </body>
