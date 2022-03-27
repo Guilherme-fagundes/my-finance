@@ -97,6 +97,20 @@ class UserLoginController extends Controller
         ]);
     }
 
+    public function recoverPassPost(Request $request)
+    {
+        if ($request->all()){
+            $validation = Validator::make($request->all(), [
+                'email' => ['required', 'email']
+            ]);
+
+            if ($validation->fails()){
+                return redirect()->back()->withErrors($validation->errors());
+
+            }
+        }
+    }
+
     public function createUserAcount()
     {
         return view('conta.nova-conta', [

@@ -20,7 +20,15 @@
             <p class="titleRecover">Esqueci minha senha</p>
             <p class="subTitleRecover">Para recuperar sua senha informe seu e-mail cadastrado</p>
 
-            <form method="post" action="">
+            @if($errors->all())
+                @foreach($errors->all() as $msgError)
+                    <div class="alert alert-warning" role="alert">
+                        {{ $msgError }}
+                    </div>
+                @endforeach
+            @endif
+            <form method="post" action="{{ route('user.recoverpass.post') }}">
+                @csrf
                 <div class="field mb-3">
                     <label class="form-label">E-mail</label>
                     <input class="form-control" type="text" name="email">
