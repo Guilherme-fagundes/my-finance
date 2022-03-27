@@ -232,8 +232,6 @@
 .main-header .main-header-content .header-action .logout:hover {
   background-color: forestgreen;
 }
-<<<<<<< HEAD
-=======
 .sessionCarteira .statisticas {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -296,4 +294,3 @@ body {
   font-size: 2em;
   color: brown;
 }
->>>>>>> 0ea1c420b9bd3491bcff6d33822b41d34b7cb9b5
