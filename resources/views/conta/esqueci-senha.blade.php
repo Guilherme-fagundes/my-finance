@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url(mix('conta/css/bootstrap/bootstrap.css')) }}">
     <link rel="stylesheet" href="{{ url(mix('conta/css/styles.css')) }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>{{ $title }}</title>
 </head>
@@ -20,7 +21,9 @@
             <p class="titleRecover">Esqueci minha senha</p>
             <p class="subTitleRecover">Para recuperar sua senha informe seu e-mail cadastrado</p>
 
-            <form method="post" action="">
+            <div class="j-alert" role="alert"></div>
+            <form method="post" action="" class="j-formRecovePass">
+                @csrf
                 <div class="field mb-3">
                     <label class="form-label">E-mail</label>
                     <input class="form-control" type="text" name="email">
@@ -46,5 +49,33 @@
 
     </div>
 </div>
+
+<script>
+    $(function () {
+       $(".j-formRecovePass").submit(function (event) {
+           event.preventDefault();
+
+           var data = $(this).serialize();
+
+           $.ajax({
+               url: "{{ route('user.recoverpass.post') }}",
+               dataType: 'json',
+               type: 'post',
+               data: data,
+               success: function (response) {
+                   if (response.error == true){
+                       $('.j-alert').removeClass('alert-primary');
+                       $('.j-alert').addClass('alert alert-warning').html(response.message);
+                   }else{
+                       $('.j-alert').removeClass('alert-warning');
+                       $('.j-alert').addClass('alert alert-primary').html(response.message);
+                   }
+               }
+           });
+
+       })
+
+    })
+</script>
 </body>
 </html>
