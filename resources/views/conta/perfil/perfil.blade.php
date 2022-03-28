@@ -10,7 +10,8 @@
 
                 @if($errors->all())
                     @foreach($errors->all() as $msg)
-                        <div class="alert alert-danger j-alert" role="alert"><i class="fas fa-info-circle"></i> {{ $msg }}</div>
+                        <div class="alert alert-danger j-alert" role="alert"><i
+                                class="fas fa-info-circle"></i> {{ $msg }}</div>
                     @endforeach
                 @endif
 
@@ -37,13 +38,18 @@
                     <form class="j-alteraFoto" method="post" enctype="multipart/form-data">
                         @csrf
                         @if (!empty($user->foto))
-                            <img src="{{ asset('storage/conta/usuario/'.session()->get('userId').'/'. $user->foto) }}" class="rounded-circle" width="100" height="100">
+                            <img src="{{ asset('storage/conta/usuario/'.session()->get('userId').'/'. $user->foto) }}"
+                                 class="rounded-circle" width="100" height="100">
                         @else
-                            <img src="{{ asset('storage/default_empty.jpg') }}" class="rounded-circle" width="100" height="100">
+                            <img src="{{ asset('storage/default_empty.jpg') }}" class="rounded-circle" width="100"
+                                 height="100">
                         @endif
                         <input type="file" name="foto" id="userAlterFoto" class="d-none">
-                        <p class="mt-4"><label for="userAlterFoto" class="btn btn-link jBtnSelectUserPhoto">Selecione sua foto de perfil</label></p>
-                        <button type="submit" class="btn btn-success btn-sm"><i class="fa-solid fa-arrow-up"></i> Enviar nova foto</button>
+                        <p class="mt-4"><label for="userAlterFoto" class="btn btn-link jBtnSelectUserPhoto">Selecione
+                                sua foto de perfil</label></p>
+                        <button type="submit" class="btn btn-success btn-sm"><i class="fa-solid fa-arrow-up"></i> Enviar
+                            nova foto
+                        </button>
                     </form>
                 </div>
 
@@ -67,7 +73,37 @@
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Sobrenome</label>
-                                    <input class="form-control" type="text" name="sobrenome" value="{{ $user->sobrenome ?? '' }}">
+                                    <input class="form-control" type="text" name="sobrenome"
+                                           value="{{ $user->sobrenome ?? '' }}">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Genero</label>
+                                    <select class="form-select" name="genero">
+                                        <option selected value="">Selecione seu sexo</option>
+                                        @if($user->genero == 'M')
+                                            <option selected value="M">Masculino</option>
+                                            <option value="F">Feminino</option>
+                                        @else
+                                            <option value="M">Masculino</option>
+                                            <option selected value="F">Feminino</option>
+                                        @endif
+
+
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Data de nascimento</label>
+                                    <input class="form-control" type="date" name="data_nascimento"
+                                           value="{{ $user->data_nascimento ?? '' }}">
 
                                 </div>
 
@@ -81,7 +117,9 @@
 
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-arrow-rotate-right"></i> Atualizar meus dados</button>
+                                <button type="submit" class="btn btn-primary"><i
+                                        class="fa-solid fa-arrow-rotate-right"></i> Atualizar meus dados
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -101,7 +139,8 @@
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Cep</label>
-                                    <input class="form-control" type="text" name="cep" value="{{ $addressUser->cep ?? '' }}" placeholder="Informe seu cep" id="cep">
+                                    <input class="form-control" type="text" name="cep"
+                                           value="{{ $addressUser->cep ?? '' }}" placeholder="Informe seu cep" id="cep">
 
                                 </div>
 
@@ -109,7 +148,8 @@
                             <div class="col-12 col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Estado</label>
-                                    <input class="form-control" value="{{ $addressUser->uf ?? '' }}" type="text" name="uf" id="uf">
+                                    <input class="form-control" value="{{ $addressUser->uf ?? '' }}" type="text"
+                                           name="uf" id="uf">
 
                                 </div>
 
@@ -117,7 +157,8 @@
                             <div class="col-12 col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Cidade</label>
-                                    <input class="form-control" value="{{ $addressUser->localidade ?? '' }}" type="text" name="localidade" id="localidade">
+                                    <input class="form-control" value="{{ $addressUser->localidade ?? '' }}" type="text"
+                                           name="localidade" id="localidade">
 
                                 </div>
 
@@ -125,7 +166,8 @@
                             <div class="col-12 col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Bairro</label>
-                                    <input class="form-control" value="{{ $addressUser->bairro ?? '' }}" name="bairro" id="bairro">
+                                    <input class="form-control" value="{{ $addressUser->bairro ?? '' }}" name="bairro"
+                                           id="bairro">
 
                                 </div>
 
@@ -133,7 +175,8 @@
                             <div class="col-12 col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Logradrouro</label>
-                                    <input class="form-control" value="{{ $addressUser->logradouro ?? '' }}" name="logradouro" id="logradouro">
+                                    <input class="form-control" value="{{ $addressUser->logradouro ?? '' }}"
+                                           name="logradouro" id="logradouro">
 
                                 </div>
 
@@ -141,7 +184,8 @@
                             <div class="col-12 col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Complemento</label>
-                                    <input class="form-control" value="{{ ($addressUser->complemento ?? '') }}" name="complemento" id="complemento">
+                                    <input class="form-control" value="{{ ($addressUser->complemento ?? '') }}"
+                                           name="complemento" id="complemento">
 
                                 </div>
 
@@ -149,13 +193,16 @@
                             <div class="col-12 col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Numero</label>
-                                    <input class="form-control" value="{{ $addressUser->numero ?? '' }}" name="numero" id="numero">
+                                    <input class="form-control" value="{{ $addressUser->numero ?? '' }}" name="numero"
+                                           id="numero">
 
                                 </div>
 
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-arrow-rotate-right"></i> Atualizar meu endereço</button>
+                                <button type="submit" class="btn btn-primary"><i
+                                        class="fa-solid fa-arrow-rotate-right"></i> Atualizar meu endereço
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -191,14 +238,14 @@
                     data: data,
                     success: function (response) {
                         console.log(response)
-                        if (response.error == true){
-                            $('.j-alertSaveData').html("<div class=\"alert alert-danger\"><i class=\"fa-solid fa-circle-exclamation\"></i> "+response.message+"</div>")
-                            .addClass('mb-0 mt-3');
-
-                        }else{
-                            $('.j-alertSaveData').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> "+response.message+"</div>")
+                        if (response.error == true) {
+                            $('.j-alertSaveData').html("<div class=\"alert alert-danger\"><i class=\"fa-solid fa-circle-exclamation\"></i> " + response.message + "</div>")
                                 .addClass('mb-0 mt-3');
-                            window.location.href="{{ route('conta.home') }}";
+
+                        } else {
+                            $('.j-alertSaveData').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> " + response.message + "</div>")
+                                .addClass('mb-0 mt-3');
+                            window.location.href = "{{ route('conta.home') }}";
                         }
                     }
                 });
@@ -218,14 +265,14 @@
                     dataType: 'json',
                     success: function (data) {
 
-                        if (data.error === true){
+                        if (data.error === true) {
 
-                            $('.j-alertSaveData').html("<div class=\"alert alert-danger\"><i class=\"fa-solid fa-circle-exclamation\"></i> "+data.errors.foto[0]+"</div>")
+                            $('.j-alertSaveData').html("<div class=\"alert alert-danger\"><i class=\"fa-solid fa-circle-exclamation\"></i> " + data.errors.foto[0] + "</div>")
                                 .addClass('mb-0 mt-3');
-                        }else {
-                            $('.j-alertSaveData').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> "+data.message+"</div>")
+                        } else {
+                            $('.j-alertSaveData').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> " + data.message + "</div>")
                                 .addClass('mb-0 mt-3');
-                            window.location.href="{{ route('conta.perfil') }}";
+                            window.location.href = "{{ route('conta.perfil') }}";
                         }
 
                     },
@@ -236,9 +283,6 @@
                 });
 
 
-
-
-
             });
             $("#cep").mask("00000-000");
             $('#cep').keyup(function (e) {
@@ -246,16 +290,16 @@
                 var cepArr = cep.split('-');
                 var cepUnion = cepArr.join("");
 
-               if (cepUnion.length == 8){
-                   $.getJSON("https://viacep.com.br/ws/"+cepUnion+"/json/", function (response) {
-                       console.log(response)
-                       $("#uf").val(response.uf);
-                       $("#localidade").val(response.localidade);
-                       $("#bairro").val(response.bairro);
-                       $("#logradouro").val(response.logradouro);
-                       $("#complemento").val(response.complemento);
-                   });
-               }
+                if (cepUnion.length == 8) {
+                    $.getJSON("https://viacep.com.br/ws/" + cepUnion + "/json/", function (response) {
+                        console.log(response)
+                        $("#uf").val(response.uf);
+                        $("#localidade").val(response.localidade);
+                        $("#bairro").val(response.bairro);
+                        $("#logradouro").val(response.logradouro);
+                        $("#complemento").val(response.complemento);
+                    });
+                }
             });
 
             $(".j-formSalvarEndereco").submit(function (e) {
@@ -269,14 +313,14 @@
                     dataType: 'JSON',
                     data: data,
                     success: function (data) {
-                        if (data.error == true){
-                            $('.j-alertSaveData').html("<div class=\"alert alert-danger\"><i class=\"fa-solid fa-circle-exclamation\"></i> "+data.message+"</div>")
+                        if (data.error == true) {
+                            $('.j-alertSaveData').html("<div class=\"alert alert-danger\"><i class=\"fa-solid fa-circle-exclamation\"></i> " + data.message + "</div>")
                                 .addClass('mb-0 mt-3');
 
-                        }else{
-                            $('.j-alertSaveData').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> "+data.message+"</div>")
+                        } else {
+                            $('.j-alertSaveData').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> " + data.message + "</div>")
                                 .addClass('mb-0 mt-3');
-                            window.location.href="{{ route('conta.perfil') }}";
+                            window.location.href = "{{ route('conta.perfil') }}";
                         }
 
                     }
