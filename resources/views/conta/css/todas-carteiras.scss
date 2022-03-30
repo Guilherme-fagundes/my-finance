@@ -1,0 +1,30 @@
+body{
+    background-color: #eee;
+}
+.sessWalleties{
+    .rowTitleWalleties{
+        border-bottom: 2px solid brown;
+        .tituloMinhasCarteiras{
+            font-weight: 300;
+            font-size: 2em;
+            color: brown;
+        }
+    }
+
+    .contentListWalleties{
+
+        .cardNewWallet{
+            background-color: #1E5128;
+            color: white;
+            .card-body{
+                .addNewWallet{
+                    padding: 5px 5px;
+                    background-color: #191A19;
+                    border-radius: 3px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+}

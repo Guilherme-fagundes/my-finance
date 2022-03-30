@@ -35,15 +35,15 @@
                     </div>
                     <div class="articleDashboardBody">
                         <div class="leftMenu">
-                            <a href="{{ route('conta.home') }}">
+                            <a href="{{ route('conta.home') }}" title="Home">
                                 <span class="icon"><i class="fas fa-home"></i></span>
                                 <span class="text">Home</span>
                             </a>
-                            <a href="{{ route('conta.perfil') }}">
+                            <a href="{{ route('conta.perfil') }}" title="Perfil">
                                 <span class="icon"><i class="fas fa-user"></i></span>
                                 <span class="text">Perfil</span>
                             </a>
-                            <a href="#">
+                            <a href="{{ route('carteiras.listar') }}" title="Todas as carteiras">
                                 <span class="icon"><i class="fas fa-wallet"></i></span>
                                 <span class="text">Carteiras</span>
                             </a>

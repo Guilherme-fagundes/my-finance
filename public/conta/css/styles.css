@@ -294,3 +294,25 @@ body {
   font-size: 2em;
   color: brown;
 }
+body {
+  background-color: #eee;
+}
+
+.sessWalleties .rowTitleWalleties {
+  border-bottom: 2px solid brown;
+}
+.sessWalleties .rowTitleWalleties .tituloMinhasCarteiras {
+  font-weight: 300;
+  font-size: 2em;
+  color: brown;
+}
+.sessWalleties .contentListWalleties .cardNewWallet {
+  background-color: #1E5128;
+  color: white;
+}
+.sessWalleties .contentListWalleties .cardNewWallet .card-body .addNewWallet {
+  padding: 5px 5px;
+  background-color: #191A19;
+  border-radius: 3px;
+  cursor: pointer;
+}
