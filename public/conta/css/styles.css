@@ -8,6 +8,12 @@
   outline: 0 !important;
 }
 
+.modal-title {
+  font-weight: 300 !important;
+  font-size: 2em;
+  color: brown;
+}
+
 .form-label {
   color: #888;
   font-size: 0.8em;
@@ -315,4 +321,7 @@ body {
   background-color: #191A19;
   border-radius: 3px;
   cursor: pointer;
+}
+.sessWalleties .contentListWalleties .cardNewWallet .card-body .addNewWallet:hover {
+  background-color: #346751;
 }
