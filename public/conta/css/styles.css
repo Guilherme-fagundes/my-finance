@@ -325,3 +325,22 @@ body {
 .sessWalleties .contentListWalleties .cardNewWallet .card-body .addNewWallet:hover {
   background-color: #346751;
 }
+.sessWalleties .contentListWalleties .cardWallet .walletActions {
+  text-align: center;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletActions p {
+  padding: 5px 5px;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletActions p a {
+  text-decoration: none;
+  margin: 10px 10px;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletActions p a.walletView {
+  color: seagreen;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletActions p a.walletEdit {
+  color: brown;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletActions p a.walletTrash {
+  color: red;
+}

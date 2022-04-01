@@ -28,6 +28,32 @@ body{
                 }
             }
         }
+
+        .cardWallet{
+            .walletActions{
+                text-align: center;
+                p{
+                    padding: 5px 5px;
+                    a{
+
+                        text-decoration: none;
+                        margin: 10px 10px;
+                    }
+                    a.walletView{
+                        color: seagreen;
+
+                    }
+                    a.walletEdit{
+                        color: brown;
+
+                    }
+                    a.walletTrash{
+                        color: red;
+
+                    }
+                }
+            }
+        }
     }
 
 }
