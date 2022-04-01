@@ -45,4 +45,5 @@ Route::prefix('app')->group(function (){
 
     //Rotas Carteiras
     Route::get('/carteiras', [CarteiraController::class, 'listar'])->middleware(['checkuserlogin'])->name('carteiras.listar');
+    Route::any('/carteiras/nova/post', [CarteiraController::class, 'novaPost'])->middleware(['checkuserlogin'])->name('carteiras.nova.post');
 });

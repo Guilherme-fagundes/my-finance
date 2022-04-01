@@ -17,4 +17,25 @@ class CarteiraController extends Controller
             'user' => $userLogged
         ]);
     }
+
+    public function novaPost(Request $request)
+    {
+        if ($request->ajax()){
+            if ($request->all()){
+
+                if (in_array('', $request->all())){
+                    return Response()->json([
+                        'error' => true,
+                        'message' => 'Para criar uma carteira não pode ter campos em branco.'
+                    ]);
+                }
+
+                return Response()->json([
+                    'error' => false,
+                    'message' => 'Carteira cadastrada'
+                ]);
+            }
+        }
+
+    }
 }

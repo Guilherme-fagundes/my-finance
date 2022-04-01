@@ -27,13 +27,13 @@
             </div>
 
             <div class="row my-5 contentListWalleties">
-                <div class="col-12 col-sm-4 mb-4">
+                <div class="col-12 col-md-4 mb-4">
 
-                    <div class="card cardNewWallet">
+                    <div class="card cardNewWallet w-100">
                         <div class="card-body">
                             <h2 class="card-title text-center"><i class="fa-solid fa-wallet"></i></h2>
                             <p class="card-text my-5 text-center">Para criar uma nova carteira clique aqui.</p>
-                            <p class="text-center addNewWallet" data-toggle="modal" data-target="#criarNovaCarteira"><span><i class="fa-solid fa-circle-plus"></i> Adicionar nova carteira</span></p>
+                            <p class="text-center addNewWallet"><span><i class="fa-solid fa-circle-plus"></i> Adicionar nova carteira</span></p>
                         </div>
                     </div>
 
@@ -54,7 +54,9 @@
 
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <div class="j-alert" role="alert"></div>
+                            <form method="post" action="" class="j-formCreateNewWallet">
+                                @csrf
                                 <div class="mb-3">
                                     <label class="form-label"><i class="fa-solid fa-wallet"></i> Descrição</label>
                                     <input class="form-control" type="text" name="descricao" placeholder="Descrição ou nome da carteira">
@@ -65,15 +67,67 @@
                                     <input class="form-control-color" value="#0078FF" type="color" name="cor_carteira">
 
                                 </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-success btn-sm float-end"><i class="fa-solid fa-plus"></i> Cadastrar</button>
+                                </div>
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+
                     </div>
                 </div>
             </div>
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+            <script>
+                $(function () {
+
+                    $(".addNewWallet").click(function () {
+                        $('#criarNovaCarteira').modal('show');
+
+                        if ($('.j-alert').html() != ''){
+                            $(".j-alert").html('');
+                        }
+
+                    })
+
+                    $('.j-formCreateNewWallet').submit(function (e) {
+                        e.preventDefault();
+
+                        var form = $(this);
+                        var data = $(this).serialize();
+
+                        $.ajax({
+                            url: "{{ route('carteiras.nova.post') }}",
+                            type: 'POST',
+                            data: data,
+                            dataType: 'json',
+                            success: function (data) {
+
+                                if (data.error == true){
+
+                                    $(".j-alert").html("");
+                                    $('.j-alert').fadeIn(800, function () {
+                                        $(this).html("<div class=\"alert alert-warning\"><i class=\"fa-solid fa-circle-exclamation\"></i> " + data.message + "</div>")
+                                            .addClass('mb-0 mt-3');
+
+                                    });
+
+
+                                }else{
+                                    $("#criarNovaCarteira").modal('hide');
+                                    form.find("input[name=descricao]").val("");
+                                }
+
+                            }
+                        })
+
+                    });
+
+                })
+            </script>
 
     </section>
 @endsection
