@@ -55,8 +55,9 @@ class CarteiraController extends Controller
                 $wallet->save();
 
                 return Response()->json([
-                    'error' => false,
-                    'message' => 'Carteira cadastrada'
+                    'result' => view('conta.carteiras.components.walletsList', [
+                        'wallet' => $wallet
+                    ])->render()
                 ]);
             }
         }

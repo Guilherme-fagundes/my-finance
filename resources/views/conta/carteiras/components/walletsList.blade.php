@@ -1,4 +1,4 @@
-<div class="col-12 col-md-4 mb-4 walletBox" id="wallet-{{ $wallet->id }}">
+<div class="col-12 col-md-4 mb-4 walletBox" style="display: none" id="wallet-{{ $wallet->id }}">
 
     <div class="card cardWallet w-100" style="background-color: {{ $wallet->cor }}; color: #f1f1f1;">
         <div class="card-body">
@@ -17,3 +17,24 @@
     </div>
 
 </div>
+
+<script>
+    $('.walletDelet').click(function (e) {
+        e.preventDefault();
+
+        var data = $(this).data();
+        $("#wallet-"+data.carteira_id).fadeOut();
+
+        $.ajax({
+            url: data.action,
+            type: "GET",
+            data: data,
+            dataType: 'json',
+            success: function (response) {
+                console.log(response)
+
+            }
+
+        })
+    });
+</script>

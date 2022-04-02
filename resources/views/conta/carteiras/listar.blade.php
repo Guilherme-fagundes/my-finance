@@ -119,7 +119,11 @@
                                     $("#criarNovaCarteira").modal('hide');
                                     form.find("input[name=descricao]").val("");
 
-                                    window.location.href="{{ route('carteiras.listar') }}";
+                                    {{--window.location.href="{{ route('carteiras.listar') }}";--}}
+                                    var contentWallet = $('.contentListWalleties');
+                                    contentWallet.append(data.result);
+
+                                    $(".walletBox").fadeIn(500);
                                 }
 
                             }
