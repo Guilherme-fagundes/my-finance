@@ -35,20 +35,23 @@ body{
                 p{
                     padding: 5px 5px;
                     a{
-
                         text-decoration: none;
                         margin: 10px 10px;
+                        text-shadow: 1px 1px #000;
+                        &:hover{
+                            text-shadow: none;
+                        }
                     }
                     a.walletView{
-                        color: seagreen;
+                        color: #eeeeee;
 
                     }
                     a.walletEdit{
-                        color: brown;
+                        color: #eeeeee;
 
                     }
                     a.walletTrash{
-                        color: red;
+                        color: #eeeeee;
 
                     }
                 }

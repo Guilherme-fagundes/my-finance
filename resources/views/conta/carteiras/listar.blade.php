@@ -39,27 +39,10 @@
 
                 </div>
 
-                <div class="col-12 col-md-4 mb-4">
+                @foreach($wallets as $wallet)
+                   @include('conta.carteiras.components.walletsList', ['wallet' => $wallet])
 
-                    <div class="card cardWallet w-100" data-carteira-id="">
-                        <div class="card-body">
-                            <h2 class="card-title mb-5 text-center"><i class="fa-solid fa-wallet"></i> Teste</h2>
-                            <p class="card-text text-center"><span>Despesas: R$ 2.500,00</span></p>
-                            <p class="card-text my-2 text-center"><span>Receitas: R$ 10.000,00</span></p>
-                            <div class="walletActions">
-                                <p>
-                                    <a href="#" title="Abrir carteira" class="walletView"><i class="fa-solid fa-eye"></i></a>
-                                    <a href="#" title="Editar carteira" class="walletEdit"><i class="fa-solid fa-pen"></i></a>
-                                    <a href="#" title="Excluir carteira" class="walletTrash"><i class="fa-solid fa-circle-xmark"></i></a>
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
+                @endforeach
 
             </div>
 
@@ -135,11 +118,32 @@
                                 }else{
                                     $("#criarNovaCarteira").modal('hide');
                                     form.find("input[name=descricao]").val("");
+
+                                    window.location.href="{{ route('carteiras.listar') }}";
                                 }
 
                             }
                         })
 
+                    });
+
+                    $('.walletDelet').click(function (e) {
+                        e.preventDefault();
+
+                        var data = $(this).data();
+                        $("#wallet-"+data.carteira_id).fadeOut();
+
+                        $.ajax({
+                            url: data.action,
+                            type: "GET",
+                            data: data,
+                            dataType: 'json',
+                            success: function (response) {
+                                console.log(response)
+
+                            }
+
+                        })
                     });
 
                 })

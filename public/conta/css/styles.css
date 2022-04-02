@@ -334,13 +334,17 @@ body {
 .sessWalleties .contentListWalleties .cardWallet .walletActions p a {
   text-decoration: none;
   margin: 10px 10px;
+  text-shadow: 1px 1px #000;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletActions p a:hover {
+  text-shadow: none;
 }
 .sessWalleties .contentListWalleties .cardWallet .walletActions p a.walletView {
-  color: seagreen;
+  color: #eeeeee;
 }
 .sessWalleties .contentListWalleties .cardWallet .walletActions p a.walletEdit {
-  color: brown;
+  color: #eeeeee;
 }
 .sessWalleties .contentListWalleties .cardWallet .walletActions p a.walletTrash {
-  color: red;
+  color: #eeeeee;
 }
