@@ -325,6 +325,13 @@ body {
 .sessWalleties .contentListWalleties .cardNewWallet .card-body .addNewWallet:hover {
   background-color: #346751;
 }
+.sessWalleties .contentListWalleties .cardWallet .walletTitle {
+  font-weight: 300;
+}
+.sessWalleties .contentListWalleties .cardWallet .despesa,
+.sessWalleties .contentListWalleties .cardWallet .receita {
+  font-size: 0.8em;
+}
 .sessWalleties .contentListWalleties .cardWallet .walletActions {
   text-align: center;
 }

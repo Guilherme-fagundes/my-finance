@@ -135,15 +135,18 @@
                         e.preventDefault();
 
                         var data = $(this).data();
-                        $("#wallet-"+data.carteira_id).fadeOut();
+                        var walletId = $("#wallet-"+data.carteira_id);
 
+                        walletId.fadeOut(500);
                         $.ajax({
                             url: data.action,
                             type: "GET",
                             data: data,
                             dataType: 'json',
                             success: function (response) {
-                                console.log(response)
+                                if (response.error == false){
+                                    walletId.remove();
+                                }
 
                             }
 

@@ -30,6 +30,13 @@ body{
         }
 
         .cardWallet{
+            .walletTitle{
+                font-weight: 300;
+            }
+            .despesa,
+            .receita{
+                font-size: .8em;
+            }
             .walletActions{
                 text-align: center;
                 p{
