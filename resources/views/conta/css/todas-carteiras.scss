@@ -17,11 +17,15 @@ body{
             background-color: #1E5128;
             color: white;
             .card-body{
+                .cardNewWalletDesc{
+                    font-size: .8em;
+                }
                 .addNewWallet{
                     padding: 5px 5px;
                     background-color: #191A19;
                     border-radius: 3px;
                     cursor: pointer;
+                    font-size: .8em;
                     &:hover{
                         background-color: #346751;
                     }
