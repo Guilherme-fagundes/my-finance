@@ -332,12 +332,19 @@ body {
 .sessWalleties .contentListWalleties .cardWallet .walletTitle {
   font-weight: 300;
 }
+.sessWalleties .contentListWalleties .cardWallet .saldo {
+  font-weight: 500;
+  font-size: 1.5em;
+  margin-top: 1.2em;
+}
 .sessWalleties .contentListWalleties .cardWallet .despesa,
 .sessWalleties .contentListWalleties .cardWallet .receita {
   font-size: 0.8em;
+  margin-bottom: 5px;
 }
 .sessWalleties .contentListWalleties .cardWallet .walletActions {
   text-align: center;
+  margin-top: 1em;
 }
 .sessWalleties .contentListWalleties .cardWallet .walletActions p {
   padding: 5px 5px;

@@ -37,12 +37,19 @@ body{
             .walletTitle{
                 font-weight: 300;
             }
+            .saldo{
+                font-weight: 500;
+                font-size: 1.5em;
+                margin-top: 1.2em;
+            }
             .despesa,
             .receita{
                 font-size: .8em;
+                margin-bottom: 5px;
             }
             .walletActions{
                 text-align: center;
+                margin-top: 1em;
                 p{
                     padding: 5px 5px;
                     a{

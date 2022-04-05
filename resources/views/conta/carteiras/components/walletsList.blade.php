@@ -2,9 +2,11 @@
 
     <div class="card cardWallet w-100" style="background-color: {{ $wallet->cor }}; color: #f1f1f1;" id="{{ $wallet->id }}">
         <div class="card-body">
-            <h2 class="card-title walletTitle mb-5 text-center"><i class="fa-solid fa-wallet"></i> {{ $wallet->nome }}</h2>
+            <h2 class="card-title walletTitle mb-4 text-center"><i class="fa-solid fa-wallet"></i> {{ $wallet->nome }}</h2>
+
+            <h3 class="card-text text-center saldo"><span>R$ 19.000,00</span></h3>
             <p class="card-text text-center despesa"><span>Despesas: R$ 2.500,00</span></p>
-            <p class="card-text my-2 text-center receita"><span>Receitas: R$ 10.000,00</span></p>
+            <p class="card-text text-center receita"><span>Receitas: R$ 10.000,00</span></p>
             <div class="walletActions">
                 <p>
                     <a href="#" title="Abrir carteira" class="walletView"><i class="fa-solid fa-eye"></i></a>
