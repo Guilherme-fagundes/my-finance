@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Conta;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Wallet;
-use http\Env\Response;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class CarteiraController extends Controller
 {
@@ -81,5 +79,50 @@ class CarteiraController extends Controller
         }
 
 
+    }
+
+    public function edit(Request $request)
+    {
+        if ($request->ajax()){
+
+            $readWallet = Wallet::where('id', '=', $request->carteira_id)->first();
+            if ($readWallet){
+                return Response()->json([
+                    'error' => false,
+                    'result' => $readWallet
+                ]);
+
+            }
+
+        }
+    }
+
+    public function editPost(Request $request)
+    {
+        if ($request->ajax()){
+
+            if (in_array('', $request->all())){
+                return Response()->json([
+                    'error' => true,
+                    'message' => 'Para atualizar uma carteira não pode ter campos em branco'
+                ]);
+
+            }
+            $editWallet = Wallet::where('id', $request->id)
+                ->update([
+                    'nome' => $request->descricao,
+                    'cor' => $request->cor_carteira
+                ]);
+
+            if ($editWallet){
+
+
+                return Response()->json([
+                    'error' => false,
+                    'message' => 'Carteira atualizada'
+                ]);
+            }
+
+        }
     }
 }

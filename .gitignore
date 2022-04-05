@@ -18,3 +18,8 @@ package-lock.json
 /.vscode
 .project
 public/conta
+/nbproject/private/
+/nbproject
+.project
+.buildpath
+.settings
