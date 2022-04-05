@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Conta\CarteiraController;
 use App\Http\Controllers\Conta\ContaController;
 use App\Http\Controllers\Conta\UserLoginController;
 use Illuminate\Support\Facades\Route;
@@ -42,4 +43,10 @@ Route::prefix('app')->group(function (){
     Route::get('/ativar-conta', [UserLoginController::class, 'confirmUserAcount'])->name('user.confirmAcount');
     Route::post('/criar-minha-conta/post', [UserLoginController::class, 'createUserAcountPost'])->name('user.createNewAcount.post');
 
+    //Rotas Carteiras
+    Route::get('/carteiras', [CarteiraController::class, 'listar'])->middleware(['checkuserlogin'])->name('carteiras.listar');
+    Route::any('/carteiras/nova/post', [CarteiraController::class, 'novaPost'])->middleware(['checkuserlogin'])->name('carteiras.nova.post');
+    Route::any('/carteiras/delete/post', [CarteiraController::class, 'delete'])->middleware(['checkuserlogin'])->name('carteiras.excluir.post');
+    Route::any('/carteiras/editar', [CarteiraController::class, 'edit'])->middleware(['checkuserlogin'])->name('carteiras.editar');
+    Route::any('/carteiras/editar/post', [CarteiraController::class, 'editPost'])->middleware(['checkuserlogin'])->name('carteiras.editar.post');
 });

@@ -20,6 +20,7 @@ mix
     .sass('resources/views/conta/css/conta-header.scss', 'public/conta/css/styles.css').version()
     .sass('resources/views/conta/css/home-carteiras.scss', 'public/conta/css/styles.css').version()
     .sass('resources/views/conta/css/meu-perfil.scss', 'public/conta/css/styles.css').version()
+    .sass('resources/views/conta/css/todas-carteiras.scss', 'public/conta/css/styles.css').version()
     .sass('node_modules/bootstrap/scss/bootstrap.scss', 'public/conta/css/bootstrap/bootstrap.css').version()
 
 

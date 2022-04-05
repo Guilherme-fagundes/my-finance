@@ -8,6 +8,12 @@
   outline: 0 !important;
 }
 
+.modal-title {
+  font-weight: 300 !important;
+  font-size: 2em;
+  color: brown;
+}
+
 .form-label {
   color: #888;
   font-size: 0.8em;
@@ -293,4 +299,63 @@ body {
   font-weight: 300;
   font-size: 2em;
   color: brown;
+}
+body {
+  background-color: #eee;
+}
+
+.sessWalleties .rowTitleWalleties {
+  border-bottom: 2px solid brown;
+}
+.sessWalleties .rowTitleWalleties .tituloMinhasCarteiras {
+  font-weight: 300;
+  font-size: 2em;
+  color: brown;
+}
+.sessWalleties .contentListWalleties .cardNewWallet {
+  background-color: #1E5128;
+  color: white;
+}
+.sessWalleties .contentListWalleties .cardNewWallet .card-body .cardNewWalletDesc {
+  font-size: 0.8em;
+}
+.sessWalleties .contentListWalleties .cardNewWallet .card-body .addNewWallet {
+  padding: 5px 5px;
+  background-color: #191A19;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+.sessWalleties .contentListWalleties .cardNewWallet .card-body .addNewWallet:hover {
+  background-color: #346751;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletTitle {
+  font-weight: 300;
+}
+.sessWalleties .contentListWalleties .cardWallet .despesa,
+.sessWalleties .contentListWalleties .cardWallet .receita {
+  font-size: 0.8em;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletActions {
+  text-align: center;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletActions p {
+  padding: 5px 5px;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletActions p a {
+  text-decoration: none;
+  margin: 10px 10px;
+  text-shadow: 1px 1px #000;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletActions p a:hover {
+  text-shadow: none;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletActions p a.walletView {
+  color: #eeeeee;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletActions p a.walletEdit {
+  color: #eeeeee;
+}
+.sessWalleties .contentListWalleties .cardWallet .walletActions p a.walletTrash {
+  color: #eeeeee;
 }

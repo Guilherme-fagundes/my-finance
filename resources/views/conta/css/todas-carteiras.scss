@@ -1,0 +1,73 @@
+body{
+    background-color: #eee;
+}
+.sessWalleties{
+    .rowTitleWalleties{
+        border-bottom: 2px solid brown;
+        .tituloMinhasCarteiras{
+            font-weight: 300;
+            font-size: 2em;
+            color: brown;
+        }
+    }
+
+    .contentListWalleties{
+
+        .cardNewWallet{
+            background-color: #1E5128;
+            color: white;
+            .card-body{
+                .cardNewWalletDesc{
+                    font-size: .8em;
+                }
+                .addNewWallet{
+                    padding: 5px 5px;
+                    background-color: #191A19;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-size: .8em;
+                    &:hover{
+                        background-color: #346751;
+                    }
+                }
+            }
+        }
+
+        .cardWallet{
+            .walletTitle{
+                font-weight: 300;
+            }
+            .despesa,
+            .receita{
+                font-size: .8em;
+            }
+            .walletActions{
+                text-align: center;
+                p{
+                    padding: 5px 5px;
+                    a{
+                        text-decoration: none;
+                        margin: 10px 10px;
+                        text-shadow: 1px 1px #000;
+                        &:hover{
+                            text-shadow: none;
+                        }
+                    }
+                    a.walletView{
+                        color: #eeeeee;
+
+                    }
+                    a.walletEdit{
+                        color: #eeeeee;
+
+                    }
+                    a.walletTrash{
+                        color: #eeeeee;
+
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -13,4 +13,9 @@ class User extends Model
     {
         return $this->hasOne(Address::class, 'user_id', 'id');
     }
+
+    public function wallet()
+    {
+        return $this->hasMany(Wallet::class, 'user_id', 'id');
+    }
 }
