@@ -153,7 +153,7 @@ class ContaController extends Controller
                             ->update($request->except('_token', 'user_id'));
 
 
-                        if (!$addressUpdate){
+                        if ($addressUpdate){
                             return Response()->json([
                                 'error' => false,
                                 'message' => "Endereço atualizado"
