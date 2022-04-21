@@ -7,8 +7,16 @@ use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 
+/**
+ *
+ */
 class CarteiraController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
     public function listar()
     {
         $userLogged = User::where('id', session()->get('userId'))->first();
@@ -22,6 +30,12 @@ class CarteiraController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|void
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
     public function novaPost(Request $request)
     {
         if ($request->ajax()){
@@ -62,6 +76,10 @@ class CarteiraController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|void
+     */
     public function delete(Request $request)
     {
         if ($request->ajax()){
@@ -81,6 +99,10 @@ class CarteiraController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|void
+     */
     public function edit(Request $request)
     {
         if ($request->ajax()){
@@ -97,6 +119,10 @@ class CarteiraController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|void
+     */
     public function editPost(Request $request)
     {
         if ($request->ajax()){
@@ -124,5 +150,14 @@ class CarteiraController extends Controller
             }
 
         }
+    }
+
+    /**
+     * @param int $id
+     * @return void
+     */
+    public function openWallet(int $id)
+    {
+        echo $id;
     }
 }
