@@ -9,7 +9,16 @@ body{
             font-size: 2em;
             color: brown;
         }
+        .walletHeader{
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            a#btn-nova-despesa{
+                margin-right: 10px;
+            }
+        }
     }
+
 
 
 }

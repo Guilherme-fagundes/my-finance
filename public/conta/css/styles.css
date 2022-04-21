@@ -378,3 +378,11 @@ body {
   font-size: 2em;
   color: brown;
 }
+.sessWallet .rowTitleWallet .walletHeader {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.sessWallet .rowTitleWallet .walletHeader a#btn-nova-despesa {
+  margin-right: 10px;
+}
