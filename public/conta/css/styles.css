@@ -366,3 +366,15 @@ body {
 .sessWalleties .contentListWalleties .cardWallet .walletActions p a.walletTrash {
   color: #eeeeee;
 }
+body {
+  background-color: #eee;
+}
+
+.sessWallet .rowTitleWallet {
+  border-bottom: 2px solid brown;
+}
+.sessWallet .rowTitleWallet .tituloMinhasCarteira {
+  font-weight: 300;
+  font-size: 2em;
+  color: brown;
+}

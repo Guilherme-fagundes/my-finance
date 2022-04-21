@@ -154,10 +154,17 @@ class CarteiraController extends Controller
 
     /**
      * @param int $id
-     * @return void
      */
     public function openWallet(int $id)
     {
-        echo $id;
+        $userLogged = User::where('id', session()->get('userId'))->first();
+        $wallet = Wallet::where('id', '=', $id)->first();
+
+
+        return view('conta.carteiras.abrir', [
+            'title' => env('APP_NAME'). ' | Carteira '. $wallet->nome,
+            'user' => $userLogged,
+            'wallet' => $wallet
+        ]);
     }
 }
