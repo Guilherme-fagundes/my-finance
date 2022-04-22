@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Conta\CarteiraController;
+use App\Http\Controllers\Conta\CategoriaController;
 use App\Http\Controllers\Conta\ContaController;
 use App\Http\Controllers\Conta\UserLoginController;
 use Illuminate\Support\Facades\Route;
@@ -51,5 +52,5 @@ Route::prefix('app')->group(function (){
     Route::any('/carteiras/editar/post', [CarteiraController::class, 'editPost'])->middleware(['checkuserlogin'])->name('carteiras.editar.post');
 
     //Rotas categorias
-    
+    Route::get('/categorias', [CategoriaController::class, 'index'])->middleware(['checkuserlogin'])->name('categorias.index');
 });
