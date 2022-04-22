@@ -386,3 +386,6 @@ body {
 .sessWallet .rowTitleWallet .walletHeader .btn-nova-despesa {
   margin-right: 10px;
 }
+.sessWallet .tabelaRelatorios {
+  font-size: 0.8em;
+}
