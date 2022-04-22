@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Conta;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,10 +13,14 @@ class CategoriaController extends Controller
     public function index()
     {
         $userLogged = User::where('id', session()->get('userId'))->first();
+        $getCategories = Category::where('user_id', session()->get('userId'))->get();
+
+
 
         return view('conta.categorias.listar', [
             'title' => env('APP_NAME'). ' | Categorias',
-            'user' => $userLogged
+            'user' => $userLogged,
+            'categories' => $getCategories
         ]);
     }
 
@@ -32,8 +37,14 @@ class CategoriaController extends Controller
 
                }
 
+               $userArr = [
+                   'user_id' => session()->get('userId')
+               ];
+
+               $dataCategory = array_merge($userArr, $request->except('_token'));
+
                $createUser = DB::table('categories')
-                   ->insert($request->except('_token'));
+                   ->insert($dataCategory);
                if ($createUser){
                    return Response()->json([
                        'error' => false,
@@ -41,6 +52,19 @@ class CategoriaController extends Controller
                    ]);
 
                }
+
+            }
+
+        }
+
+    }
+
+    public function edit(Request $request)
+    {
+        if ($request->ajax()){
+
+            if ($request->all()){
+                dd($request->all());
 
             }
 

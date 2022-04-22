@@ -18,20 +18,57 @@
         </div>
     </section>
 
-    <section class="sessWalleties">
+    <section class="sessCategories">
         <div class="container">
-            <div class="row py-2 rowTitleWalleties">
+            <div class="row py-2 rowTitleCategories">
                 <div class="col-12 d-flex justify-content-between align-items-center">
-                    <h1 class="tituloMinhasCarteiras mb-0"><i class="fa-solid fa-book-open"></i> Todas as categorias</h1>
-                    <a href="#" class="btn btn-success btn-sm j-addNewCategory"><i class="fa-solid fa-circle-plus"></i> Adicionar nova categoria</a>
+                    <h1 class="tituloMinhasCategorias mb-0"><i class="fa-solid fa-book-open"></i> Todas as categorias
+                    </h1>
+                    <a href="#" class="btn btn-success btn-sm j-addNewCategory"><i class="fa-solid fa-circle-plus"></i>
+                        Adicionar nova categoria</a>
                 </div>
             </div>
 
+            <div class="row py-2 rowContentCategory">
+                <div class="col-12">
+
+                    <table class="table table-striped tableCategories">
+                        <thead>
+                        <tr>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Cadastrada em</th>
+                            <th scope="col">Ultima atualização</th>
+                            <th scope="col">-</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach($categories as $category)
+                            <tr>
+                                <td>{{ $category->nome }}</td>
+                                <td>{{ ($category->tipo == 2 ? 'Receita' : 'Despesa') }}</td>
+                                <td>{{ $category->created_at }}</td>
+                                <td>{{ ($category->updated_at == null ? 'não atualizada' : $category->created_at) }}</td>
+                                <td class="categoryActions">
+                                    <a href="#" data-edit_category_id="{{ $category->id }}" class="actionEdit j-catEdit"><i class="fa-solid fa-pencil"></i></a>
+                                    <a href="#" data-delete_category_id="{{ $category->id }}" class="actionDelete j-catDelete"><i class="fa-solid fa-circle-xmark"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
 
 
-
-            <!-- Modal criar nova carteira -->
-            <div class="modal fade" id="criarNovaCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <!-- Modal criar nova categoria -->
+            <div class="modal fade" id="criarNovaCategoria" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -43,12 +80,14 @@
                             <form method="post" action="" class="j-formCreateNewCategory">
                                 @csrf
                                 <div class="mb-3">
-                                    <label class="form-label"><i class="fa-solid fa-book-open"></i> Informe o nome da categoria</label>
+                                    <label class="form-label"><i class="fa-solid fa-book-open"></i> Informe o nome da
+                                        categoria</label>
                                     <input class="form-control" type="text" name="nome" placeholder="Nome da categoria">
 
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label"><i class="fa-solid fa-filter"></i> Informe o tipo de lançamento é esta categoria</label>
+                                    <label class="form-label"><i class="fa-solid fa-filter"></i> Informe o tipo de
+                                        lançamento é esta categoria</label>
                                     <select name="tipo" class="form-select">
                                         <option value="1">Despesa</option>
                                         <option value="2">Receita</option>
@@ -57,7 +96,50 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-success btn-sm float-end"><i class="fa-solid fa-plus"></i> Cadastrar categoria</button>
+                                    <button type="submit" class="btn btn-success btn-sm float-end"><i
+                                            class="fa-solid fa-plus"></i> Cadastrar categoria
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal editar categoria -->
+            <div class="modal fade" id="editarCategoria" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title" id="exampleModalLongTitle">Editar categoria</h1>
+
+                        </div>
+                        <div class="modal-body">
+                            <div class="j-alert" role="alert"></div>
+                            <form method="post" action="" class="j-formEditCategory">
+                                @csrf
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-book-open"></i> Informe o nome da
+                                        categoria</label>
+                                    <input class="form-control" type="text" name="nome" id="categoriaNome" placeholder="Nome da categoria">
+
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-filter"></i> Informe o tipo de
+                                        lançamento é esta categoria</label>
+                                    <select name="tipo" class="form-select">
+                                        <option value="1">Despesa</option>
+                                        <option value="2">Receita</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary btn-sm float-end"><i
+                                            class="fa-solid fa-pencil"></i> Editar categoria
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -73,7 +155,7 @@
                     $(".j-addNewCategory").click(function () {
                         $('#criarNovaCategoria').modal('show');
 
-                        if ($('.j-alert').html() != ''){
+                        if ($('.j-alert').html() != '') {
                             $(".j-alert").html('');
                         }
 
@@ -94,7 +176,7 @@
 
                                 console.log(data);
 
-                                if (data.error == true){
+                                if (data.error == true) {
 
                                     $(".j-alert").html("");
                                     $('.j-alert').fadeIn(800, function () {
@@ -103,11 +185,11 @@
 
                                     });
 
-                                }else{
+                                } else {
                                     $("#criarNovaCategoria").modal('hide');
                                     form.find("input[name=nome]").val("");
 
-                                    window.location.href="{{ route('categorias.index') }}";
+                                    window.location.href = "{{ route('categorias.index') }}";
 
                                 }
 
@@ -116,27 +198,38 @@
 
                     });
 
-                    $('.walletDelet').click(function (e) {
+                    //Edita categoria
+                    $(".j-catEdit").click(function (e) {
                         e.preventDefault();
 
                         var data = $(this).data();
-                        var walletId = $("#wallet-"+data.carteira_id);
+                        var dataForm = $(this).serialize();
+                        
 
-                        walletId.fadeOut(500);
+                        $('#editarCategoria').modal('show');
+
                         $.ajax({
-                            url: data.action,
-                            type: "GET",
+                            url: "{{ route('categorias.edit') }}",
+                            type: 'GET',
                             data: data,
-                            dataType: 'json',
+                            dataType: 'JSON',
                             success: function (response) {
-                                if (response.error == false){
-                                    walletId.remove();
-                                }
+                                console.log(response)
 
                             }
+                        });
 
-                        })
                     });
+
+                    //Exclui categoria
+                    $(".j-catDelete").click(function (e) {
+                        e.preventDefault();
+
+                        var data = $(this).data();
+                        console.log(data);
+
+                    });
+
 
                 })
             </script>
