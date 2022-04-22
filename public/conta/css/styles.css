@@ -373,7 +373,7 @@ body {
 .sessWallet .rowTitleWallet {
   border-bottom: 2px solid brown;
 }
-.sessWallet .rowTitleWallet .tituloMinhasCarteira {
+.sessWallet .rowTitleWallet .tituloMinhaCarteira {
   font-weight: 300;
   font-size: 2em;
   color: brown;
