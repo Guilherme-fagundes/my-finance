@@ -49,4 +49,7 @@ Route::prefix('app')->group(function (){
     Route::any('/carteiras/delete/post', [CarteiraController::class, 'delete'])->middleware(['checkuserlogin'])->name('carteiras.excluir.post');
     Route::any('/carteiras/editar', [CarteiraController::class, 'edit'])->middleware(['checkuserlogin'])->name('carteiras.editar');
     Route::any('/carteiras/editar/post', [CarteiraController::class, 'editPost'])->middleware(['checkuserlogin'])->name('carteiras.editar.post');
+
+    //Rotas categorias
+    
 });
