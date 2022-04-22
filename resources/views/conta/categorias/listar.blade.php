@@ -50,8 +50,8 @@
                                 <div class="mb-3">
                                     <label class="form-label"><i class="fa-solid fa-filter"></i> Informe o tipo de lançamento é esta categoria</label>
                                     <select name="tipo" class="form-select">
-                                        <option value="despesa">Despesa</option>
-                                        <option value="receita">Receita</option>
+                                        <option value="1">Despesa</option>
+                                        <option value="2">Receita</option>
                                     </select>
 
                                 </div>
@@ -79,18 +79,20 @@
 
                     })
 
-                    $('.j-formCreateNewWallet').submit(function (e) {
+                    $('.j-formCreateNewCategory').submit(function (e) {
                         e.preventDefault();
 
                         var form = $(this);
                         var data = $(this).serialize();
 
                         $.ajax({
-                            url: "{{ route('carteiras.nova.post') }}",
+                            url: "{{ route('categorias.nova.post') }}",
                             type: 'POST',
                             data: data,
                             dataType: 'json',
                             success: function (data) {
+
+                                console.log(data);
 
                                 if (data.error == true){
 
@@ -102,14 +104,11 @@
                                     });
 
                                 }else{
-                                    $("#criarNovaCarteira").modal('hide');
-                                    form.find("input[name=descricao]").val("");
+                                    $("#criarNovaCategoria").modal('hide');
+                                    form.find("input[name=nome]").val("");
 
-                                    {{--window.location.href="{{ route('carteiras.listar') }}";--}}
-                                    var contentWallet = $('.contentListWalleties');
-                                    contentWallet.append(data.result);
+                                    window.location.href="{{ route('categorias.index') }}";
 
-                                    $(".walletBox").fadeIn(500);
                                 }
 
                             }
