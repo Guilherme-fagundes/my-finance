@@ -32,34 +32,39 @@
             <div class="row py-2 rowContentCategory">
                 <div class="col-12">
 
-                    <table class="table table-striped tableCategories">
-                        <thead>
-                        <tr>
-                            <th scope="col">Categoria</th>
-                            <th scope="col">Tipo</th>
-                            <th scope="col">Cadastrada em</th>
-                            <th scope="col">Ultima atualização</th>
-                            <th scope="col">-</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        @foreach($categories as $category)
+                    @if(count($categories) == 0)
+                        <div class="alert alert-warning"><i class="fa-solid fa-circle-exclamation"></i> Não existem categorias cadastradas</div>
+                    @else
+                        <table class="table table-striped tableCategories">
+                            <thead>
                             <tr>
-                                <td>{{ $category->nome }}</td>
-                                <td>{{ ($category->tipo == 2 ? 'Receita' : 'Despesa') }}</td>
-                                <td>{{ $category->created_at }}</td>
-                                <td>{{ ($category->updated_at == null ? 'não atualizada' : $category->created_at) }}</td>
-                                <td class="categoryActions">
-                                    <a href="#" data-edit_category_id="{{ $category->id }}" class="actionEdit j-catEdit"><i class="fa-solid fa-pencil"></i></a>
-                                    <a href="#" data-delete_category_id="{{ $category->id }}" class="actionDelete j-catDelete"><i class="fa-solid fa-circle-xmark"></i></a>
-                                </td>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Cadastrada em</th>
+                                <th scope="col">Ultima atualização</th>
+                                <th scope="col">-</th>
                             </tr>
-                        @endforeach
+                            </thead>
+                            <tbody>
 
-                        </tbody>
-                    </table>
+                            @foreach($categories as $category)
+                                <tr>
+                                    <td>{{ $category->nome }}</td>
+                                    <td>{{ ($category->tipo == 2 ? 'Receita' : 'Despesa') }}</td>
+                                    <td>{{ $category->created_at }}</td>
+                                    <td>{{ ($category->updated_at == null ? 'não atualizada' : $category->created_at) }}</td>
+                                    <td class="categoryActions">
+                                        <a href="#" data-edit_category_id="{{ $category->id }}"
+                                           class="actionEdit j-catEdit"><i class="fa-solid fa-pencil"></i></a>
+                                        <a href="#" data-delete_category_id="{{ $category->id }}"
+                                           class="actionDelete j-catDelete"><i class="fa-solid fa-circle-xmark"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                            </tbody>
+                        </table>
+                    @endif
 
                 </div>
 
@@ -123,7 +128,8 @@
                                 <div class="mb-3">
                                     <label class="form-label"><i class="fa-solid fa-book-open"></i> Informe o nome da
                                         categoria</label>
-                                    <input class="form-control" type="text" name="nome" id="categoriaNome" placeholder="Nome da categoria">
+                                    <input class="form-control" type="text" name="nome" id="categoriaNome"
+                                           placeholder="Nome da categoria">
 
                                 </div>
                                 <div class="mb-3">
@@ -227,7 +233,24 @@
                         e.preventDefault();
 
                         var data = $(this).data();
-                        console.log(data);
+                        var delAction = window.confirm('Esta ação não poderá ser desfeita! Você deseja realmente deletar esta categoria?');
+                        if (delAction) {
+
+                            $.ajax({
+                                url: "{{ route('categorias.delete') }}",
+                                type: 'GET',
+                                data: data,
+                                dataType: 'json',
+                                success: function (response) {
+                                    if (response.error == false) {
+                                        window.location.href = "{{ route('categorias.index') }}";
+
+                                    }
+
+                                }
+                            });
+
+                        }
 
                     });
 

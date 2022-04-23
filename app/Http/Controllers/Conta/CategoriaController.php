@@ -77,4 +77,21 @@ class CategoriaController extends Controller
         }
 
     }
+
+    public function delete(Request $request)
+    {
+        if ($request->ajax()){
+
+            $delCat = Category::where('id', '=', $request->delete_category_id)->first();
+            if ($delCat){
+                $delCat->delete();
+
+                return Response()->json([
+                    'error' => false,
+                    'message' => 'Categoria deletada.'
+                ]);
+            }
+
+        }
+    }
 }
