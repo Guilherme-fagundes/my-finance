@@ -114,7 +114,7 @@
                dataType: 'json',
                data: dados,
                success: function (response) {
-                   console.log(response);
+
 
                    if (response.error == true){
                        $('.j-alert').html("<div class=\"alert alert-warning\"><i class=\"fa-solid fa-circle-exclamation\"></i> " + response.message + "</div>");

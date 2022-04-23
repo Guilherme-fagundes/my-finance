@@ -51,8 +51,8 @@
                                 <tr>
                                     <td>{{ $category->nome }}</td>
                                     <td>{{ ($category->tipo == 2 ? 'Receita' : 'Despesa') }}</td>
-                                    <td>{{ $category->created_at }}</td>
-                                    <td>{{ ($category->updated_at == null ? 'não atualizada' : $category->created_at) }}</td>
+                                    <td>{{ date("d/m/Y H:i:s", strtotime($category->created_at)) }}</td>
+                                    <td>{{ ($category->updated_at == null ? 'Não atualizada' : date('d/m/Y H:i:s', strtotime($category->updated_at))) }}</td>
                                     <td class="categoryActions">
                                         <a href="#" data-edit_category_id="{{ $category->id }}"
                                            class="actionEdit j-catEdit"><i class="fa-solid fa-pencil"></i></a>
@@ -142,6 +142,7 @@
 
                                 </div>
 
+                                <input type="hidden" name="id" id="catId">
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary btn-sm float-end"><i
                                             class="fa-solid fa-pencil"></i> Editar categoria
@@ -208,6 +209,10 @@
                     $(".j-catEdit").click(function (e) {
                         e.preventDefault();
 
+                        if ($('.j-alert').html() != ''){
+                            $(".j-alert").html('');
+                        }
+
                         var data = $(this).data();
                         var dataForm = $(this).serialize();
 
@@ -220,10 +225,44 @@
                             data: data,
                             dataType: 'JSON',
                             success: function (response) {
+                                console.log(response)
                                 $('#categoriaNome').val(response.result.nome);
                                 $('#categoriaTipo').val(response.result.tipo);
+                                $('#catId').val(response.result.id);
 
                             }
+                        });
+
+                        $(".j-formEditCategory").submit(function (e) {
+                            e.preventDefault();
+
+                            var dataForm = $(this).serialize();
+
+                            $.ajax({
+                                url: "{{ route('categorias.edit.post') }}",
+                                type: 'POST',
+                                dataType: 'json',
+                                data: dataForm,
+                                success: function (response) {
+                                    if (response.error == true){
+
+                                        $(".j-alert").html("");
+                                        $('.j-alert').fadeIn(800, function () {
+                                            $(this).html("<div class=\"alert alert-warning\"><i class=\"fa-solid fa-circle-exclamation\"></i> " + response.message + "</div>")
+                                                .addClass('mb-0 mt-3');
+
+                                        });
+
+                                    }else{
+
+                                        $('.j-alert').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> " + response.message + "</div>");
+                                        $("#editarCategoria").modal('hide');
+                                        location.href="{{ route('categorias.index') }}";
+                                    }
+
+                                }
+                            });
+
                         });
 
                     });

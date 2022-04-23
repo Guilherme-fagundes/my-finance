@@ -55,5 +55,6 @@ Route::prefix('app')->group(function (){
     Route::get('/categorias', [CategoriaController::class, 'index'])->middleware(['checkuserlogin'])->name('categorias.index');
     Route::any('/categorias/nova/post', [CategoriaController::class, 'novaPost'])->middleware(['checkuserlogin'])->name('categorias.nova.post');
     Route::any('/categorias/editar', [CategoriaController::class, 'edit'])->middleware(['checkuserlogin'])->name('categorias.edit');
+    Route::post('/categorias/editar/post', [CategoriaController::class, 'editPost'])->middleware(['checkuserlogin'])->name('categorias.edit.post');
     Route::any('/categorias/deletar', [CategoriaController::class, 'delete'])->middleware(['checkuserlogin'])->name('categorias.delete');
 });

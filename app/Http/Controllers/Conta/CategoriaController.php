@@ -78,6 +78,36 @@ class CategoriaController extends Controller
 
     }
 
+    public function editPost(Request $request)
+    {
+        if ($request->ajax()){
+
+            if ($request->all()){
+
+                if (in_array('', $request->all())){
+                    return Response()->json([
+                        'error' => true,
+                        'message' => 'Para atualizar a categoria não pode ter campos em branco.'
+                    ]);
+                }else{
+
+                    $catUpdate = DB::table('categories')
+                        ->where('id', '=', $request->id)
+                        ->update($request->except(['_token', 'id']));
+
+                    if ($catUpdate){
+                        return Response()->json([
+                            'error' => false,
+                            'message' => 'Categoria atualizada com sucesso.'
+                        ]);
+
+                    }
+                }
+            }
+
+        }
+    }
+
     public function delete(Request $request)
     {
         if ($request->ajax()){
