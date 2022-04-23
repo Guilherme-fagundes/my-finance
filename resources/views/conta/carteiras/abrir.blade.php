@@ -108,7 +108,7 @@
                                             <select name="categoria" class="form-select">
                                                 <option>Selecione uma categoria</option>
                                                 @foreach($despesas as $categoryDespesa)
-                                                    <option value="{{ strtolower($categoryDespesa->nome) }}">{{ ucfirst($categoryDespesa->nome) }}</option>
+                                                    <option value="{{ $categoryDespesa->id }}">{{ ucfirst($categoryDespesa->nome) }}</option>
                                                 @endforeach
 
                                             </select>
@@ -167,7 +167,7 @@
                                             <select name="categoria" class="form-select">
                                                 <option>Selecione uma categoria</option>
                                                 @foreach($receitas as $categoryReceitas)
-                                                    <option value="{{ strtolower($categoryReceitas->nome) }}">{{ ucfirst($categoryReceitas->nome) }}</option>
+                                                    <option value="{{ $categoryReceitas->id }}">{{ ucfirst($categoryReceitas->nome) }}</option>
                                                 @endforeach
 
                                             </select>
