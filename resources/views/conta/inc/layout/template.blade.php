@@ -42,6 +42,10 @@
                                 <span class="icon"><i class="fas fa-user"></i></span>
                                 <span class="text">Perfil</span>
                             </a>
+                            <a href="{{ route('categorias.index') }}" title="Todas as categorias">
+                                <span class="icon"><i class="fa-solid fa-book-open"></i></span>
+                                <span class="text">Categorias</span>
+                            </a>
                             <a href="{{ route('carteiras.listar') }}" title="Todas as carteiras">
                                 <span class="icon"><i class="fas fa-wallet"></i></span>
                                 <span class="text">Carteiras</span>
