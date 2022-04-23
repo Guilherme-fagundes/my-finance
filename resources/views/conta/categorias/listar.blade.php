@@ -129,7 +129,7 @@
                                 <div class="mb-3">
                                     <label class="form-label"><i class="fa-solid fa-filter"></i> Informe o tipo de
                                         lançamento é esta categoria</label>
-                                    <select name="tipo" class="form-select">
+                                    <select name="tipo" class="form-select" id="categoriaTipo">
                                         <option value="1">Despesa</option>
                                         <option value="2">Receita</option>
                                     </select>
@@ -204,7 +204,7 @@
 
                         var data = $(this).data();
                         var dataForm = $(this).serialize();
-                        
+
 
                         $('#editarCategoria').modal('show');
 
@@ -214,7 +214,8 @@
                             data: data,
                             dataType: 'JSON',
                             success: function (response) {
-                                console.log(response)
+                                $('#categoriaNome').val(response.result.nome);
+                                $('#categoriaTipo').val(response.result.tipo);
 
                             }
                         });

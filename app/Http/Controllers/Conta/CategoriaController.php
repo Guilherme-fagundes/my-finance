@@ -64,7 +64,13 @@ class CategoriaController extends Controller
         if ($request->ajax()){
 
             if ($request->all()){
-                dd($request->all());
+
+                $readCategory = Category::where('id', '=', $request->edit_category_id)->first();
+
+                return Response()->json([
+                    'error' => false,
+                    'result' => $readCategory
+                ]);
 
             }
 
