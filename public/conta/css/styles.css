@@ -370,22 +370,14 @@ body {
   background-color: #eee;
 }
 
-<<<<<<< HEAD
 .sessWallet .rowTitleWallet {
   border-bottom: 2px solid brown;
 }
 .sessWallet .rowTitleWallet .tituloMinhaCarteira {
-=======
-.sessCategories .rowTitleCategories {
-  border-bottom: 2px solid brown;
-}
-.sessCategories .rowTitleCategories .tituloMinhasCategorias {
->>>>>>> main
   font-weight: 300;
   font-size: 2em;
   color: brown;
 }
-<<<<<<< HEAD
 .sessWallet .rowTitleWallet .walletHeader {
   display: flex;
   justify-content: end;
@@ -397,7 +389,18 @@ body {
 .sessWallet .tabelaRelatorios {
   font-size: 0.8em;
 }
-=======
+body {
+  background-color: #eee;
+}
+
+.sessCategories .rowTitleCategories {
+  border-bottom: 2px solid brown;
+}
+.sessCategories .rowTitleCategories .tituloMinhasCategorias {
+  font-weight: 300;
+  font-size: 2em;
+  color: brown;
+}
 .sessCategories .rowContentCategory {
   margin-top: 2em;
 }
@@ -417,4 +420,3 @@ body {
   background-color: red;
   color: #f1f1f1;
 }
->>>>>>> main

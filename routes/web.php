@@ -50,10 +50,10 @@ Route::prefix('app')->group(function (){
     Route::any('/carteiras/delete/post', [CarteiraController::class, 'delete'])->middleware(['checkuserlogin'])->name('carteiras.excluir.post');
     Route::any('/carteiras/editar', [CarteiraController::class, 'edit'])->middleware(['checkuserlogin'])->name('carteiras.editar');
     Route::any('/carteiras/editar/post', [CarteiraController::class, 'editPost'])->middleware(['checkuserlogin'])->name('carteiras.editar.post');
-<<<<<<< HEAD
+
     Route::get('/carteira/{id}', [CarteiraController::class, 'openWallet'])->middleware(['checkuserlogin'])->name('carteira.abrir');
 
-=======
+
 
     //Rotas categorias
     Route::get('/categorias', [CategoriaController::class, 'index'])->middleware(['checkuserlogin'])->name('categorias.index');
@@ -61,5 +61,5 @@ Route::prefix('app')->group(function (){
     Route::any('/categorias/editar', [CategoriaController::class, 'edit'])->middleware(['checkuserlogin'])->name('categorias.edit');
     Route::post('/categorias/editar/post', [CategoriaController::class, 'editPost'])->middleware(['checkuserlogin'])->name('categorias.edit.post');
     Route::any('/categorias/deletar', [CategoriaController::class, 'delete'])->middleware(['checkuserlogin'])->name('categorias.delete');
->>>>>>> main
+
 });
