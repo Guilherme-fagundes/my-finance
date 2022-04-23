@@ -78,7 +78,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="j-alert" role="alert"></div>
-                            <form method="post" action="" class="j-formCreateNewWallet">
+                            <form method="post" action="" class="j-formCriarNovaDespesa">
                                 @csrf
                                 <div class="mb-3">
                                     <label class="form-label"><i class="fa-solid fa-book"></i> Descrição</label>
@@ -107,6 +107,9 @@
                                             <label class="form-label"><i class="fa-solid fa-filter"></i> Categoria</label>
                                             <select name="categoria" class="form-select">
                                                 <option>Selecione uma categoria</option>
+                                                @foreach($despesas as $categoryDespesa)
+                                                    <option value="{{ strtolower($categoryDespesa->nome) }}">{{ ucfirst($categoryDespesa->nome) }}</option>
+                                                @endforeach
 
                                             </select>
                                         </div>
@@ -134,7 +137,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="j-alert" role="alert"></div>
-                            <form method="post" action="" class="j-formCreateNewWallet">
+                            <form method="post" action="" class="j-formCriarNovaReceita">
                                 @csrf
                                 <div class="mb-3">
                                     <label class="form-label"><i class="fa-solid fa-book"></i> Descrição</label>
@@ -163,6 +166,9 @@
                                             <label class="form-label"><i class="fa-solid fa-filter"></i> Categoria</label>
                                             <select name="categoria" class="form-select">
                                                 <option>Selecione uma categoria</option>
+                                                @foreach($receitas as $categoryReceitas)
+                                                    <option value="{{ strtolower($categoryReceitas->nome) }}">{{ ucfirst($categoryReceitas->nome) }}</option>
+                                                @endforeach
 
                                             </select>
                                         </div>

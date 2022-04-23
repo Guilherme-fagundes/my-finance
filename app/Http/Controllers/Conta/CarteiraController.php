@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Conta;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  *
@@ -160,11 +162,21 @@ class CarteiraController extends Controller
         $userLogged = User::where('id', session()->get('userId'))->first();
         $wallet = Wallet::where('id', '=', $id)->first();
 
+        $readDespesas = DB::table('categories')
+            ->where('user_id', session()->get('userId'))
+            ->where('tipo', '=', 1)->get();
+
+        $readReceitas = DB::table('categories')
+            ->where('user_id', session()->get('userId'))
+            ->where('tipo', '=', 2)->get();
+
 
         return view('conta.carteiras.abrir', [
             'title' => env('APP_NAME'). ' | Carteira '. $wallet->nome,
             'user' => $userLogged,
-            'wallet' => $wallet
+            'wallet' => $wallet,
+            'despesas' => $readDespesas,
+            'receitas' => $readReceitas
         ]);
     }
 }
