@@ -21,7 +21,11 @@ mix
     .sass('resources/views/conta/css/home-carteiras.scss', 'public/conta/css/styles.css').version()
     .sass('resources/views/conta/css/meu-perfil.scss', 'public/conta/css/styles.css').version()
     .sass('resources/views/conta/css/todas-carteiras.scss', 'public/conta/css/styles.css').version()
+<<<<<<< HEAD
     .sass('resources/views/conta/css/abrir-carteira.scss', 'public/conta/css/styles.css').version()
+=======
+    .sass('resources/views/conta/css/listar-categorias.scss', 'public/conta/css/styles.css').version()
+>>>>>>> main
     .sass('node_modules/bootstrap/scss/bootstrap.scss', 'public/conta/css/bootstrap/bootstrap.css').version()
 
 

@@ -6861,10 +6861,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./resources/views/conta/css/abrir-carteira.scss":
 /*!*******************************************************!*\
   !*** ./resources/views/conta/css/abrir-carteira.scss ***!
   \*******************************************************/
+=======
+/***/ "./resources/views/conta/css/listar-categorias.scss":
+/*!**********************************************************!*\
+  !*** ./resources/views/conta/css/listar-categorias.scss ***!
+  \**********************************************************/
+>>>>>>> main
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7099,7 +7106,11 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/home-carteiras.scss")))
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/meu-perfil.scss")))
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/todas-carteiras.scss")))
+<<<<<<< HEAD
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/abrir-carteira.scss")))
+=======
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/listar-categorias.scss")))
+>>>>>>> main
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./node_modules/bootstrap/scss/bootstrap.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	

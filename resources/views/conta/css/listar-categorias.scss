@@ -1,0 +1,37 @@
+body{
+    background-color: #eee;
+}
+.sessCategories{
+    .rowTitleCategories{
+        border-bottom: 2px solid brown;
+        .tituloMinhasCategorias{
+            font-weight: 300;
+            font-size: 2em;
+            color: brown;
+        }
+    }
+
+    .rowContentCategory{
+        margin-top: 2em;
+        .tableCategories{
+            font-size: .8em;
+            .categoryActions{
+                a{
+                    padding: 3px 3px;
+                    border-radius: 3px;
+                    font-size: .8em;
+                }
+                a.actionEdit{
+                    background-color: #0078ff;
+                    color: #f1f1f1;
+                }
+                a.actionDelete{
+                    background-color: red;
+                    color: #f1f1f1;
+                }
+
+            }
+        }
+    }
+
+}
