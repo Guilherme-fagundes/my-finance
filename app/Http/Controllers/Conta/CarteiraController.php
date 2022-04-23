@@ -3,12 +3,22 @@
 namespace App\Http\Controllers\Conta;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
+/**
+ *
+ */
 class CarteiraController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
     public function listar()
     {
         $userLogged = User::where('id', session()->get('userId'))->first();
@@ -22,6 +32,12 @@ class CarteiraController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|void
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
     public function novaPost(Request $request)
     {
         if ($request->ajax()){
@@ -62,6 +78,10 @@ class CarteiraController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|void
+     */
     public function delete(Request $request)
     {
         if ($request->ajax()){
@@ -81,6 +101,10 @@ class CarteiraController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|void
+     */
     public function edit(Request $request)
     {
         if ($request->ajax()){
@@ -97,6 +121,10 @@ class CarteiraController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|void
+     */
     public function editPost(Request $request)
     {
         if ($request->ajax()){
@@ -124,5 +152,31 @@ class CarteiraController extends Controller
             }
 
         }
+    }
+
+    /**
+     * @param int $id
+     */
+    public function openWallet(int $id)
+    {
+        $userLogged = User::where('id', session()->get('userId'))->first();
+        $wallet = Wallet::where('id', '=', $id)->first();
+
+        $readDespesas = DB::table('categories')
+            ->where('user_id', session()->get('userId'))
+            ->where('tipo', '=', 1)->get();
+
+        $readReceitas = DB::table('categories')
+            ->where('user_id', session()->get('userId'))
+            ->where('tipo', '=', 2)->get();
+
+
+        return view('conta.carteiras.abrir', [
+            'title' => env('APP_NAME'). ' | Carteira '. $wallet->nome,
+            'user' => $userLogged,
+            'wallet' => $wallet,
+            'despesas' => $readDespesas,
+            'receitas' => $readReceitas
+        ]);
     }
 }

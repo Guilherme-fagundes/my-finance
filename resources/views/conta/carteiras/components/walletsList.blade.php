@@ -9,7 +9,7 @@
             <p class="card-text text-center receita"><span>Receitas: R$ 10.000,00</span></p>
             <div class="walletActions">
                 <p>
-                    <a href="#" title="Abrir carteira" class="walletView"><i class="fa-solid fa-eye"></i></a>
+                    <a href="{{ route('carteira.abrir', ['id' => $wallet->id]) }}" title="Abrir carteira" class="walletView"><i class="fa-solid fa-eye"></i></a>
                     <a href="#" data-carteira_id="{{ $wallet->id }}" data-action="{{ route('carteiras.editar') }}" title="Editar carteira" class="walletEdit j-editWallet"><i class="fa-solid fa-pen"></i></a>
                     <a href="#" data-carteira_id="{{ $wallet->id }}" data-action="{{ route('carteiras.excluir.post') }}" title="Excluir carteira" class="walletTrash walletDelet"><i class="fa-solid fa-circle-xmark"></i></a>
                 </p>

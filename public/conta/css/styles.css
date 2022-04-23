@@ -370,6 +370,29 @@ body {
   background-color: #eee;
 }
 
+.sessWallet .rowTitleWallet {
+  border-bottom: 2px solid brown;
+}
+.sessWallet .rowTitleWallet .tituloMinhaCarteira {
+  font-weight: 300;
+  font-size: 2em;
+  color: brown;
+}
+.sessWallet .rowTitleWallet .walletHeader {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.sessWallet .rowTitleWallet .walletHeader .btn-nova-despesa {
+  margin-right: 10px;
+}
+.sessWallet .tabelaRelatorios {
+  font-size: 0.8em;
+}
+body {
+  background-color: #eee;
+}
+
 .sessCategories .rowTitleCategories {
   border-bottom: 2px solid brown;
 }

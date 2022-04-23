@@ -1,0 +1,28 @@
+body{
+    background-color: #eee;
+}
+.sessWallet{
+    .rowTitleWallet{
+        border-bottom: 2px solid brown;
+        .tituloMinhaCarteira{
+            font-weight: 300;
+            font-size: 2em;
+            color: brown;
+        }
+        .walletHeader{
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            .btn-nova-despesa{
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .tabelaRelatorios{
+        font-size: .8em;
+    }
+
+
+
+}
