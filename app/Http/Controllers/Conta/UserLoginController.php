@@ -186,6 +186,7 @@ class UserLoginController extends Controller
                         $createUser->email = $request->email;
                         $createUser->pass = Hash::make($request->pass);
                         $createUser->status = 0;
+                        $createUser->tipo_conta = "free";
                         $createUser->ip = $request->ip();
                         $createUser->user_agent = $request->userAgent();
 

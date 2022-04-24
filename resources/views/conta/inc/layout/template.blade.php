@@ -31,7 +31,7 @@
                         @endif
                         <p class="userName mt-3 mb-0 text-white"><small>{{ $user->nome ?? '' }} {{ $user->sobrenome ?? '' }}</small></p>
                         <p class="userE-mail mt-1 text-white"><small>{{ $user->email }}</small></p>
-                        <p class="mt-1 badge bg-secondary"><span>FREE</span></p>
+                        <p class="mt-1 badge bg-secondary"><span>{{ strtoupper($user->tipo_conta) }}</span></p>
                     </div>
                     <div class="articleDashboardBody">
                         <div class="leftMenu">
