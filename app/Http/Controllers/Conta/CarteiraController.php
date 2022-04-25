@@ -50,15 +50,6 @@ class CarteiraController extends Controller
                     ]);
                 }
 
-                $checkWalletExist = Wallet::where('nome', $request->descricao)->first();
-
-                if ($checkWalletExist){
-
-                    return Response()->json([
-                        'error' => true,
-                        'message' => 'esta carteira já existe'
-                    ]);
-                }
 
                 $wallet = new Wallet();
 
