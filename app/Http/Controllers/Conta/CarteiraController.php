@@ -50,20 +50,6 @@ class CarteiraController extends Controller
                     ]);
                 }
 
-
-                $wallet = new Wallet();
-
-                $wallet->user_id = session()->get('userId');
-                $wallet->nome = $request->descricao;
-                $wallet->cor = $request->cor_carteira;
-
-                $wallet->save();
-
-                return Response()->json([
-                    'result' => view('conta.carteiras.components.walletsList', [
-                        'wallet' => $wallet
-                    ])->render()
-                ]);
             }
         }
 
