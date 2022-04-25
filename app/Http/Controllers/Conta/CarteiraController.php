@@ -50,6 +50,35 @@ class CarteiraController extends Controller
                     ]);
                 }
 
+
+                if ($request->ajax()){
+                    if ($request->all()){
+
+                        if (in_array('', $request->all())){
+                            return Response()->json([
+                                'error' => true,
+                                'message' => 'Para criar uma carteira não pode ter campos em branco.'
+                            ]);
+                        }
+
+
+
+                        $wallet = new Wallet();
+
+                        $wallet->user_id = session()->get('userId');
+                        $wallet->nome = $request->descricao;
+                        $wallet->cor = $request->cor_carteira;
+
+                        $wallet->save();
+
+                        return Response()->json([
+                            'result' => view('conta.carteiras.components.walletsList', [
+                                'wallet' => $wallet
+                            ])->render()
+                        ]);
+                    }
+                }
+
             }
         }
 
