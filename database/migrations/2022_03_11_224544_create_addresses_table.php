@@ -16,12 +16,12 @@ class CreateAddressesTable extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
-            $table->string('cep')->nullable();
+            $table->string('cep', 20)->nullable();
             $table->string('logradouro')->nullable();
             $table->string('complemento')->nullable();
             $table->string('bairro')->nullable();
             $table->string('localidade')->nullable();
-            $table->string('uf')->nullable();
+            $table->string('uf', 2)->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('NULL ON UPDATE CURRENT_TIMESTAMP'))
                 ->nullable();
