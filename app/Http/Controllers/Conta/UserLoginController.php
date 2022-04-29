@@ -46,8 +46,15 @@ class UserLoginController extends Controller
                     $email = DB::table('users')
                         ->where('email', '=', $request->email)->first();
 
+                    if ($email == null){
+                        $json['error'] = true;
+                        $json['message'] = "E-mail ou senha invalidos";
+                        echo json_encode($json);
+                        die;
+                    }
 
                     $pass = Hash::check($request->pass, $email->pass);
+
 
                     if (!$email || !$pass) {
                         $json['error'] = true;
