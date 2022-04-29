@@ -4,6 +4,7 @@
 /public/conta/*
 public/*.json
 /storage/*.key
+storage/
 /vendor
 .env
 .env.backup
@@ -23,3 +24,4 @@ public/conta
 .project
 .buildpath
 .settings
+compoer.lock
