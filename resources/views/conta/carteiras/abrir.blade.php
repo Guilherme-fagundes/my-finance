@@ -36,10 +36,11 @@
                     <table class="table table-striped tabelaRelatorios">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Descriçao</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Tipo de lançamento</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -201,7 +202,44 @@
                     $(".btn-nova-renda").click(function (e) {
                         e.preventDefault();
 
+                        if ($('.j-alert').html() != ''){
+                            $(".j-alert").html('');
+                        }
                         $('#criarNovaReceita').modal('show');
+
+                    });
+
+                    //Cadastra nova receita
+                    $(".j-formCriarNovaReceita").submit(function (e) {
+                        e.preventDefault();
+
+                        var formData = $(this).serialize();
+                        var form = $(this);
+
+                        $.ajax({
+                            url: "{{ route('lancamento.novo.post') }}",
+                            type: 'POST',
+                            data: formData,
+                            dataType: 'json',
+                            success: function (response) {
+
+                                if (response.error == true){
+
+                                    $(".j-alert").html("");
+                                    $('.j-alert').fadeIn(800, function () {
+                                        $(this).html("<div class=\"alert alert-warning\"><i class=\"fa-solid fa-circle-exclamation\"></i> " + response.message + "</div>")
+                                            .addClass('mb-0 mt-3');
+
+                                    });
+
+                                }else{
+                                    $("#criarNovaReceita").modal('hide');
+                                    location.reload();
+                                }
+
+                            }
+                        });
+
                     });
 
                 })

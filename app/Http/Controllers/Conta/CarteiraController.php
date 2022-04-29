@@ -26,7 +26,7 @@ class CarteiraController extends Controller
 
 
         return view('conta.carteiras.listar', [
-            'title' => env("APP_NAME"). " | Todas as carteiras",
+            'title' => env("APP_NAME") . " | Todas as carteiras",
             'user' => $userLogged,
             'wallets' => $wallet
         ]);
@@ -40,10 +40,10 @@ class CarteiraController extends Controller
      */
     public function novaPost(Request $request)
     {
-        if ($request->ajax()){
-            if ($request->all()){
+        if ($request->ajax()) {
+            if ($request->all()) {
 
-                if (in_array('', $request->all())){
+                if (in_array('', $request->all())) {
                     return Response()->json([
                         'error' => true,
                         'message' => 'Para criar uma carteira não pode ter campos em branco.'
@@ -51,16 +51,15 @@ class CarteiraController extends Controller
                 }
 
 
-                if ($request->ajax()){
-                    if ($request->all()){
+                if ($request->ajax()) {
+                    if ($request->all()) {
 
-                        if (in_array('', $request->all())){
+                        if (in_array('', $request->all())) {
                             return Response()->json([
                                 'error' => true,
                                 'message' => 'Para criar uma carteira não pode ter campos em branco.'
                             ]);
                         }
-
 
 
                         $wallet = new Wallet();
@@ -90,11 +89,11 @@ class CarteiraController extends Controller
      */
     public function delete(Request $request)
     {
-        if ($request->ajax()){
+        if ($request->ajax()) {
 
             $delWallet = Wallet::where('id', '=', $request->get('carteira_id'))->first();
 
-            if ($delWallet){
+            if ($delWallet) {
                 $delWallet->delete();
 
                 return Response()->json([
@@ -113,10 +112,10 @@ class CarteiraController extends Controller
      */
     public function edit(Request $request)
     {
-        if ($request->ajax()){
+        if ($request->ajax()) {
 
             $readWallet = Wallet::where('id', '=', $request->carteira_id)->first();
-            if ($readWallet){
+            if ($readWallet) {
                 return Response()->json([
                     'error' => false,
                     'result' => $readWallet
@@ -133,9 +132,9 @@ class CarteiraController extends Controller
      */
     public function editPost(Request $request)
     {
-        if ($request->ajax()){
+        if ($request->ajax()) {
 
-            if (in_array('', $request->all())){
+            if (in_array('', $request->all())) {
                 return Response()->json([
                     'error' => true,
                     'message' => 'Para atualizar uma carteira não pode ter campos em branco'
@@ -148,7 +147,7 @@ class CarteiraController extends Controller
                     'cor' => $request->cor_carteira
                 ]);
 
-            if ($editWallet){
+            if ($editWallet) {
 
 
                 return Response()->json([
@@ -178,7 +177,7 @@ class CarteiraController extends Controller
 
 
         return view('conta.carteiras.abrir', [
-            'title' => env('APP_NAME'). ' | Carteira '. $wallet->nome,
+            'title' => env('APP_NAME') . ' | Carteira ' . $wallet->nome,
             'user' => $userLogged,
             'wallet' => $wallet,
             'despesas' => $readDespesas,

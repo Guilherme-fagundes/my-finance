@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Http\Controllers\Conta;
+
+use App\Http\Controllers\Controller;
+use App\Models\Launch;
+use App\Models\User;
+use Illuminate\Http\Request;
+
+class LancamentoController extends Controller
+{
+    public function novoLancamentoPost(Request $request)
+    {
+        if ($request->ajax()){
+
+            if ($request->all()){
+
+                if (in_array('', $request->all())){
+                    return Response()->json([
+                        'error' => true,
+                        'message' => 'Não pode ter campos em branco para fazer um lançamento'
+                    ]);
+                }else{
+                    $lancamento = new Launch();
+
+                    $lancamento->user_id = session()->get('userId');
+                    $lancamento->category_id = $request->categoria;
+                    $lancamento->descricao = $request->descricao;
+                    $lancamento->valor = (float) str_replace(',', '.', $request->valor);
+                    $lancamento->data = $request->data;
+                    $lancamento->tipo_lancamento = 'Receita';
+
+                    if ($lancamento->save()){
+                        return Response()->json([
+                            'error' => false,
+                            'message' => 'Lançamento efetuado.'
+                        ]);
+                    }
+
+                }
+
+            }
+        }
+
+    }
+}
