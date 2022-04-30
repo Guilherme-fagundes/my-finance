@@ -36,32 +36,29 @@
                     <table class="table table-striped tabelaRelatorios">
                         <thead>
                         <tr>
-                            <th scope="col">Categoria</th>
+
                             <th scope="col">Descriçao</th>
                             <th scope="col">Valor</th>
                             <th scope="col">Data</th>
                             <th scope="col">Tipo de lançamento</th>
+                            <th scope="col">-</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        @foreach($lancamentos as $lancamento)
+                            <tr>
+                                <td scope="row">{{ $lancamento->descricao }}</td>
+                                <td>{{ number_format($lancamento->valor, 2, ',', '.') }}</td>
+                                <td>{{ date("d/m/Y", strtotime($lancamento->data)) }}</td>
+                                <td>{{ $lancamento->tipo_lancamento }}</td>
+                                <td class="launchAction">
+                                    <a href="#" class="launchView launchView"><i class="fa-solid fa-eye"></i></a>
+                                    <a href="#" class="launchDelete j-editLaunch"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="#" class="launchDelete j-deletLaunch"><i class="fa-solid fa-circle-xmark"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+
                         </tbody>
                     </table>
 

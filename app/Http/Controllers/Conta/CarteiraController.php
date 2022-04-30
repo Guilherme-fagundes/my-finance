@@ -176,8 +176,8 @@ class CarteiraController extends Controller
             ->where('tipo', '=', 2)->get();
 
         $lerLancamentos = DB::table('launches')
-            ->where('user_id', '=', session()->get('userId'))->get();
-
+            ->where('user_id', '=', session()->get('userId'))
+            ->where('wallet_id', '=', $id)->get();
 
 
         return view('conta.carteiras.abrir', [
@@ -185,7 +185,8 @@ class CarteiraController extends Controller
             'user' => $userLogged,
             'wallet' => $wallet,
             'despesas' => $readDespesas,
-            'receitas' => $readReceitas
+            'receitas' => $readReceitas,
+            'lancamentos' => $lerLancamentos
         ]);
     }
 }
