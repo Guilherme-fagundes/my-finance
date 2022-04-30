@@ -25,6 +25,7 @@ class LancamentoController extends Controller
 
                     $lancamento->user_id = session()->get('userId');
                     $lancamento->category_id = $request->categoria;
+                    $lancamento->wallet_id = $request->wallet_id;
                     $lancamento->descricao = $request->descricao;
                     $lancamento->valor = (float) str_replace(',', '.', $request->valor);
                     $lancamento->data = $request->data;

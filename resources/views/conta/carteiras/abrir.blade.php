@@ -81,6 +81,7 @@
                             <div class="j-alert" role="alert"></div>
                             <form method="post" action="" class="j-formCriarNovaDespesa">
                                 @csrf
+                                <input type="hidden" name="wallet_id" value="{{ $wallet->id }}">
                                 <div class="mb-3">
                                     <label class="form-label"><i class="fa-solid fa-book"></i> Descrição</label>
                                     <input class="form-control" type="text" name="descricao" placeholder="Descrição">
@@ -140,6 +141,7 @@
                             <div class="j-alert" role="alert"></div>
                             <form method="post" action="" class="j-formCriarNovaReceita">
                                 @csrf
+                                <input type="hidden" name="wallet_id" value="{{ $wallet->id }}">
                                 <div class="mb-3">
                                     <label class="form-label"><i class="fa-solid fa-book"></i> Descrição</label>
                                     <input class="form-control" type="text" name="descricao" placeholder="Descrição">

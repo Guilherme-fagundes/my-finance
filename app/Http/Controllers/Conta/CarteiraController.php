@@ -175,6 +175,10 @@ class CarteiraController extends Controller
             ->where('user_id', session()->get('userId'))
             ->where('tipo', '=', 2)->get();
 
+        $lerLancamentos = DB::table('launches')
+            ->where('user_id', '=', session()->get('userId'))->get();
+
+
 
         return view('conta.carteiras.abrir', [
             'title' => env('APP_NAME') . ' | Carteira ' . $wallet->nome,
