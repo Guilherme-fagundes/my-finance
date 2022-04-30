@@ -52,9 +52,9 @@
                                 <td>{{ date("d/m/Y", strtotime($lancamento->data)) }}</td>
                                 <td>{{ $lancamento->tipo_lancamento }}</td>
                                 <td class="launchAction">
-                                    <a href="#" class="launchView launchView"><i class="fa-solid fa-eye"></i></a>
-                                    <a href="#" class="launchDelete j-editLaunch"><i class="fa-solid fa-pen"></i></a>
-                                    <a href="#" class="launchDelete j-deletLaunch"><i class="fa-solid fa-circle-xmark"></i></a>
+                                    <a href="#" class="actionView launchView launchView"><i class="fa-solid fa-eye"></i></a>
+                                    <a href="#" class="actionEdit launchDelete j-editLaunch"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="#" class="actionDelete launchDelete j-deletLaunch"><i class="fa-solid fa-circle-xmark"></i></a>
                                 </td>
                             </tr>
                         @endforeach
