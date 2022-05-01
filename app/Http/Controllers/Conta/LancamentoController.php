@@ -15,6 +15,8 @@ class LancamentoController extends Controller
 
             if ($request->all()){
 
+                
+                
                 if (in_array('', $request->all())){
                     return Response()->json([
                         'error' => true,
@@ -27,7 +29,7 @@ class LancamentoController extends Controller
                     $lancamento->category_id = $request->categoria;
                     $lancamento->wallet_id = $request->wallet_id;
                     $lancamento->descricao = $request->descricao;
-                    $lancamento->valor = (float) str_replace(',', '.', $request->valor);
+                    $lancamento->valor = (double) str_replace(',', '.', str_replace('.', '', $request->valor));
                     $lancamento->data = $request->data;
                     $lancamento->tipo_lancamento = 'Receita';
 

@@ -189,8 +189,16 @@
             <script>
                 $(function () {
 
-                    $("#despesa-valor").mask('000.000.000.000.000,00', {reverse: true});
-                    $("#receita-valor").mask('000.000.000.000.000,00', {reverse: true});
+                    $("#despesa-valor").maskMoney({
+                        allowNegative: true, 
+                        thousands: '.', 
+                        decimal: ','
+                    }); 
+                    $("#receita-valor").maskMoney({
+                        allowNegative: true, 
+                        thousands: '.', 
+                        decimal: ','
+                    }); 
 
                     $(".btn-nova-despesa").click(function (e) {
                         e.preventDefault();
