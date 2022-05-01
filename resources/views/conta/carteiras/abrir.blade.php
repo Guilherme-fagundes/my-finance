@@ -54,7 +54,7 @@
                                 <td class="launchAction">
                                     <a href="#" class="actionView launchView launchView"><i class="fa-solid fa-eye"></i></a>
                                     <a href="#" class="actionEdit launchDelete j-editLaunch"><i class="fa-solid fa-pen"></i></a>
-                                    <a href="#" class="actionDelete launchDelete j-deletLaunch"><i class="fa-solid fa-circle-xmark"></i></a>
+                                    <a href="#" data-launch_id="{{ $lancamento->id }}" data-action="{{ route('lancamento.delete') }}" class="actionDelete launchDelete j-deletLaunch"><i class="fa-solid fa-circle-xmark"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -190,15 +190,15 @@
                 $(function () {
 
                     $("#despesa-valor").maskMoney({
-                        allowNegative: true, 
-                        thousands: '.', 
+                        allowNegative: true,
+                        thousands: '.',
                         decimal: ','
-                    }); 
+                    });
                     $("#receita-valor").maskMoney({
-                        allowNegative: true, 
-                        thousands: '.', 
+                        allowNegative: true,
+                        thousands: '.',
                         decimal: ','
-                    }); 
+                    });
 
                     $(".btn-nova-despesa").click(function (e) {
                         e.preventDefault();
@@ -243,6 +243,25 @@
                                     $("#criarNovaReceita").modal('hide');
                                     location.reload();
                                 }
+
+                            }
+                        });
+
+                    });
+
+                    //Deleta um lançamento
+                    $(".j-deletLaunch").click(function(e) {
+                        e.preventDefault();
+
+                        var data = $(this).data();
+
+                        $.ajax({
+                            url: data.action,
+                            type: 'GET',
+                            data: data,
+                            dataType: 'json',
+                            success: function(response) {
+                                console.log(response);
 
                             }
                         });
