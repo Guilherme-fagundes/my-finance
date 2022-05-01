@@ -13,9 +13,18 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Bus\DatabaseBatchRepository;
 use Illuminate\Support\Facades\Validator;
 
+
+/**
+ * <p>Esta classe é o controlador responsavel pela conta de usuário</p>
+ * 
+ * @copyright (c) 2022, Guilherme K Fagundes
+ */
 class ContaController extends Controller
 {
 
+    /**
+     * <p>Metodo responsavel por exibir a tela home do sistema</p>
+     */
     public function home()
     {
 
@@ -31,6 +40,10 @@ class ContaController extends Controller
         ]);
     }
 
+    /**
+     * <p>Metodo responsavel por exibir tela de perfil do usuário</p>
+     * @return array
+     */
     public function perfil()
     {
         $userLogged = DB::table('users')->where('id', session()->get('userId'))->first();
@@ -44,6 +57,12 @@ class ContaController extends Controller
 
     }
 
+    /**
+
+     * 
+     * @param Request $request
+     * @return json Retorna as resposta das validações
+     */
     public function perfilSalvarDados(Request $request)
     {
         $json['error'] = false;
@@ -75,6 +94,13 @@ class ContaController extends Controller
         echo json_encode($json);
     }
 
+    /**
+
+     * <p>Metodo responsavel por realizar a validação e alteração de foto de 
+     * perfil do usuário<p>
+     * @param Request $request
+     * @return json Retorna as respostas de validação
+     */
     public function perfilAlterarFoto(Request $request)
     {
         $json = [];
@@ -127,10 +153,14 @@ class ContaController extends Controller
 
 
         }
-
-//        echo json_encode($json);
     }
 
+    /**
+
+     * <p>Metodo responsável por validar e alterar endereço do usuário</p>
+     * @param Request $request
+     * @return json Retorna as respostas das validações
+     */
     public function perfilAlterarEndereco(Request $request)
     {
         if ($request->ajax()){
@@ -174,6 +204,12 @@ class ContaController extends Controller
 
     }
 
+    /**
+
+     * <p>Metodo responsavel por realizar o logout do sistema<p>
+     * @param Request $request
+     * 
+     */
     public function logount(Request $request)
     {
         if ($request->session()->has('userId')) {

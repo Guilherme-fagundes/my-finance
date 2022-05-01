@@ -7,8 +7,20 @@ use App\Models\Launch;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/** 
+ * <b>Classe responsavel pelo controlador dos lançamentos</b>
+ * @copyright (c) 2022, Guilherme K Fagundes
+ */
+
 class LancamentoController extends Controller
 {
+    
+    /**
+     * <p>Realiza o cadastro de lançamentos</p>
+     * @param Request $request
+     * @return json /
+     */
+    
     public function novoLancamentoPost(Request $request)
     {
         if ($request->ajax()){
