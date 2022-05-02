@@ -68,7 +68,7 @@
                                     <td>{{ $lancamento->tipo_lancamento }}</td>
                                     <td>{{ $lancamento->nome }}</td>
                                     <td class="launchAction">
-                                        <a href="#" class="actionView launchView launchView"><i
+                                        <a href="#" title="Visão geral do lançamento" class="actionView launchView j-launchView"><i
                                                 class="fa-solid fa-eye"></i></a>
                                         <a href="#" class="actionEdit launchDelete j-editLaunch"><i
                                                 class="fa-solid fa-pen"></i></a>
@@ -222,6 +222,24 @@
                 </div>
             </div>
 
+            <!-- Modal visualizar lançamento -->
+            <div class="modal fade" id="visaoGeralLancamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title" id="exampleModalLongTitle">Visualização geral do lançamento</h1>
+                            
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <script>
                 $(function () {
 
@@ -308,6 +326,14 @@
 
                             }
                         });
+
+                    });
+
+                    //Visão geral do lançamento
+                    $(".j-launchView").click(function (e) {
+                        e.preventDefault();
+
+                        $("#visaoGeralLancamento").modal('show');
 
                     });
 
