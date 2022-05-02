@@ -18,7 +18,7 @@ class LancamentoController extends Controller
     /**
      * <p>Realiza o cadastro de lançamentos</p>
      * @param Request $request
-     * @return json /
+     * @return \Illuminate\Http\JsonResponse /
      */
 
     public function novoLancamentoPost(Request $request)

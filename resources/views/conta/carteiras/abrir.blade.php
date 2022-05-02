@@ -80,9 +80,16 @@
                                 </tr>
                             @endforeach
 
+
                             </tbody>
+
                         </table>
                     @endif
+
+                    {{ $lancamentos->links() }}
+{{--                        @if(count($lancamentos) > 5)--}}
+{{--                            @dd($lancamentos)--}}
+{{--                        @endif--}}
 
                 </div>
 
@@ -228,7 +235,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title" id="exampleModalLongTitle">Visualização geral do lançamento</h1>
-                            
+
                         </div>
                         <div class="modal-body">
                             ...

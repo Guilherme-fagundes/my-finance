@@ -177,7 +177,8 @@ class CarteiraController extends Controller
             ->where('tipo', '=', 2)->get();
 
         $categoriasLancamento = DB::table('categories')
-            ->join('launches', 'categories.id', '=', 'launches.category_id')->get();
+            ->join('launches', 'categories.id', '=', 'launches.category_id')
+            ->paginate(5);
 
 
         return view('conta.carteiras.abrir', [
