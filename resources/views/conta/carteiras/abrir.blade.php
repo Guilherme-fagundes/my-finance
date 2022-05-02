@@ -261,7 +261,14 @@
                             data: data,
                             dataType: 'json',
                             success: function(response) {
-                                console.log(response);
+                                if (response.error == true) {
+                                    alert(response.message);
+
+                                }else {
+                                    alert(response.message);
+                                    location.reload();
+                                }
+
 
                             }
                         });

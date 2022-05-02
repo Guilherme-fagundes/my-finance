@@ -62,6 +62,26 @@ class LancamentoController extends Controller
 
     public function delete(Request $request)
     {
-        dd($request->all());
+        $lancamento = Launch::where('id', '=', $request->launch_id)
+            ->where('user_id', '=', session()->get('userId'))->first();
+
+        if (!$lancamento) {
+            return Response()->json([
+                'error' => true,
+                'message' => 'Erro ao tentar excluir este lançamento.'
+            ]);
+        }else{
+
+            $deletaLancamento = Launch::find($request->launch_id)->delete();
+            if($deletaLancamento){
+                return Response()->json([
+                    'error' => false,
+                    'message' => 'Lançamento excluído com sucesso.'
+                ]);
+
+            }
+
+        }
+
     }
 }
