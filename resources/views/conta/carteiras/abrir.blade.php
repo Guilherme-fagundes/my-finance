@@ -41,6 +41,7 @@
                             <th scope="col">Valor</th>
                             <th scope="col">Data</th>
                             <th scope="col">Tipo de lançamento</th>
+                            <th scope="col">Categoria</th>
                             <th scope="col">-</th>
                         </tr>
                         </thead>
@@ -51,6 +52,7 @@
                                 <td>{{ number_format($lancamento->valor, 2, ',', '.') }}</td>
                                 <td>{{ date("d/m/Y", strtotime($lancamento->data)) }}</td>
                                 <td>{{ $lancamento->tipo_lancamento }}</td>
+                                <td>{{ $lancamento->nome }}</td>
                                 <td class="launchAction">
                                     <a href="#" class="actionView launchView launchView"><i class="fa-solid fa-eye"></i></a>
                                     <a href="#" class="actionEdit launchDelete j-editLaunch"><i class="fa-solid fa-pen"></i></a>

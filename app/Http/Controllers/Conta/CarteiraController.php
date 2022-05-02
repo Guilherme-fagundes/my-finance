@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Conta;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Launch;
 use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
@@ -175,9 +176,8 @@ class CarteiraController extends Controller
             ->where('user_id', session()->get('userId'))
             ->where('tipo', '=', 2)->get();
 
-        $lerLancamentos = DB::table('launches')
-            ->where('user_id', '=', session()->get('userId'))
-            ->where('wallet_id', '=', $id)->get();
+        $categoriasLancamento = DB::table('categories')
+            ->join('launches', 'categories.id', '=', 'launches.category_id')->get();
 
 
         return view('conta.carteiras.abrir', [
@@ -186,7 +186,7 @@ class CarteiraController extends Controller
             'wallet' => $wallet,
             'despesas' => $readDespesas,
             'receitas' => $readReceitas,
-            'lancamentos' => $lerLancamentos
+            'lancamentos' => $categoriasLancamento
         ]);
     }
 }
