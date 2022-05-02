@@ -25,11 +25,16 @@
                     <h1 class="tituloMinhaCarteira mb-0"><i class="fa-solid fa-wallet"></i>
                         Carteira {{ strtolower($wallet->nome) }}</h1>
                 </div>
+
                 <div class="col-12 col-md-6 walletHeader">
                     <a href="#" class="btn btn-danger btn-sm btn-nova-despesa"><i class="fa-solid fa-circle-plus"></i>
                         Lançar nova despesa</a>
                     <a href="#" class="btn btn-success btn-sm btn-nova-renda"><i class="fa-solid fa-circle-plus"></i>
                         Lançar nova renda</a>
+                </div>
+                <div class="col-12">
+                    <p class="descricaoMinhaCarteira"><span>Aqui você pode visualizar e gerenciar seus lançamentos</span></p>
+
                 </div>
             </div>
 
