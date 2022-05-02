@@ -22,54 +22,70 @@
         <div class="container">
             <div class="row py-2 rowTitleWallet">
                 <div class="col-12 col-md-6">
-                    <h1 class="tituloMinhaCarteira mb-0"><i class="fa-solid fa-wallet"></i> Carteira {{ strtolower($wallet->nome) }}</h1>
+                    <h1 class="tituloMinhaCarteira mb-0"><i class="fa-solid fa-wallet"></i>
+                        Carteira {{ strtolower($wallet->nome) }}</h1>
                 </div>
                 <div class="col-12 col-md-6 walletHeader">
-                    <a href="#" class="btn btn-danger btn-sm btn-nova-despesa"><i class="fa-solid fa-circle-plus"></i> Lançar nova despesa</a>
-                    <a href="#" class="btn btn-success btn-sm btn-nova-renda"><i class="fa-solid fa-circle-plus"></i> Lançar nova renda</a>
+                    <a href="#" class="btn btn-danger btn-sm btn-nova-despesa"><i class="fa-solid fa-circle-plus"></i>
+                        Lançar nova despesa</a>
+                    <a href="#" class="btn btn-success btn-sm btn-nova-renda"><i class="fa-solid fa-circle-plus"></i>
+                        Lançar nova renda</a>
                 </div>
             </div>
 
             <div class="row mt-3 py-2">
                 <div class="col-12">
 
-                    <table class="table table-striped tabelaRelatorios">
-                        <thead>
-                        <tr>
+                    @if(count($lancamentos) == 0)
 
-                            <th scope="col">Descriçao</th>
-                            <th scope="col">Valor</th>
-                            <th scope="col">Data</th>
-                            <th scope="col">Tipo de lançamento</th>
-                            <th scope="col">Categoria</th>
-                            <th scope="col">-</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($lancamentos as $lancamento)
+                        <div class="alert alert-warning"><i class="fa-solid fa-circle-exclamation"></i>
+                            Não existem lançamentos cadastrados no momento
+                        </div>
+                    @else
+                        <table class="table table-striped tabelaRelatorios">
+                            <thead>
                             <tr>
-                                <td scope="row">{{ $lancamento->descricao }}</td>
-                                <td>{{ number_format($lancamento->valor, 2, ',', '.') }}</td>
-                                <td>{{ date("d/m/Y", strtotime($lancamento->data)) }}</td>
-                                <td>{{ $lancamento->tipo_lancamento }}</td>
-                                <td>{{ $lancamento->nome }}</td>
-                                <td class="launchAction">
-                                    <a href="#" class="actionView launchView launchView"><i class="fa-solid fa-eye"></i></a>
-                                    <a href="#" class="actionEdit launchDelete j-editLaunch"><i class="fa-solid fa-pen"></i></a>
-                                    <a href="#" data-launch_id="{{ $lancamento->id }}" data-action="{{ route('lancamento.delete') }}" class="actionDelete launchDelete j-deletLaunch"><i class="fa-solid fa-circle-xmark"></i></a>
-                                </td>
-                            </tr>
-                        @endforeach
 
-                        </tbody>
-                    </table>
+                                <th scope="col">Descriçao</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Data</th>
+                                <th scope="col">Tipo de lançamento</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">-</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($lancamentos as $lancamento)
+                                <tr>
+                                    <td scope="row">{{ $lancamento->descricao }}</td>
+                                    <td>{{ number_format($lancamento->valor, 2, ',', '.') }}</td>
+                                    <td>{{ date("d/m/Y", strtotime($lancamento->data)) }}</td>
+                                    <td>{{ $lancamento->tipo_lancamento }}</td>
+                                    <td>{{ $lancamento->nome }}</td>
+                                    <td class="launchAction">
+                                        <a href="#" class="actionView launchView launchView"><i
+                                                class="fa-solid fa-eye"></i></a>
+                                        <a href="#" class="actionEdit launchDelete j-editLaunch"><i
+                                                class="fa-solid fa-pen"></i></a>
+                                        <a href="#" data-launch_id="{{ $lancamento->id }}"
+                                           data-action="{{ route('lancamento.delete') }}"
+                                           class="actionDelete launchDelete j-deletLaunch"><i
+                                                class="fa-solid fa-circle-xmark"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                            </tbody>
+                        </table>
+                    @endif
 
                 </div>
 
             </div>
 
             <!-- Modal criar nova despesa -->
-            <div class="modal fade" id="criarNovaDespesa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal fade" id="criarNovaDespesa" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -89,8 +105,10 @@
                                 <div class="row">
                                     <div class="col-12 col-md-6">
                                         <div class="mb-3">
-                                            <label class="form-label"><i class="fa-solid fa-hand-holding-dollar"></i> Valor</label>
-                                            <input type="text" name="valor" class="form-control" id="despesa-valor" placeholder="0,00">
+                                            <label class="form-label"><i class="fa-solid fa-hand-holding-dollar"></i>
+                                                Valor</label>
+                                            <input type="text" name="valor" class="form-control" id="despesa-valor"
+                                                   placeholder="0,00">
                                         </div>
 
                                     </div>
@@ -105,11 +123,13 @@
 
                                     <div class="col-12">
                                         <div class="mb-3">
-                                            <label class="form-label"><i class="fa-solid fa-filter"></i> Categoria</label>
+                                            <label class="form-label"><i class="fa-solid fa-filter"></i>
+                                                Categoria</label>
                                             <select name="categoria" class="form-select">
                                                 <option>Selecione uma categoria</option>
                                                 @foreach($despesas as $categoryDespesa)
-                                                    <option value="{{ $categoryDespesa->id }}">{{ ucfirst($categoryDespesa->nome) }}</option>
+                                                    <option
+                                                        value="{{ $categoryDespesa->id }}">{{ ucfirst($categoryDespesa->nome) }}</option>
                                                 @endforeach
 
                                             </select>
@@ -119,7 +139,9 @@
 
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-success btn-sm float-end"><i class="fa-solid fa-plus"></i> Cadastrar despesa</button>
+                                    <button type="submit" class="btn btn-success btn-sm float-end"><i
+                                            class="fa-solid fa-plus"></i> Cadastrar despesa
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -129,7 +151,8 @@
             </div>
 
             <!-- Modal criar nova receita -->
-            <div class="modal fade" id="criarNovaReceita" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal fade" id="criarNovaReceita" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -149,8 +172,10 @@
                                 <div class="row">
                                     <div class="col-12 col-md-6">
                                         <div class="mb-3">
-                                            <label class="form-label"><i class="fa-solid fa-hand-holding-dollar"></i> Valor</label>
-                                            <input type="text" name="valor" class="form-control" id="receita-valor" placeholder="0,00">
+                                            <label class="form-label"><i class="fa-solid fa-hand-holding-dollar"></i>
+                                                Valor</label>
+                                            <input type="text" name="valor" class="form-control" id="receita-valor"
+                                                   placeholder="0,00">
                                         </div>
 
                                     </div>
@@ -165,11 +190,13 @@
 
                                     <div class="col-12">
                                         <div class="mb-3">
-                                            <label class="form-label"><i class="fa-solid fa-filter"></i> Categoria</label>
+                                            <label class="form-label"><i class="fa-solid fa-filter"></i>
+                                                Categoria</label>
                                             <select name="categoria" class="form-select">
                                                 <option>Selecione uma categoria</option>
                                                 @foreach($receitas as $categoryReceitas)
-                                                    <option value="{{ $categoryReceitas->id }}">{{ ucfirst($categoryReceitas->nome) }}</option>
+                                                    <option
+                                                        value="{{ $categoryReceitas->id }}">{{ ucfirst($categoryReceitas->nome) }}</option>
                                                 @endforeach
 
                                             </select>
@@ -179,7 +206,9 @@
 
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-success btn-sm float-end"><i class="fa-solid fa-plus"></i> Cadastrar receita</button>
+                                    <button type="submit" class="btn btn-success btn-sm float-end"><i
+                                            class="fa-solid fa-plus"></i> Cadastrar receita
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -211,7 +240,7 @@
                     $(".btn-nova-renda").click(function (e) {
                         e.preventDefault();
 
-                        if ($('.j-alert').html() != ''){
+                        if ($('.j-alert').html() != '') {
                             $(".j-alert").html('');
                         }
                         $('#criarNovaReceita').modal('show');
@@ -232,7 +261,7 @@
                             dataType: 'json',
                             success: function (response) {
 
-                                if (response.error == true){
+                                if (response.error == true) {
 
                                     $(".j-alert").html("");
                                     $('.j-alert').fadeIn(800, function () {
@@ -241,7 +270,7 @@
 
                                     });
 
-                                }else{
+                                } else {
                                     $("#criarNovaReceita").modal('hide');
                                     location.reload();
                                 }
@@ -252,7 +281,7 @@
                     });
 
                     //Deleta um lançamento
-                    $(".j-deletLaunch").click(function(e) {
+                    $(".j-deletLaunch").click(function (e) {
                         e.preventDefault();
 
                         var data = $(this).data();
@@ -262,11 +291,11 @@
                             type: 'GET',
                             data: data,
                             dataType: 'json',
-                            success: function(response) {
+                            success: function (response) {
                                 if (response.error == true) {
                                     alert(response.message);
 
-                                }else {
+                                } else {
                                     alert(response.message);
                                     location.reload();
                                 }
