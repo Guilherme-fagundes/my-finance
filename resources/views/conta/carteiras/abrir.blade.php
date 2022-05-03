@@ -39,7 +39,7 @@
             </div>
 
             <div class="row mt-3 py-2">
-                <div class="col-12">
+                <div class="col-auto col-md-12">
 
                     @if(count($lancamentos) == 0)
 
@@ -68,9 +68,7 @@
                                     <td>{{ $lancamento->tipo_lancamento }}</td>
                                     <td>{{ $lancamento->nome }}</td>
                                     <td class="launchAction">
-                                        <a href="#" title="Visão geral do lançamento" class="actionView launchView j-launchView"><i
-                                                class="fa-solid fa-eye"></i></a>
-                                        <a href="#" class="actionEdit launchDelete j-editLaunch"><i
+                                        <a href="#" data-launch_id="{{ $lancamento->id }}" class="actionEdit launchDelete j-editLaunch"><i
                                                 class="fa-solid fa-pen"></i></a>
                                         <a href="#" data-launch_id="{{ $lancamento->id }}"
                                            data-action="{{ route('lancamento.delete') }}"
@@ -87,9 +85,6 @@
                     @endif
 
                     {{ $lancamentos->links() }}
-{{--                        @if(count($lancamentos) > 5)--}}
-{{--                            @dd($lancamentos)--}}
-{{--                        @endif--}}
 
                 </div>
 
@@ -195,7 +190,7 @@
                                     <div class="col-12 col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label"><i class="fa-solid fa-filter"></i> Data</label>
-                                            <input type="date" name="data" class="form-control">
+                                            <input type="text" name="data" class="form-control">
                                         </div>
 
                                     </div>
@@ -229,24 +224,89 @@
                 </div>
             </div>
 
-            <!-- Modal visualizar lançamento -->
-            <div class="modal fade" id="visaoGeralLancamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <!-- Modal editar lançamento -->
+            <div class="modal fade" id="editaLancamento" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title" id="exampleModalLongTitle">Visualização geral do lançamento</h1>
+                            <h1 class="modal-title" id="exampleModalLongTitle">Editando lançamento</h1>
 
                         </div>
                         <div class="modal-body">
-                            ...
+                            <div class="j-alert" role="alert"></div>
+                            <form method="post" action="" class="j-formEditaLancamento">
+                                @csrf
+                                <input type="hidden" name="wallet_id" id="wallet_id" value="">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-book"></i> Descrição</label>
+                                    <input class="form-control" type="text" id="lancamentoDescricao" name="descricao" placeholder="Descrição">
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label"><i class="fa-solid fa-hand-holding-dollar"></i>
+                                                Valor</label>
+                                            <input type="text" name="valor" class="form-control" id="lancamentoValor"
+                                                   placeholder="0,00">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-12 col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label"><i class="fa-solid fa-filter"></i> Data</label>
+                                            <input type="date" id="lancamentoData" value="" name="data" class="form-control">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label"><i class="fa-solid fa-filter"></i>
+                                                Tipo de lançamento</label>
+                                            <select name="tipo_lancamento" class="form-select j-tipoLancamento" >
+
+                                                <option value="2">Receita</option>
+                                                <option value="1">Despesa</option>
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label"><i class="fa-solid fa-filter"></i>
+                                                Categoria</label>
+                                            <select name="categoria" class="form-select j-lancamentoCategoria">
+                                                <option value="null">Selecione uma categoria</option>
+                                                @foreach($categories as $category)
+                                                    <option
+                                                        value="{{ $category->id }}">{{ ucfirst($category->nome) }}</option>
+                                                @endforeach
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary btn-sm float-end"><i
+                                            class="fa-solid fa-pencil"></i> Editar lancamento
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+
                     </div>
                 </div>
             </div>
+
+            <div class="modal-dialog modal-sm j-alertModal"></div>
+
             <script>
                 $(function () {
 
@@ -337,10 +397,41 @@
                     });
 
                     //Visão geral do lançamento
-                    $(".j-launchView").click(function (e) {
+                    $(".j-editLaunch").click(function (e) {
                         e.preventDefault();
 
-                        $("#visaoGeralLancamento").modal('show');
+                        var data = $(this).data();
+                        console.log(data)
+
+                        $("#editaLancamento").modal('show');
+
+                        $.ajax({
+                            url: "{{ route('lancamento.edit') }}",
+                            type: 'GET',
+                            data: data,
+                            dataType: 'json',
+                            success: function(response) {
+                                if (response.error == true){
+                                    alert(response.message);
+
+                                }else{
+
+                                    $("#lancamentoDescricao").val(response.result.descricao);
+                                    $("#lancamentoValor").val(response.result.valor);
+                                    $("#lancamentoData").val(response.result.data);
+                                    $("#wallet_id").val(response.result.wallet_id);
+
+                                    if (response.result.tipo == 2){
+                                        $(".j-tipoLancamento").html('<option value='+response.result.tipo+'>'+response.result.tipo_lancamento+'</option><option value="1">Despesa</option>');
+
+                                    }else{
+                                        $(".j-tipoLancamento").html('<option value='+response.result.tipo+'>'+response.result.tipo_lancamento+'</option><option value="2">Receita</option>')
+                                    }
+
+                                }
+
+                            }
+                        })
 
                     });
 

@@ -225,7 +225,7 @@
                             data: data,
                             dataType: 'JSON',
                             success: function (response) {
-                                console.log(response)
+
                                 $('#categoriaNome').val(response.result.nome);
                                 $('#categoriaTipo').val(response.result.tipo);
                                 $('#catId').val(response.result.id);

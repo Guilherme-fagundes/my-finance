@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Launch;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * <b>Classe responsavel pelo controlador dos lançamentos</b>
@@ -60,6 +61,12 @@ class LancamentoController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|void
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
     public function delete(Request $request)
     {
         $lancamento = Launch::where('id', '=', $request->launch_id)
@@ -83,5 +90,39 @@ class LancamentoController extends Controller
 
         }
 
+    }
+
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|void
+     */
+    public function editLaunch(Request $request)
+    {
+        if ($request->ajax()){
+            if ($request->all()){
+                $readLaunch = DB::table('categories')
+                    ->join('launches', 'categories.id', '=', 'launches.category_id')
+                    ->first();
+
+                if (!$readLaunch){
+                    return Response()->json([
+                        'error' => true,
+                        'message' => 'Não é possível exibir dados.'
+                    ]);
+
+                }
+
+
+                $readLaunch->valor = number_format($readLaunch->valor, 2, ',', '.');
+                $readLaunch->data = date('Y-m-d H:i:s', strtotime($readLaunch->data));
+
+                return Response()->json([
+                    'error' => false,
+                    'result' => $readLaunch,
+                ]);
+            }
+
+        }
     }
 }

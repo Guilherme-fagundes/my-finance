@@ -180,6 +180,8 @@ class CarteiraController extends Controller
             ->join('launches', 'categories.id', '=', 'launches.category_id')
             ->paginate(5);
 
+        $readCategories = Category::all()->all();
+
 
         return view('conta.carteiras.abrir', [
             'title' => env('APP_NAME') . ' | Carteira ' . $wallet->nome,
@@ -187,7 +189,8 @@ class CarteiraController extends Controller
             'wallet' => $wallet,
             'despesas' => $readDespesas,
             'receitas' => $readReceitas,
-            'lancamentos' => $categoriasLancamento
+            'lancamentos' => $categoriasLancamento,
+            'categories' => $readCategories
         ]);
     }
 }
