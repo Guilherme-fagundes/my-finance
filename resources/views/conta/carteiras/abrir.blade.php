@@ -238,6 +238,7 @@
                             <form method="post" action="" class="j-formEditaLancamento">
                                 @csrf
                                 <input type="hidden" name="wallet_id" id="wallet_id" value="">
+                                <input type="hidden" name="id" id="lancamento_id" value="">
                                 <div class="mb-3">
                                     <label class="form-label"><i class="fa-solid fa-book"></i> Descrição</label>
                                     <input class="form-control" type="text" id="lancamentoDescricao" name="descricao" placeholder="Descrição">
@@ -267,7 +268,7 @@
                                             <label class="form-label"><i class="fa-solid fa-filter"></i>
                                                 Tipo de lançamento</label>
                                             <select name="tipo_lancamento" class="form-select j-tipoLancamento" >
-
+                                                <option selected="selected" value="null">Selecione o tipo de lançamento </option>
                                                 <option value="2">Receita</option>
                                                 <option value="1">Despesa</option>
 
@@ -280,8 +281,8 @@
                                         <div class="mb-3">
                                             <label class="form-label"><i class="fa-solid fa-filter"></i>
                                                 Categoria</label>
-                                            <select name="categoria" class="form-select j-lancamentoCategoria">
-                                                <option value="null">Selecione uma categoria</option>
+                                            <select name="category_id" class="form-select j-lancamentoCategoria">
+                                                <option selected value="null">Selecione uma categoria</option>
                                                 @foreach($categories as $category)
                                                     <option
                                                         value="{{ $category->id }}">{{ ucfirst($category->nome) }}</option>
@@ -316,6 +317,11 @@
                         decimal: ','
                     });
                     $("#receita-valor").maskMoney({
+                        allowNegative: true,
+                        thousands: '.',
+                        decimal: ','
+                    });
+                    $("#lancamentoValor").maskMoney({
                         allowNegative: true,
                         thousands: '.',
                         decimal: ','
@@ -400,8 +406,12 @@
                     $(".j-editLaunch").click(function (e) {
                         e.preventDefault();
 
+                        if ($('.j-alert').html() != ''){
+                            $(".j-alert").html('');
+                        };
+
                         var data = $(this).data();
-                        console.log(data)
+
 
                         $("#editaLancamento").modal('show');
 
@@ -419,15 +429,46 @@
                                     $("#lancamentoDescricao").val(response.result.descricao);
                                     $("#lancamentoValor").val(response.result.valor);
                                     $("#lancamentoData").val(response.result.data);
+                                    $("#lancamento_id").val(response.result.id);
                                     $("#wallet_id").val(response.result.wallet_id);
 
                                     if (response.result.tipo == 2){
-                                        $(".j-tipoLancamento").html('<option value='+response.result.tipo+'>'+response.result.tipo_lancamento+'</option><option value="1">Despesa</option>');
+                                        $(".j-tipoLancamento").html('<option value='+response.result.tipo_lancamento+'>'+response.result.tipo_lancamento+'</option><option value="1">Despesa</option>');
 
                                     }else{
-                                        $(".j-tipoLancamento").html('<option value='+response.result.tipo+'>'+response.result.tipo_lancamento+'</option><option value="2">Receita</option>')
+                                        $(".j-tipoLancamento").html('<option value='+response.result.tipo_lancamento+'>'+response.result.tipo_lancamento+'</option><option value="2">Receita</option>')
                                     }
 
+                                }
+
+                            }
+                        });
+
+                    });
+
+                    $(".j-formEditaLancamento").submit(function (e) {
+                        e.preventDefault();
+
+                        var formData = $(this).serialize();
+
+                        $.ajax({
+                            url: "{{ route('lancamento.edit.post') }}",
+                            type: 'POST',
+                            data: formData,
+                            dataType: 'json',
+                            success: function (response) {
+
+                                if (response.error == true){
+                                    $(".j-alert").html("");
+                                    $('.j-alert').fadeIn(800, function () {
+                                        $(this).html("<div class=\"alert alert-warning\"><i class=\"fa-solid fa-circle-exclamation\"></i> " + response.message + "</div>")
+                                            .addClass('mb-0 mt-3');
+
+                                    });
+                                }else{
+                                    $('.j-alert').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> " + response.message + "</div>");
+                                    $("#editarCategoria").modal('hide');
+                                    location.reload();
                                 }
 
                             }
@@ -435,7 +476,7 @@
 
                     });
 
-                })
+                });
             </script>
 
     </section>

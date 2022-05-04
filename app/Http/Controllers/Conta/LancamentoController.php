@@ -125,4 +125,39 @@ class LancamentoController extends Controller
 
         }
     }
+
+    public function editLaunchPost(Request $request)
+    {
+        if ($request->ajax()){
+            if ($request->all()){
+
+                if (in_array('', $request->all())){
+                    return Response()->json([
+                        'error' => true,
+                        'message' => 'Preencha todos os campos'
+                    ]);
+                }
+
+                $lancamentoUpdate = $request->except('_token');
+
+                $lancamentoUpdate['tipo_lancamento'] = ($request->tipo_lancamento == 'Receita' ? $lancamentoUpdate['tipo_lancamento'] = 'Receita' : 'Despesa');
+                $lancamentoUpdate['valor'] = (double) str_replace(',', '.', str_replace('.', '', $request->valor));
+
+                $lancamentoAtualiza = DB::table('launches')
+                    ->where('id', $request->id)
+                    ->update($lancamentoUpdate);
+
+                if ($lancamentoAtualiza){
+                    return Response()->json([
+                        'error' => false,
+                        'message' => 'Lançamento atualizado com successo.'
+                    ]);
+                }
+
+
+            }
+
+        }
+
+    }
 }
