@@ -36,6 +36,8 @@ class LancamentoController extends Controller
                         'message' => 'Não pode ter campos em branco para fazer um lançamento'
                     ]);
                 }else{
+
+
                     $lancamento = new Launch();
 
                     $lancamento->user_id = session()->get('userId');
@@ -44,7 +46,7 @@ class LancamentoController extends Controller
                     $lancamento->descricao = $request->descricao;
                     $lancamento->valor = (double) str_replace(',', '.', str_replace('.', '', $request->valor));
                     $lancamento->data = $request->data;
-                    $lancamento->tipo_lancamento = 'Receita';
+                    $lancamento->tipo_lancamento = $request->tipo_lancamento;
 
                     if ($lancamento->save()){
                         return Response()->json([
@@ -93,37 +95,17 @@ class LancamentoController extends Controller
     }
 
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse|void
-     */
-    public function editLaunch(Request $request)
+
+    public function editLaunch(int $id, Request $request)
     {
-        if ($request->ajax()){
-            if ($request->all()){
-                $readLaunch = DB::table('categories')
-                    ->join('launches', 'categories.id', '=', 'launches.category_id')
-                    ->first();
-
-                if (!$readLaunch){
-                    return Response()->json([
-                        'error' => true,
-                        'message' => 'Não é possível exibir dados.'
-                    ]);
-
-                }
+        $userLogged = User::where('id', session()->get('userId'))->first();
 
 
-                $readLaunch->valor = number_format($readLaunch->valor, 2, ',', '.');
-                $readLaunch->data = date('Y-m-d H:i:s', strtotime($readLaunch->data));
 
-                return Response()->json([
-                    'error' => false,
-                    'result' => $readLaunch,
-                ]);
-            }
-
-        }
+        return view('conta.lancamentos.editar', [
+            'title' => env('APP_NAME'). " | Editando lançamento",
+            'user' => $userLogged
+        ]);
     }
 
     public function editLaunchPost(Request $request)

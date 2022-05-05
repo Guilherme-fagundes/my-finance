@@ -33,7 +33,8 @@
                         Lançar nova renda</a>
                 </div>
                 <div class="col-12">
-                    <p class="descricaoMinhaCarteira"><span>Aqui você pode visualizar e gerenciar seus lançamentos</span></p>
+                    <p class="descricaoMinhaCarteira">
+                        <span>Aqui você pode visualizar e gerenciar seus lançamentos</span></p>
 
                 </div>
             </div>
@@ -68,7 +69,8 @@
                                     <td>{{ $lancamento->tipo_lancamento }}</td>
                                     <td>{{ $lancamento->nome }}</td>
                                     <td class="launchAction">
-                                        <a href="#" data-launch_id="{{ $lancamento->id }}" class="actionEdit launchDelete j-editLaunch"><i
+                                        <a href="{{ route('lancamento.edit', ['id' => $lancamento->id]) }}" data-launch_id="{{ $lancamento->id }}"
+                                           class="actionEdit launchDelete j-editLaunch"><i
                                                 class="fa-solid fa-pen"></i></a>
                                         <a href="#" data-launch_id="{{ $lancamento->id }}"
                                            data-action="{{ route('lancamento.delete') }}"
@@ -128,6 +130,7 @@
 
                                     </div>
 
+                                    <input type="hidden" name="tipo_lancamento" value="Despesa"/>
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label"><i class="fa-solid fa-filter"></i>
@@ -190,11 +193,12 @@
                                     <div class="col-12 col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label"><i class="fa-solid fa-filter"></i> Data</label>
-                                            <input type="text" name="data" class="form-control">
+                                            <input type="date" name="data" class="form-control">
                                         </div>
 
                                     </div>
 
+                                    <input type="hidden" name="tipo_lancamento" value="Receita"/>
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label"><i class="fa-solid fa-filter"></i>
@@ -223,90 +227,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Modal editar lançamento -->
-            <div class="modal fade" id="editaLancamento" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title" id="exampleModalLongTitle">Editando lançamento</h1>
-
-                        </div>
-                        <div class="modal-body">
-                            <div class="j-alert" role="alert"></div>
-                            <form method="post" action="" class="j-formEditaLancamento">
-                                @csrf
-                                <input type="hidden" name="wallet_id" id="wallet_id" value="">
-                                <input type="hidden" name="id" id="lancamento_id" value="">
-                                <div class="mb-3">
-                                    <label class="form-label"><i class="fa-solid fa-book"></i> Descrição</label>
-                                    <input class="form-control" type="text" id="lancamentoDescricao" name="descricao" placeholder="Descrição">
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label"><i class="fa-solid fa-hand-holding-dollar"></i>
-                                                Valor</label>
-                                            <input type="text" name="valor" class="form-control" id="lancamentoValor"
-                                                   placeholder="0,00">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-12 col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label"><i class="fa-solid fa-filter"></i> Data</label>
-                                            <input type="date" id="lancamentoData" value="" name="data" class="form-control">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="mb-3">
-                                            <label class="form-label"><i class="fa-solid fa-filter"></i>
-                                                Tipo de lançamento</label>
-                                            <select name="tipo_lancamento" class="form-select j-tipoLancamento" >
-                                                <option selected="selected" value="null">Selecione o tipo de lançamento </option>
-                                                <option value="2">Receita</option>
-                                                <option value="1">Despesa</option>
-
-                                            </select>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="mb-3">
-                                            <label class="form-label"><i class="fa-solid fa-filter"></i>
-                                                Categoria</label>
-                                            <select name="category_id" class="form-select j-lancamentoCategoria">
-                                                <option selected value="null">Selecione uma categoria</option>
-                                                @foreach($categories as $category)
-                                                    <option
-                                                        value="{{ $category->id }}">{{ ucfirst($category->nome) }}</option>
-                                                @endforeach
-
-                                            </select>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary btn-sm float-end"><i
-                                            class="fa-solid fa-pencil"></i> Editar lancamento
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-dialog modal-sm j-alertModal"></div>
 
             <script>
                 $(function () {
@@ -376,6 +296,39 @@
 
                     });
 
+                    //Cadastra nova Despesa
+                    $(".j-formCriarNovaDespesa").submit(function (e) {
+                        e.preventDefault();
+
+                        var formData = $(this).serialize();
+                        var form = $(this);
+
+                        $.ajax({
+                            url: "{{ route('lancamento.novo.post') }}",
+                            type: 'POST',
+                            data: formData,
+                            dataType: 'json',
+                            success: function (response) {
+
+                                if (response.error == true) {
+
+                                    $(".j-alert").html("");
+                                    $('.j-alert').fadeIn(800, function () {
+                                        $(this).html("<div class=\"alert alert-warning\"><i class=\"fa-solid fa-circle-exclamation\"></i> " + response.message + "</div>")
+                                            .addClass('mb-0 mt-3');
+
+                                    });
+
+                                } else {
+                                    $("#criarNovaReceita").modal('hide');
+                                    location.reload();
+                                }
+
+                            }
+                        });
+
+                    });
+
                     //Deleta um lançamento
                     $(".j-deletLaunch").click(function (e) {
                         e.preventDefault();
@@ -399,80 +352,6 @@
 
                             }
                         });
-
-                    });
-
-                    //Visão geral do lançamento
-                    $(".j-editLaunch").click(function (e) {
-                        e.preventDefault();
-
-                        if ($('.j-alert').html() != ''){
-                            $(".j-alert").html('');
-                        };
-
-                        var data = $(this).data();
-
-
-                        $("#editaLancamento").modal('show');
-
-                        $.ajax({
-                            url: "{{ route('lancamento.edit') }}",
-                            type: 'GET',
-                            data: data,
-                            dataType: 'json',
-                            success: function(response) {
-                                if (response.error == true){
-                                    alert(response.message);
-
-                                }else{
-
-                                    $("#lancamentoDescricao").val(response.result.descricao);
-                                    $("#lancamentoValor").val(response.result.valor);
-                                    $("#lancamentoData").val(response.result.data);
-                                    $("#lancamento_id").val(response.result.id);
-                                    $("#wallet_id").val(response.result.wallet_id);
-
-                                    if (response.result.tipo == 2){
-                                        $(".j-tipoLancamento").html('<option value='+response.result.tipo_lancamento+'>'+response.result.tipo_lancamento+'</option><option value="1">Despesa</option>');
-
-                                    }else{
-                                        $(".j-tipoLancamento").html('<option value='+response.result.tipo_lancamento+'>'+response.result.tipo_lancamento+'</option><option value="2">Receita</option>')
-                                    }
-
-                                }
-
-                            }
-                        });
-
-                    });
-
-                    $(".j-formEditaLancamento").submit(function (e) {
-                        e.preventDefault();
-
-                        var formData = $(this).serialize();
-
-                        $.ajax({
-                            url: "{{ route('lancamento.edit.post') }}",
-                            type: 'POST',
-                            data: formData,
-                            dataType: 'json',
-                            success: function (response) {
-
-                                if (response.error == true){
-                                    $(".j-alert").html("");
-                                    $('.j-alert').fadeIn(800, function () {
-                                        $(this).html("<div class=\"alert alert-warning\"><i class=\"fa-solid fa-circle-exclamation\"></i> " + response.message + "</div>")
-                                            .addClass('mb-0 mt-3');
-
-                                    });
-                                }else{
-                                    $('.j-alert').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> " + response.message + "</div>");
-                                    $("#editarCategoria").modal('hide');
-                                    location.reload();
-                                }
-
-                            }
-                        })
 
                     });
 
