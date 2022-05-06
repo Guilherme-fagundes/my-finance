@@ -18,14 +18,101 @@
         </div>
     </section>
 
-    <section class="sessCategories">
+    <section class="sessLancamento">
         <div class="container">
-            <div class="row py-2 rowTitleCategories">
+            <div class="row py-2 rowTitleLaunches">
                 <div class="col-12 d-flex justify-content-between align-items-center">
-                    <h1 class="tituloMinhasCategorias mb-0"><i class="fa-solid fa-money-bill"></i> Editando lançamento</h1>
+                    <h1 class="tituloMeusLancamentos mb-0"><i class="fa-solid fa-money-bill"></i> Editando lançamento
+                    </h1>
                 </div>
             </div>
 
+            <div class="row mt-3">
+                <div class="col-12">
+
+                    <form method="post" class="formEditarlancamento">
+                        @csrf
+
+{{--                        @dd($lancamento)--}}
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-book"></i> Descrição</label>
+                                    <input class="form-control" type="text" name="descricao"
+                                           value="{{ $lancamento->descricao }}">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-filter"></i> Categoria</label>
+                                    <select name="nome" class="form-select">
+                                        <option disabled="disabled" value="null">Selecione uma categoria</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->nome }}">{{ $category->nome }}</option>
+                                        @endforeach
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-12 col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-filter"></i> Tipo de
+                                        lançamento</label>
+                                    <select name="tipo_lancamento" class="form-select">
+                                        @if($lancamento->tipo_lancamento == 'Despesa')
+                                            <option selected="selected" value="Despesa">Despesa</option>
+                                            <option value="Receita">Receita</option>
+                                        @else
+                                            <option selected="selected" value="Receita">Receita</option>
+                                            <option value="Despesa">Despesa</option>
+                                        @endif
+                                    </select>
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-filter"></i> Data do lançamento /
+                                        Vencimento / recebimento</label>
+                                    <input class="form-control" type="date" name="data" value="{{ $lancamento->data }}">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-hand-holding-dollar"></i> Valor</label>
+                                    <input class="form-control" type="text" name="valor" id="lancamento_valor" value="{{ number_format($lancamento->valor, 2, ',', '.') }}">
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-pencil"></i> Editar lançamento</button>
+                    </form>
+
+                </div>
+
+            </div>
+
     </section>
+
+    <script>
+        $(function () {
+            $("#lancamento_valor").maskMoney({
+                allowNegative: true,
+                thousands: '.',
+                decimal: ','
+            });
+
+        })
+    </script>
 @endsection
 

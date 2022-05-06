@@ -100,11 +100,18 @@ class LancamentoController extends Controller
     {
         $userLogged = User::where('id', session()->get('userId'))->first();
 
+        $readLaunch = DB::table('categories')
+            ->join('launches', 'categories.id', '=', 'launches.category_id')
+            ->where('launches.id', $id)
+            ->first();
 
+        $categories = DB::table('categories')->get();
 
         return view('conta.lancamentos.editar', [
             'title' => env('APP_NAME'). " | Editando lançamento",
-            'user' => $userLogged
+            'user' => $userLogged,
+            'lancamento' => $readLaunch,
+            'categories' => $categories
         ]);
     }
 
