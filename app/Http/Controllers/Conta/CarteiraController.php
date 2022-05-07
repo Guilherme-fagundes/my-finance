@@ -178,7 +178,11 @@ class CarteiraController extends Controller
 
         $categoriasLancamento = DB::table('categories')
             ->join('launches', 'categories.id', '=', 'launches.category_id')
+            ->where('launches.user_id', session()->get('userId'))
+            ->where('launches.wallet_id', $id)
             ->paginate(5);
+
+//        dd($categoriasLancamento);
 
         $readCategories = Category::all()->all();
 
