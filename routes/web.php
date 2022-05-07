@@ -58,7 +58,7 @@ Route::prefix('app')->group(function (){
     Route::any('/lancamento/post', [LancamentoController::class, 'novoLancamentoPost'])->middleware(['checkuserlogin'])->name('lancamento.novo.post');
     Route::any('/lancamento/delete', [LancamentoController::class, 'delete'])->middleware(['checkuserlogin'])->name('lancamento.delete');
     Route::get('lancamento/{id}', [LancamentoController::class, 'editLaunch'])->middleware(['checkuserlogin'])->name('lancamento.edit');
-    Route::any('lancamento/edit/post', [LancamentoController::class, 'editLaunchPost'])->middleware(['checkuserlogin'])->name('lancamento.edit.post');
+    Route::post('lancamento/edit/post', [LancamentoController::class, 'editLaunchPost'])->middleware(['checkuserlogin'])->name('lancamento.edit.post');
 
 
     //Rotas categorias

@@ -5,13 +5,13 @@
     <section classs="sessAlert">
         <div class="container">
             <div class="row alertErrorBox">
-
                 @if($errors->all())
+
                     @foreach($errors->all() as $msg)
-                        <div class="alert alert-danger j-alert" role="alert"><i
-                                class="fas fa-info-circle"></i> {{ $msg }}</div>
+                        <div class="alert alert-danger j-alert" role="alert"> {{ $msg }}</div>
                     @endforeach
                 @endif
+
 
             </div>
 
@@ -30,10 +30,12 @@
             <div class="row mt-3">
                 <div class="col-12">
 
-                    <form method="post" class="formEditarlancamento">
+                    <form method="post" action="{{ route('lancamento.edit.post') }}" class="formEditarlancamento">
                         @csrf
 
-{{--                        @dd($lancamento)--}}
+
+
+                        <input type="hidden" name="id" value="{{ $id }}">
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
@@ -47,10 +49,10 @@
                             <div class="col-12 col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label"><i class="fa-solid fa-filter"></i> Categoria</label>
-                                    <select name="nome" class="form-select">
+                                    <select name="category_id" class="form-select">
                                         <option disabled="disabled" value="null">Selecione uma categoria</option>
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->nome }}">{{ $category->nome }}</option>
+                                            <option value="{{ $category->id }}">{{ $category->nome }}</option>
                                         @endforeach
 
                                     </select>

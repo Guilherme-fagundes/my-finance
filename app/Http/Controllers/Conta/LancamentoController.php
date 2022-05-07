@@ -7,6 +7,7 @@ use App\Models\Launch;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use JetBrains\PhpStorm\NoReturn;
 
 /**
  * <b>Classe responsavel pelo controlador dos lançamentos</b>
@@ -111,42 +112,36 @@ class LancamentoController extends Controller
             'title' => env('APP_NAME'). " | Editando lançamento",
             'user' => $userLogged,
             'lancamento' => $readLaunch,
-            'categories' => $categories
+            'categories' => $categories,
+            'id' => $id
         ]);
     }
 
     public function editLaunchPost(Request $request)
     {
-        if ($request->ajax()){
-            if ($request->all()){
-
-                if (in_array('', $request->all())){
-                    return Response()->json([
-                        'error' => true,
-                        'message' => 'Preencha todos os campos'
-                    ]);
-                }
-
-                $lancamentoUpdate = $request->except('_token');
-
-                $lancamentoUpdate['tipo_lancamento'] = ($request->tipo_lancamento == 'Receita' ? $lancamentoUpdate['tipo_lancamento'] = 'Receita' : 'Despesa');
-                $lancamentoUpdate['valor'] = (double) str_replace(',', '.', str_replace('.', '', $request->valor));
-
-                $lancamentoAtualiza = DB::table('launches')
-                    ->where('id', $request->id)
-                    ->update($lancamentoUpdate);
-
-                if ($lancamentoAtualiza){
-                    return Response()->json([
-                        'error' => false,
-                        'message' => 'Lançamento atualizado com successo.'
-                    ]);
-                }
+       if ($request->all()){
 
 
-            }
+           if (in_array('', $request->all())){
+               return redirect()->back()->withErrors('Não pode ter campos em branco');
 
-        }
+           }
 
+           $dataUpdate = $request->except(['id', '_token']);
+           $dataUpdate['valor'] = (double) str_replace(',', '.', str_replace('.', '', $request->valor));
+
+           $updateLancamento = DB::table('launches')
+               ->where('id', '=', $request->id)
+               ->update($dataUpdate);
+
+
+           if ($updateLancamento){
+               return redirect()->back()->withErrors(['Lançamento atualizado.']);
+
+           }else{
+               return redirect()->back()->withErrors(['Erro ao atualizar.']);
+           }
+
+       }
     }
 }
