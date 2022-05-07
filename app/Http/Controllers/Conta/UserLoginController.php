@@ -13,8 +13,18 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * <b>Esta classe é o controlador responsavel por fazer as autenticações do 
+ * usuário no sistema.</b>
+ * 
+ * @copyright (c) 2022, Guilherme K Fagundes
+ */
 class UserLoginController extends Controller
 {
+    /**
+     * <p>Metodo do controlador para exibir a tela de login e validar a sessão</p>
+     * 
+     */
     public function login()
     {
 
@@ -27,6 +37,11 @@ class UserLoginController extends Controller
         ]);
     }
 
+    /**
+     * <p>Metodo do controlador responsavel por receber, validar e retornar 
+     * mensagens para o usuario na tela de login </p>
+     * @param Request $request
+     */
     public function loginPost(Request $request)
     {
         $json['error'] = false;
@@ -81,6 +96,9 @@ class UserLoginController extends Controller
 
     }
 
+    /**
+     * <p>Metodo responsavel por reenviar e-mail de ativação de conta</p>
+     */
     public function reenviarEmail($email)
     {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -98,6 +116,9 @@ class UserLoginController extends Controller
 
     }
 
+    /**
+     * <p>Metodo por exibir tela de recuperação de senha</p>
+     */
     public function recoverPass()
     {
         return view('conta.esqueci-senha', [
@@ -105,6 +126,14 @@ class UserLoginController extends Controller
         ]);
     }
 
+    /**
+
+     * <p>Metodo responsavel por receber, validar a requisição do usuário e 
+     * retornar mensagens para a VIEW quando o mesmo envia o formulario 
+     * de recuperação</p>
+     * @param Request $request
+     * @return json
+     */
     public function recoverPassPost(Request $request)
     {
         if ($request->ajax()) {
@@ -145,6 +174,9 @@ class UserLoginController extends Controller
         }
     }
 
+    /**
+     * <p>Metodo responsável por realizar exibição da tela de cadastro</p>
+     */
     public function createUserAcount()
     {
         return view('conta.nova-conta', [
@@ -220,6 +252,12 @@ class UserLoginController extends Controller
 
     }
 
+    /**
+     * <p>Metodo responsavel por realizar a confirmação e atualização 
+     * do cadastro do usuário</p>
+     * @param Request $request
+     * 
+     */
     public function confirmUserAcount(Request $request)
     {
         if (!$request->get('email')) {
@@ -233,6 +271,11 @@ class UserLoginController extends Controller
         }
     }
 
+    /**
+     * <p>Metodo responsavel por exibir a tela de nova senha </p>
+     * @param Request $request
+     *
+     */
     public function newPass(Request $request)
     {
         if (in_array('', $request->request->all())) {
@@ -247,6 +290,12 @@ class UserLoginController extends Controller
         ]);
     }
 
+    /**
+     * <p>Metodo responsavel por validar e atualizar os dados da requisiçao de 
+     * nova senha<p>
+     * @param Request $request
+     * @return json
+     */
     public function newPassPost(Request $request)
     {
         if ($request->ajax()) {

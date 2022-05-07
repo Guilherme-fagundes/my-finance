@@ -3,6 +3,7 @@
 use App\Http\Controllers\Conta\CarteiraController;
 use App\Http\Controllers\Conta\CategoriaController;
 use App\Http\Controllers\Conta\ContaController;
+use App\Http\Controllers\Conta\LancamentoController;
 use App\Http\Controllers\Conta\UserLoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +54,11 @@ Route::prefix('app')->group(function (){
 
     Route::get('/carteira/{id}', [CarteiraController::class, 'openWallet'])->middleware(['checkuserlogin'])->name('carteira.abrir');
 
+    //Rotas lançamentos
+    Route::any('/lancamento/post', [LancamentoController::class, 'novoLancamentoPost'])->middleware(['checkuserlogin'])->name('lancamento.novo.post');
+    Route::any('/lancamento/delete', [LancamentoController::class, 'delete'])->middleware(['checkuserlogin'])->name('lancamento.delete');
+    Route::get('lancamento/{id}', [LancamentoController::class, 'editLaunch'])->middleware(['checkuserlogin'])->name('lancamento.edit');
+    Route::post('lancamento/edit/post', [LancamentoController::class, 'editLaunchPost'])->middleware(['checkuserlogin'])->name('lancamento.edit.post');
 
 
     //Rotas categorias

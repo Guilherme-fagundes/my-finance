@@ -244,7 +244,7 @@
   gap: 1em;
 }
 .sessionCarteira .statisticas .despesas {
-  background-color: #dc3545;
+  background-color: rgb(220, 53, 69);
   color: #f0f0f0;
 }
 .sessionCarteira .statisticas .despesas p.valor {
@@ -296,6 +296,18 @@ body {
   border-top: 2px solid brown;
 }
 .sessProfile .tituloMeuPerfil {
+  font-weight: 300;
+  font-size: 2em;
+  color: brown;
+}
+body {
+  background-color: #eee;
+}
+
+.sessLancamento .rowTitleLaunches {
+  border-bottom: 2px solid brown;
+}
+.sessLancamento .rowTitleLaunches .tituloMeusLancamentos {
   font-weight: 300;
   font-size: 2em;
   color: brown;
@@ -378,6 +390,11 @@ body {
   font-size: 2em;
   color: brown;
 }
+.sessWallet .rowTitleWallet .descricaoMinhaCarteira {
+  font-size: 0.8em;
+  color: #333;
+  margin-top: 1em;
+}
 .sessWallet .rowTitleWallet .walletHeader {
   display: flex;
   justify-content: end;
@@ -388,6 +405,23 @@ body {
 }
 .sessWallet .tabelaRelatorios {
   font-size: 0.8em;
+}
+.sessWallet .tabelaRelatorios .launchAction a {
+  padding: 3px 3px;
+  font-size: 0.8em;
+  border-radius: 3px;
+}
+.sessWallet .tabelaRelatorios .launchAction a.actionEdit {
+  background-color: #0078ff;
+  color: #f1f1f1;
+}
+.sessWallet .tabelaRelatorios .launchAction a.actionDelete {
+  background-color: red;
+  color: #f1f1f1;
+}
+.sessWallet .tabelaRelatorios .launchAction a.actionView {
+  background-color: yellowgreen;
+  color: #f1f1f1;
 }
 body {
   background-color: #eee;

@@ -8,8 +8,19 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
+/**
+
+ * <p><b>Esta classe é o controlador responsavel pelas categorias</b></p>
+ * @copyright (c) 2022, Guilherme K Fagundes
+ */
 class CategoriaController extends Controller
 {
+    /**
+
+     * <p>Metodo responsável por exibir a pagina index das categorias</p>
+     * @return array
+     */
     public function index()
     {
         $userLogged = User::where('id', session()->get('userId'))->first();
@@ -24,6 +35,13 @@ class CategoriaController extends Controller
         ]);
     }
 
+    /**
+
+     * <p>metodo responsável por validar e cadastrar novas categorias 
+     * no sistema</p>
+     * @param Request $request
+     * @return json Retorna as responstas das validações
+     */
     public function novaPost(Request $request)
     {
         if ($request->ajax()){
@@ -41,6 +59,9 @@ class CategoriaController extends Controller
                    'user_id' => session()->get('userId')
                ];
 
+               /**
+                * Une os ARRAYs em apanas 1 para realizar o cadastro
+                */
                $dataCategory = array_merge($userArr, $request->except('_token'));
 
                $createUser = DB::table('categories')
@@ -59,6 +80,12 @@ class CategoriaController extends Controller
 
     }
 
+    /**
+
+     * <p>Metodo responsável por fazer a leitura da categoria na modal de exibição</p>
+     * @param Request $request
+     * @return json 
+     */
     public function edit(Request $request)
     {
         if ($request->ajax()){
@@ -78,6 +105,12 @@ class CategoriaController extends Controller
 
     }
 
+    /**
+
+     * <p>Metodo responsável por realizar a alteração e validação da categoria </p>
+     * @param Request $request
+     * @return json
+     */
     public function editPost(Request $request)
     {
         if ($request->ajax()){
@@ -108,6 +141,12 @@ class CategoriaController extends Controller
         }
     }
 
+    /**
+
+     * <p>Metodo responsável por deletar uma categoria do sistema</p>
+     * @param Request $request
+     * @return json 
+     */
     public function delete(Request $request)
     {
         if ($request->ajax()){

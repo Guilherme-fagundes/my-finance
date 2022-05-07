@@ -9,6 +9,12 @@ body{
             font-size: 2em;
             color: brown;
         }
+        .descricaoMinhaCarteira{
+            font-size: .8em;
+            color: #333;
+            margin-top: 1em;
+
+        }
         .walletHeader{
             display: flex;
             justify-content: end;
@@ -21,6 +27,26 @@ body{
 
     .tabelaRelatorios{
         font-size: .8em;
+        .launchAction{
+            a{
+                padding: 3px 3px;
+                font-size: .8em;
+                border-radius: 3px;
+            }
+
+            a.actionEdit{
+                background-color: #0078ff;
+                color: #f1f1f1;
+            }
+            a.actionDelete{
+                background-color: red;
+                color: #f1f1f1;
+            }
+            a.actionView{
+                background-color: yellowgreen;
+                color: #f1f1f1;
+            }
+        }
     }
 
 
