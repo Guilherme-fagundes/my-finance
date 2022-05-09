@@ -24,6 +24,7 @@
                 <div class="col-12 d-flex justify-content-between align-items-center">
                     <h1 class="tituloMeusLancamentos mb-0"><i class="fa-solid fa-money-bill"></i> Editando lançamento
                     </h1>
+                    <a href="{{ route('carteira.abrir', ['id' => $lancamento->wallet_id]) }}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
                 </div>
             </div>
 
