@@ -27,6 +27,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 walletHeader">
+                    <a href="{{ route('carteiras.listar') }}" class="btn btn-outline-secondary btn-sm btn-voltar"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
                     <a href="#" class="btn btn-danger btn-sm btn-nova-despesa"><i class="fa-solid fa-circle-plus"></i>
                         Lançar nova despesa</a>
                     <a href="#" class="btn btn-success btn-sm btn-nova-renda"><i class="fa-solid fa-circle-plus"></i>
