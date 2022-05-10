@@ -25,7 +25,7 @@ class CarteiraController extends Controller
     {
         $userLogged = User::where('id', session()->get('userId'))->first();
         $wallets = $userLogged->wallet()->get();
-        
+
 
 
         return view('conta.carteiras.listar', [
@@ -93,6 +93,16 @@ class CarteiraController extends Controller
     public function delete(Request $request)
     {
         if ($request->ajax()) {
+
+            $checkExist = DB::table('launches')
+                ->where('user_id', session()->get('userId'))
+                ->where('wallet_id', $request->carteira_id)->exists();
+            if ($checkExist){
+                return Response()->json([
+                    'error' => true,
+                    'message' => 'Esta carteira não pode ser excluída, pois existem lançamentos nesta carteira.'
+                ]);
+            }
 
             $delWallet = Wallet::where('id', '=', $request->get('carteira_id'))->first();
 
