@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Conta;
 
+use App\Helpers\CarteirasHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Launch;
@@ -23,13 +24,14 @@ class CarteiraController extends Controller
     public function listar()
     {
         $userLogged = User::where('id', session()->get('userId'))->first();
-        $wallet = $userLogged->wallet()->get();
+        $wallets = $userLogged->wallet()->get();
+        
 
 
         return view('conta.carteiras.listar', [
             'title' => env("APP_NAME") . " | Todas as carteiras",
             'user' => $userLogged,
-            'wallets' => $wallet
+            'wallets' => $wallets
         ]);
     }
 
@@ -197,4 +199,7 @@ class CarteiraController extends Controller
             'categories' => $readCategories
         ]);
     }
+
+    // Metodos privados
+
 }
