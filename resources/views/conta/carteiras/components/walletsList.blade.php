@@ -7,11 +7,12 @@
         <div class="card-body">
             <h2 class="card-title walletTitle mb-4 text-center"><i class="fa-solid fa-wallet"></i> {{ $wallet->nome }}</h2>
 
-            <h3 class="card-text text-center saldo" data-saldo_carteira="{{ $saldoTotalCarteira }}"><span>R$ {{ number_format($saldoTotalCarteira, 2, ',', '.') }}</span></h3>
+            <h3 class="card-text text-center saldo"><span>R$ {{ number_format($saldoTotalCarteira, 2, ',', '.') }}</span></h3>
             <p class="card-text text-center despesa"><span>Despesas: R$ {{ number_format($despesas->get()->sum('valor'), 2, ',', '.') }}</span></p>
             <p class="card-text text-center receita"><span>Receitas: R$ {{ number_format($saldo->get()->sum('valor'), 2, ',', '.') }}</span></p>
             <div class="walletActions">
                 <p>
+                    <a href="#" data-saldo_carteira="{{ $saldoTotalCarteira }}"></a>
                     <a href="{{ route('carteira.abrir', ['id' => $wallet->id]) }}" title="Abrir carteira" class="walletView"><i class="fa-solid fa-eye"></i></a>
                     <a href="#" data-carteira_id="{{ $wallet->id }}" data-action="{{ route('carteiras.editar') }}" title="Editar carteira" class="walletEdit j-editWallet"><i class="fa-solid fa-pen"></i></a>
                     <a href="#" data-carteira_id="{{ $wallet->id }}" data-action="{{ route('carteiras.excluir.post') }}" title="Excluir carteira" class="walletTrash walletDelet"><i class="fa-solid fa-circle-xmark"></i></a>
@@ -56,6 +57,14 @@
     </div>
 </div>
 
+<!-- Modal alert -->
+<div class="modal fade bd-example-modal-lg j-modal_alert" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content py-4 px-4 bg-danger text-white j-modal_content_message">
+
+        </div>
+    </div>
+</div>
 
 <script>
    $(function () {
@@ -74,6 +83,10 @@
                success: function (response) {
                    if (response.error == false){
                        walletId.remove();
+                   }else{
+                       $(".j-modal_alert").modal('show');
+                       $('.j-modal_content_message').html("<p><i class=\"fa-solid fa-circle-exclamation\"></i> "+response.message+"</p");
+                       walletId.fadeIn(500);
                    }
 
                }
