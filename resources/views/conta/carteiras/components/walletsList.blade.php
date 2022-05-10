@@ -1,15 +1,17 @@
 <div class="col-12 col-md-4 mb-4 walletBox" id="wallet-{{ $wallet->id }}">
 
     @php
-    $saldoTotalCarteira = $saldo->get()->sum('valor') - $despesas->get()->sum('valor');
+        if (isset($saldo) && $despesas){
+            $saldoTotalCarteira = $saldo->get()->sum('valor') - $despesas->get()->sum('valor');
+
     @endphp
     <div class="card cardWallet w-100" style="background-color: {{ $wallet->cor }}; color: #f1f1f1;" id="{{ $wallet->id }}">
         <div class="card-body">
             <h2 class="card-title walletTitle mb-4 text-center"><i class="fa-solid fa-wallet"></i> {{ $wallet->nome }}</h2>
 
-            <h3 class="card-text text-center saldo"><span>R$ {{ number_format($saldoTotalCarteira, 2, ',', '.') }}</span></h3>
-            <p class="card-text text-center despesa"><span>Despesas: R$ {{ number_format($despesas->get()->sum('valor'), 2, ',', '.') }}</span></p>
-            <p class="card-text text-center receita"><span>Receitas: R$ {{ number_format($saldo->get()->sum('valor'), 2, ',', '.') }}</span></p>
+            <h3 class="card-text text-center saldo"><span>R$ {{ ( number_format($saldoTotalCarteira, 2, ',', '.') ?? '0,00' ) }}</span></h3>
+            <p class="card-text text-center despesa"><span>Despesas: R$ {{ ( number_format($despesas->get()->sum('valor'), 2, ',', '.') ?? '0,00' ) }}</span></p>
+            <p class="card-text text-center receita"><span>Receitas: R$ {{ ( number_format($saldo->get()->sum('valor'), 2, ',', '.') ?? '0,00' ) }}</span></p>
             <div class="walletActions">
                 <p>
                     <a href="#" data-saldo_carteira="{{ $saldoTotalCarteira }}"></a>
@@ -21,6 +23,27 @@
         </div>
 
     </div>
+    @php
+        }else{
+    @endphp
+    <div class="card cardWallet w-100" style="background-color: {{ $wallet->cor }}; color: #f1f1f1;" id="{{ $wallet->id }}">
+        <div class="card-body">
+            <h2 class="card-title walletTitle mb-4 text-center"><i class="fa-solid fa-wallet"></i> {{ $wallet->nome }}</h2>
+
+            <h3 class="card-text text-center saldo"><span>R$ 0,00</span></h3>
+            <p class="card-text text-center despesa"><span>Despesas: R$ 0,00</span></p>
+            <p class="card-text text-center receita"><span>Receitas: R$ 0,00</span></p>
+            <div class="walletActions">
+                <p>
+                    <a href="{{ route('carteira.abrir', ['id' => $wallet->id]) }}" title="Abrir carteira" class="walletView"><i class="fa-solid fa-eye"></i></a>
+                    <a href="#" data-carteira_id="{{ $wallet->id }}" data-action="{{ route('carteiras.editar') }}" title="Editar carteira" class="walletEdit j-editWallet"><i class="fa-solid fa-pen"></i></a>
+                    <a href="#" data-carteira_id="{{ $wallet->id }}" data-action="{{ route('carteiras.excluir.post') }}" title="Excluir carteira" class="walletTrash walletDelet"><i class="fa-solid fa-circle-xmark"></i></a>
+                </p>
+            </div>
+        </div>
+    @php
+        }
+    @endphp
 
 </div>
 

@@ -64,6 +64,9 @@ class CarteiraController extends Controller
                             ]);
                         }
 
+                        $saldo = [];
+                        $despesas = [];
+                        $saldoTotalCarteira = null;
 
                         $wallet = new Wallet();
 
@@ -75,7 +78,10 @@ class CarteiraController extends Controller
 
                         return Response()->json([
                             'result' => view('conta.carteiras.components.walletsList', [
-                                'wallet' => $wallet
+                                'wallet' => $wallet,
+                                'saldo' => $saldo,
+                                'despesas' => $despesas,
+                                'saldoTotalCarteira' => $saldoTotalCarteira
                             ])->render()
                         ]);
                     }
@@ -209,7 +215,5 @@ class CarteiraController extends Controller
             'categories' => $readCategories
         ]);
     }
-
-    // Metodos privados
 
 }
