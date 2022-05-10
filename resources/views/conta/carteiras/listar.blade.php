@@ -40,8 +40,21 @@
                 </div>
 
                 @foreach($wallets as $wallet)
-                   @include('conta.carteiras.components.walletsList', ['wallet' => $wallet])
+                    @php
+                        $saldo = \Illuminate\Support\Facades\DB::table('launches')
+                            ->where('user_id', session()->get('userId'))
+                            ->where('wallet_id', $wallet->id)
+                            ->where('tipo_lancamento', 'receita');
 
+                        $despesas = \Illuminate\Support\Facades\DB::table('launches')
+                            ->where('user_id', session()->get('userId'))
+                            ->where('wallet_id', $wallet->id)
+                            ->where('tipo_lancamento', 'despesa');
+                    @endphp
+
+                   @include('conta.carteiras.components.walletsList', ['wallet' => $wallet,
+                    'saldo' => $saldo,
+                    'despesas'=> $despesas])
                 @endforeach
 
             </div>
