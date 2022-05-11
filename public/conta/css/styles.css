@@ -241,21 +241,15 @@
   margin-bottom: 1em;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) !important;
 }
-.main-header .main-header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.main-header .main-header-content .mobileResizer {
-  cursor: pointer;
-  color: white;
-}
 .main-header .main-header-content .header-action .logout {
   text-decoration: none;
   color: white;
   padding: 5px 1.2em;
   background-color: darkseagreen;
   font-size: 0.8em;
+  float: right;
+  right: 0;
+  display: block;
 }
 .main-header .main-header-content .header-action .logout:hover {
   background-color: forestgreen;

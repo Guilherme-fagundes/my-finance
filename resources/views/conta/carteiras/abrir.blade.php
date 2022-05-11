@@ -20,7 +20,7 @@
 
     <section class="sessWallet">
         <div class="container">
-            <div class="row py-2 rowTitleWallet">
+            <div class="row py-2 rowTitleWallet d-flex justify-content-between align-items-center flex-wrap">
                 <div class="col-12 col-md-6">
                     <h1 class="tituloMinhaCarteira mb-0"><i class="fa-solid fa-wallet"></i>
                         Carteira {{ strtolower($wallet->nome) }}</h1>
@@ -30,8 +30,10 @@
                     <a href="{{ route('carteiras.listar') }}" class="btn btn-outline-secondary btn-sm btn-voltar"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
                     <a href="#" class="btn btn-danger btn-sm btn-nova-despesa"><i class="fa-solid fa-circle-plus"></i>
                         Lançar nova despesa</a>
-                    <a href="#" class="btn btn-success btn-sm btn-nova-renda"><i class="fa-solid fa-circle-plus"></i>
-                        Lançar nova renda</a>
+                    <a href="#" class="btn btn-success btn-sm btn-nova-renda">
+                        <span class="icon"><i class="fa-solid fa-circle-plus"></i></span>
+                        <span class="text"> Lançar nova renda</span>
+                    </a>
                 </div>
                 <div class="col-12">
                     <p class="descricaoMinhaCarteira">
