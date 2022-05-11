@@ -35,35 +35,32 @@
                         <p class="mt-1 badge bg-secondary"><span>{{ strtoupper($user->tipo_conta) }}</span></p>
                     </div>
                     <div class="articleDashboardBody">
-                        <div class="leftMenu">
-                            <a href="{{ route('conta.home') }}" title="Home">
-                                <span class="icon"><i class="fas fa-home"></i></span>
-                                <span class="text">Home</span>
-                            </a>
-                            <a href="{{ route('conta.perfil') }}" title="Perfil">
-                                <span class="icon"><i class="fas fa-user"></i></span>
-                                <span class="text">Perfil</span>
-                            </a>
-                            <a href="{{ route('categorias.index') }}" title="Todas as categorias">
-                                <span class="icon"><i class="fa-solid fa-book-open"></i></span>
-                                <span class="text">Categorias</span>
-                            </a>
-                            <a href="{{ route('carteiras.listar') }}" title="Todas as carteiras">
-                                <span class="icon"><i class="fas fa-wallet"></i></span>
-                                <span class="text">Carteiras</span>
-                            </a>
-                            <div class="dropdown show">
-                                <a href="#" class="dropdown-toggle" role="link" id="dropdownMenuLink" data-toggle="dropdown">
-                                    <span class="icon"><i class="fas fa-cog"></i></span>
-                                    <span class="text">configurações</span>
-
+                        <ul class="leftMenu mx-0 px-0">
+                            <li>
+                                <a href="{{ route('conta.home') }}" title="Home">
+                                    <span class="icon"><i class="fas fa-home"></i></span>
+                                    <span class="text">Home</span>
                                 </a>
-                                <div class="dashDropDown subMenu dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Configurar minha conta</a>
-                                </div>
-
-                            </div>
-                        </div>
+                            </li>
+                            <li>
+                                <a href="{{ route('conta.perfil') }}" title="Perfil">
+                                    <span class="icon"><i class="fas fa-user"></i></span>
+                                    <span class="text">Perfil</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('categorias.index') }}" title="Todas as categorias">
+                                    <span class="icon"><i class="fa-solid fa-book-open"></i></span>
+                                    <span class="text">Categorias</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('carteiras.listar') }}" title="Todas as carteiras">
+                                    <span class="icon"><i class="fas fa-wallet"></i></span>
+                                    <span class="text">Carteiras</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </article>
             </div>

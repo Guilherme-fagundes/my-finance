@@ -1,7 +1,27 @@
 .leftSiderBar{
     background-color: #261C2C;
+    @media screen and (max-width: 75.625em) {
+        .leftSiderBar{
+            width:  70px;
+            min-width:  4.375em;
+        }
+    }
+
     .articleDashboard{
         .articleDashboardHeader{
+            @media screen and (max-width: 75.625em) {
+                img{
+                    width: 50px;
+                    height: 50px;
+                }
+                p.userE-mail{
+                    display: none;
+                }
+                p.userName{
+                    font-size: .8em;
+                }
+
+            }
             padding: 1em 0;
             p.userE-mail{
                 font-size: .8em;
@@ -18,21 +38,23 @@
                     padding: 8px 1.2em;
                     color: #f1f1f1;
                     font-size: .8em;
+                    white-space: nowrap;
+                    @media all and (max-width: 41.875em) {
+                        text-align: center!important;
+                    }
                     &:hover{
                         background-color: #2d3748;
+                    }
+                    .text{
+                        @media all and (max-width: 41.875em) {
+                            display: none;
+                        }
                     }
                     .icon{
                         color: #f1f1f1;
                         margin-right: 10px;
-                    }
-                }
-                .dashDropDown{
-                    a{
-                        color: #2d3748;
-                        background-color: white;
-                        &:hover{
-                            background-color: #f0f0f0;
-                        }
+
+
                     }
                 }
             }

@@ -182,8 +182,26 @@
 .leftSiderBar {
   background-color: #261C2C;
 }
+@media screen and (max-width: 75.625em) {
+  .leftSiderBar .leftSiderBar {
+    width: 70px;
+    min-width: 4.375em;
+  }
+}
 .leftSiderBar .articleDashboard .articleDashboardHeader {
   padding: 1em 0;
+}
+@media screen and (max-width: 75.625em) {
+  .leftSiderBar .articleDashboard .articleDashboardHeader img {
+    width: 50px;
+    height: 50px;
+  }
+  .leftSiderBar .articleDashboard .articleDashboardHeader p.userE-mail {
+    display: none;
+  }
+  .leftSiderBar .articleDashboard .articleDashboardHeader p.userName {
+    font-size: 0.8em;
+  }
 }
 .leftSiderBar .articleDashboard .articleDashboardHeader p.userE-mail {
   font-size: 0.8em;
@@ -198,20 +216,24 @@
   padding: 8px 1.2em;
   color: #f1f1f1;
   font-size: 0.8em;
+  white-space: nowrap;
+}
+@media all and (max-width: 41.875em) {
+  .leftSiderBar .articleDashboard .articleDashboardBody .leftMenu a {
+    text-align: center !important;
+  }
 }
 .leftSiderBar .articleDashboard .articleDashboardBody .leftMenu a:hover {
   background-color: #2d3748;
 }
+@media all and (max-width: 41.875em) {
+  .leftSiderBar .articleDashboard .articleDashboardBody .leftMenu a .text {
+    display: none;
+  }
+}
 .leftSiderBar .articleDashboard .articleDashboardBody .leftMenu a .icon {
   color: #f1f1f1;
   margin-right: 10px;
-}
-.leftSiderBar .articleDashboard .articleDashboardBody .leftMenu .dashDropDown a {
-  color: #2d3748;
-  background-color: white;
-}
-.leftSiderBar .articleDashboard .articleDashboardBody .leftMenu .dashDropDown a:hover {
-  background-color: #f0f0f0;
 }
 
 .main-header {
