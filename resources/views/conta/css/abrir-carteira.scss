@@ -21,32 +21,69 @@ body{
             align-items: center;
             .btn-nova-despesa{
                 margin-right: 10px;
+                white-space: nowrap;
+                @media all and (max-width: 52.5em) {
+                    .text{
+                        display: none;
+                    }
+
+                }
+            }
+            .btn-nova-renda{
+                white-space: nowrap;
+                @media all and (max-width: 52.5em) {
+                    .text{
+                        display: none;
+                    }
+
+                }
             }
             .btn-voltar{
                 margin-right: 10px;
+                white-space: nowrap;
+                @media all and (max-width: 52.5em) {
+                    .text{
+                        display: none;
+                    }
+
+                }
             }
         }
     }
 
     .tabelaRelatorios{
-        font-size: .8em;
+        font-size: .6em;
+        @media all and (max-width: 35.625em) {
+            font-size: .6em;
+        }
+
         .launchAction{
+            @media all and (max-width: 35.625em) {
+                display: block;
+                float: left;
+
+            }
             a{
                 padding: 3px 3px;
                 font-size: .8em;
                 border-radius: 3px;
+                @media all and (max-width: 35.625em) {
+                    margin-bottom: 1em;
+                    display: block;
+
+                }
+
             }
 
             a.actionEdit{
                 background-color: #0078ff;
                 color: #f1f1f1;
+                @media all and (max-width: 35.625em) {
+                    margin-bottom: 10px!important;
+                }
             }
             a.actionDelete{
                 background-color: red;
-                color: #f1f1f1;
-            }
-            a.actionView{
-                background-color: yellowgreen;
                 color: #f1f1f1;
             }
         }

@@ -418,28 +418,66 @@ body {
 }
 .sessWallet .rowTitleWallet .walletHeader .btn-nova-despesa {
   margin-right: 10px;
+  white-space: nowrap;
+}
+@media all and (max-width: 52.5em) {
+  .sessWallet .rowTitleWallet .walletHeader .btn-nova-despesa .text {
+    display: none;
+  }
+}
+.sessWallet .rowTitleWallet .walletHeader .btn-nova-renda {
+  white-space: nowrap;
+}
+@media all and (max-width: 52.5em) {
+  .sessWallet .rowTitleWallet .walletHeader .btn-nova-renda .text {
+    display: none;
+  }
 }
 .sessWallet .rowTitleWallet .walletHeader .btn-voltar {
   margin-right: 10px;
+  white-space: nowrap;
+}
+@media all and (max-width: 52.5em) {
+  .sessWallet .rowTitleWallet .walletHeader .btn-voltar .text {
+    display: none;
+  }
 }
 .sessWallet .tabelaRelatorios {
-  font-size: 0.8em;
+  font-size: 0.6em;
+}
+@media all and (max-width: 35.625em) {
+  .sessWallet .tabelaRelatorios {
+    font-size: 0.6em;
+  }
+}
+@media all and (max-width: 35.625em) {
+  .sessWallet .tabelaRelatorios .launchAction {
+    display: block;
+    float: left;
+  }
 }
 .sessWallet .tabelaRelatorios .launchAction a {
   padding: 3px 3px;
   font-size: 0.8em;
   border-radius: 3px;
 }
+@media all and (max-width: 35.625em) {
+  .sessWallet .tabelaRelatorios .launchAction a {
+    margin-bottom: 1em;
+    display: block;
+  }
+}
 .sessWallet .tabelaRelatorios .launchAction a.actionEdit {
   background-color: #0078ff;
   color: #f1f1f1;
 }
+@media all and (max-width: 35.625em) {
+  .sessWallet .tabelaRelatorios .launchAction a.actionEdit {
+    margin-bottom: 10px !important;
+  }
+}
 .sessWallet .tabelaRelatorios .launchAction a.actionDelete {
   background-color: red;
-  color: #f1f1f1;
-}
-.sessWallet .tabelaRelatorios .launchAction a.actionView {
-  background-color: yellowgreen;
   color: #f1f1f1;
 }
 body {
