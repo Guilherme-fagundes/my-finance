@@ -9,6 +9,14 @@ body{
             font-size: 2em;
             color: brown;
         }
+        .j-addNewCategory{
+            @media all and (max-width: 48.125em) {
+                .text{
+                    display: none;
+                }
+
+            }
+        }
     }
 
     .rowContentCategory{
@@ -16,10 +24,21 @@ body{
         .tableCategories{
             font-size: .8em;
             .categoryActions{
+                @media all and (max-width: 39.375em) {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    a:nth-of-type(1){
+                        margin-right: 5px;
+
+                    }
+
+                }
                 a{
                     padding: 3px 3px;
                     border-radius: 3px;
                     font-size: .8em;
+
                 }
                 a.actionEdit{
                     background-color: #0078ff;

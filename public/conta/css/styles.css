@@ -500,11 +500,26 @@ body {
   font-size: 2em;
   color: brown;
 }
+@media all and (max-width: 48.125em) {
+  .sessCategories .rowTitleCategories .j-addNewCategory .text {
+    display: none;
+  }
+}
 .sessCategories .rowContentCategory {
   margin-top: 2em;
 }
 .sessCategories .rowContentCategory .tableCategories {
   font-size: 0.8em;
+}
+@media all and (max-width: 39.375em) {
+  .sessCategories .rowContentCategory .tableCategories .categoryActions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sessCategories .rowContentCategory .tableCategories .categoryActions a:nth-of-type(1) {
+    margin-right: 5px;
+  }
 }
 .sessCategories .rowContentCategory .tableCategories .categoryActions a {
   padding: 3px 3px;

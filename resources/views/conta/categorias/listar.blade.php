@@ -24,8 +24,10 @@
                 <div class="col-12 d-flex justify-content-between align-items-center">
                     <h1 class="tituloMinhasCategorias mb-0"><i class="fa-solid fa-book-open"></i> Todas as categorias
                     </h1>
-                    <a href="#" class="btn btn-success btn-sm j-addNewCategory"><i class="fa-solid fa-circle-plus"></i>
-                        Adicionar nova categoria</a>
+                    <a href="#" class="btn btn-success btn-sm j-addNewCategory">
+                        <span class="icon"><i class="fa-solid fa-circle-plus"></i></span>
+                        <span class="text">Adicionar nova categoria</span>
+                    </a>
                 </div>
             </div>
 
