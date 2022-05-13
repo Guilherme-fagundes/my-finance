@@ -33,7 +33,7 @@
                         <div class="card-body">
                             <h2 class="card-title text-center"><i class="fa-solid fa-wallet"></i></h2>
                             <p class="card-text my-5 text-center cardNewWalletDesc">Para criar uma nova carteira clique aqui e comece a gerir seus gastos e lucros</p>
-                            <p class="text-center addNewWallet"><span><i class="fa-solid fa-circle-plus"></i> Adicionar nova carteira</span></p>
+                            <p class="text-center"><span><i class="addNewWallet fa-solid fa-circle-plus"></i></span></p>
                         </div>
                     </div>
 

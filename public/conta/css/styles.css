@@ -348,14 +348,8 @@ body {
   font-size: 0.8em;
 }
 .sessWalleties .contentListWalleties .cardNewWallet .card-body .addNewWallet {
-  padding: 5px 5px;
-  background-color: #191A19;
-  border-radius: 3px;
   cursor: pointer;
   font-size: 0.8em;
-}
-.sessWalleties .contentListWalleties .cardNewWallet .card-body .addNewWallet:hover {
-  background-color: #346751;
 }
 .sessWalleties .contentListWalleties .cardWallet .walletTitle {
   font-weight: 300;
