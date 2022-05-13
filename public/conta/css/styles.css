@@ -443,7 +443,7 @@ body {
   }
 }
 .sessWallet .tabelaRelatorios {
-  font-size: 0.6em;
+  font-size: 0.8em;
 }
 @media all and (max-width: 35.625em) {
   .sessWallet .tabelaRelatorios {
@@ -479,6 +479,14 @@ body {
 .sessWallet .tabelaRelatorios .launchAction a.actionDelete {
   background-color: red;
   color: #f1f1f1;
+}
+.sessWallet .pagination .page-item .page-link {
+  font-size: 0.8em;
+}
+@media all and (max-width: 35.625em) {
+  .sessWallet .pagination .page-item .page-link {
+    font-size: 0.6em;
+  }
 }
 body {
   background-color: #eee;
