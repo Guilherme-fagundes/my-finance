@@ -241,21 +241,15 @@
   margin-bottom: 1em;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) !important;
 }
-.main-header .main-header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.main-header .main-header-content .mobileResizer {
-  cursor: pointer;
-  color: white;
-}
 .main-header .main-header-content .header-action .logout {
   text-decoration: none;
   color: white;
   padding: 5px 1.2em;
   background-color: darkseagreen;
   font-size: 0.8em;
+  float: right;
+  right: 0;
+  display: block;
 }
 .main-header .main-header-content .header-action .logout:hover {
   background-color: forestgreen;
@@ -354,14 +348,8 @@ body {
   font-size: 0.8em;
 }
 .sessWalleties .contentListWalleties .cardNewWallet .card-body .addNewWallet {
-  padding: 5px 5px;
-  background-color: #191A19;
-  border-radius: 3px;
   cursor: pointer;
   font-size: 0.8em;
-}
-.sessWalleties .contentListWalleties .cardNewWallet .card-body .addNewWallet:hover {
-  background-color: #346751;
 }
 .sessWalleties .contentListWalleties .cardWallet .walletTitle {
   font-weight: 300;
@@ -424,29 +412,75 @@ body {
 }
 .sessWallet .rowTitleWallet .walletHeader .btn-nova-despesa {
   margin-right: 10px;
+  white-space: nowrap;
+}
+@media all and (max-width: 52.5em) {
+  .sessWallet .rowTitleWallet .walletHeader .btn-nova-despesa .text {
+    display: none;
+  }
+}
+.sessWallet .rowTitleWallet .walletHeader .btn-nova-renda {
+  white-space: nowrap;
+}
+@media all and (max-width: 52.5em) {
+  .sessWallet .rowTitleWallet .walletHeader .btn-nova-renda .text {
+    display: none;
+  }
 }
 .sessWallet .rowTitleWallet .walletHeader .btn-voltar {
   margin-right: 10px;
+  white-space: nowrap;
+}
+@media all and (max-width: 52.5em) {
+  .sessWallet .rowTitleWallet .walletHeader .btn-voltar .text {
+    display: none;
+  }
 }
 .sessWallet .tabelaRelatorios {
   font-size: 0.8em;
+}
+@media all and (max-width: 35.625em) {
+  .sessWallet .tabelaRelatorios {
+    font-size: 0.6em;
+  }
+}
+@media all and (max-width: 35.625em) {
+  .sessWallet .tabelaRelatorios .launchAction {
+    display: block;
+    float: left;
+  }
 }
 .sessWallet .tabelaRelatorios .launchAction a {
   padding: 3px 3px;
   font-size: 0.8em;
   border-radius: 3px;
 }
+@media all and (max-width: 35.625em) {
+  .sessWallet .tabelaRelatorios .launchAction a {
+    margin-bottom: 1em;
+    display: block;
+  }
+}
 .sessWallet .tabelaRelatorios .launchAction a.actionEdit {
   background-color: #0078ff;
   color: #f1f1f1;
+}
+@media all and (max-width: 35.625em) {
+  .sessWallet .tabelaRelatorios .launchAction a.actionEdit {
+    margin-bottom: 10px !important;
+  }
 }
 .sessWallet .tabelaRelatorios .launchAction a.actionDelete {
   background-color: red;
   color: #f1f1f1;
 }
-.sessWallet .tabelaRelatorios .launchAction a.actionView {
-  background-color: yellowgreen;
-  color: #f1f1f1;
+.sessWallet .pagination .page-item .page-link {
+  font-size: 0.8em;
+}
+@media all and (max-width: 35.625em) {
+  .sessWallet .pagination .page-item .page-link {
+    font-size: 0.6em;
+  }
 }
 body {
   background-color: #eee;
@@ -460,11 +494,26 @@ body {
   font-size: 2em;
   color: brown;
 }
+@media all and (max-width: 48.125em) {
+  .sessCategories .rowTitleCategories .j-addNewCategory .text {
+    display: none;
+  }
+}
 .sessCategories .rowContentCategory {
   margin-top: 2em;
 }
 .sessCategories .rowContentCategory .tableCategories {
   font-size: 0.8em;
+}
+@media all and (max-width: 39.375em) {
+  .sessCategories .rowContentCategory .tableCategories .categoryActions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sessCategories .rowContentCategory .tableCategories .categoryActions a:nth-of-type(1) {
+    margin-right: 5px;
+  }
 }
 .sessCategories .rowContentCategory .tableCategories .categoryActions a {
   padding: 3px 3px;
