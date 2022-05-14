@@ -93,7 +93,6 @@
                                         @endif
 
 
-
                                     </select>
 
                                 </div>
@@ -212,6 +211,44 @@
             </div>
 
 
+            <div class="row">
+                <div class="col-12 titleMeusDados" id="perfilSenha">
+                    <h3 class="pb-0 mb-0 mt-3 mb-4">Alterar senha</h3>
+                    <form method="post" action="" class="j-formSalvarSenha" enctype="multipart/form-data">
+
+                        @csrf
+                        <div class="row py-2 meusDados">
+
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Senha</label>
+                                    <input class="form-control" type="password" name="pass"
+                                           value="" placeholder="Informe sua senha" id="senha">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Confirme a senha</label>
+                                    <input class="form-control" value="" placeholder="Confirmar sua senha" type="password"
+                                           name="Cpass" id="Cpass">
+
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary"><i
+                                        class="fa-solid fa-arrow-rotate-right"></i> Alterar senha
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
         </div>
 
     </section>
@@ -246,6 +283,30 @@
                             $('.j-alertSaveData').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> " + response.message + "</div>")
                                 .addClass('mb-0 mt-3');
                             window.location.href = "{{ route('conta.home') }}";
+                        }
+                    }
+                });
+            });
+
+            $('.j-formSalvarSenha').submit(function (e) {
+                e.preventDefault();
+                var data = $(this).serialize();
+
+                $.ajax({
+                    url: "{{ route('conta.perfil.alteraSenha') }}",
+                    type: 'post',
+                    dataType: "json",
+                    data: data,
+                    success: function (response) {
+
+                        if (response.error == true) {
+                            $('.j-alertSaveData').html("<div class=\"alert alert-danger\"><i class=\"fa-solid fa-circle-exclamation\"></i> " + response.message + "</div>")
+                                .addClass('mb-0 mt-3');
+
+                        } else {
+                            $('.j-alertSaveData').html("<div class=\"alert alert-success\"><i class=\"fa-solid fa-circle-check\"></i> " + response.message + "</div>")
+                                .addClass('mb-0 mt-3');
+                            window.location.reload();
                         }
                     }
                 });

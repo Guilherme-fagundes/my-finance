@@ -311,6 +311,9 @@ body {
 .sessProfile #perfilEndereco {
   border-top: 2px solid brown;
 }
+.sessProfile #perfilSenha {
+  border-top: 2px solid brown;
+}
 .sessProfile .tituloMeuPerfil {
   font-weight: 300;
   font-size: 2em;

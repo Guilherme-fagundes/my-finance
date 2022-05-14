@@ -9,14 +9,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Bus\DatabaseBatchRepository;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 
 /**
  * <p>Esta classe é o controlador responsavel pela conta de usuário</p>
- * 
+ *
  * @copyright (c) 2022, Guilherme K Fagundes
  */
 class ContaController extends Controller
@@ -59,7 +61,7 @@ class ContaController extends Controller
 
     /**
 
-     * 
+     *
      * @param Request $request
      * @return json Retorna as resposta das validações
      */
@@ -96,7 +98,7 @@ class ContaController extends Controller
 
     /**
 
-     * <p>Metodo responsavel por realizar a validação e alteração de foto de 
+     * <p>Metodo responsavel por realizar a validação e alteração de foto de
      * perfil do usuário<p>
      * @param Request $request
      * @return json Retorna as respostas de validação
@@ -204,11 +206,47 @@ class ContaController extends Controller
 
     }
 
+    public function perfilAlterarSenha(Request $request)
+    {
+        if ($request->ajax()){
+            if ($request->all()){
+               if (in_array('', $request->all())){
+                   return Response()->json([
+                       'error' => true,
+                       'message' => 'para alterar a senha não pode ter campos em branco.'
+                   ]);
+
+               }elseif ($request->pass != $request->Cpass){
+
+                   return Response()->json([
+                       'error' => true,
+                       'message' => 'As senhas não conferem.'
+                   ]);
+               }else{
+
+                   $pass = Hash::make($request->pass);
+
+                   $alterPass = DB::table('users')
+                       ->where('id', session()->get('userId'))
+                       ->update(['pass' => $pass]);
+                   if ($alterPass){
+                       return Response()->json([
+                           'error' => false,
+                           'message' => 'Senha atualizada com sucesso.'
+                       ]);
+
+                   }
+               }
+
+            }
+        }
+    }
+
     /**
 
      * <p>Metodo responsavel por realizar o logout do sistema<p>
      * @param Request $request
-     * 
+     *
      */
     public function logount(Request $request)
     {
