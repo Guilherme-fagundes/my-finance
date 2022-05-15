@@ -70,6 +70,8 @@
             e.preventDefault();
             var formData = $(this).serialize();
 
+            $('.j-alert').fadeOut(500);
+
             $.ajax({
                 url: 'login/post',
                 type: 'POST',
@@ -79,8 +81,10 @@
 
                     if (response.error == true){
                         $('.j-alert').addClass('alert alert-warning').html(response.message);
+                        $('.j-alert').fadeIn(500);
                     }else{
                         $('.j-alert').addClass('alert alert-primary').html(response.message);
+                        $('.j-alert').fadeIn(500);
                         window.location.href="{{ route('conta.home') }}"
                     }
 

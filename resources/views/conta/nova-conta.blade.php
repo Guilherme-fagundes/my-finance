@@ -98,6 +98,8 @@
             e.preventDefault();
             var dados = $(this).serialize();
 
+            $(".j-alert").fadeOut(500);
+
             $.ajax({
                 url: 'criar-minha-conta/post',
                 type: 'POST',
@@ -106,8 +108,10 @@
                 success: function (response) {
                     if (response.error == true){
                         $('.j-alert').addClass('alert alert-warning').html(response.message);
+                        $(".j-alert").fadeIn(500);
                     }else{
                         $('.j-alert').addClass('alert alert-primary').html(response.message);
+                        $(".j-alert").fadeIn(500);
                     }
                 }
             });

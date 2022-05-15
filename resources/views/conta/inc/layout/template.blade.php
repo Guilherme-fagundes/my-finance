@@ -37,9 +37,9 @@
                     <div class="articleDashboardBody">
                         <ul class="leftMenu mx-0 px-0">
                             <li>
-                                <a href="{{ route('conta.home') }}" title="Home">
+                                <a href="{{ route('conta.home') }}" title="Dashboard">
                                     <span class="icon"><i class="fas fa-home"></i></span>
-                                    <span class="text">Home</span>
+                                    <span class="text">Dashboard</span>
                                 </a>
                             </li>
                             <li>

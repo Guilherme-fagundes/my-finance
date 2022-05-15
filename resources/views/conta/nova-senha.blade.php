@@ -59,6 +59,7 @@
         e.preventDefault();
 
         var data = $(this).serialize();
+        $('.j-alert').fadeOut(500);
 
         $.ajax({
             url: "{{ route('user.newPass.post') }}",
@@ -70,9 +71,11 @@
                 if (response.error == true){
                     $('.j-alert').removeClass('alert-primary');
                     $('.j-alert').addClass('alert alert-warning').html(response.message);
+                    $('.j-alert').fadeIn(500);
                 }else{
                     $('.j-alert').removeClass('alert-warning');
                     $('.j-alert').addClass('alert alert-primary').html(response.message);
+                    $('.j-alert').fadeIn(500);
                 }
             }
         });
