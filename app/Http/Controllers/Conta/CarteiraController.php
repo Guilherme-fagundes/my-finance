@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Conta;
 
-use App\Helpers\CarteirasHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Launch;
 use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
@@ -46,10 +44,17 @@ class CarteiraController extends Controller
         if ($request->ajax()) {
             if ($request->all()) {
 
+                /**
+                 *  verifica o tipo de conta do usuário
+                 */
                 $checkUserAcountType = User::where('id', session()->get('userId'))
                     ->where('tipo_conta', '=', 'free')->first();
                 $carteiras = $checkUserAcountType->wallet()->where('user_id', $checkUserAcountType->id)->count();
 
+                /**
+                 *  Caso a conta do usuário seja gratuíta [FREE], é bloqueado o cadastro de uma nova
+                 * carteira e exibindo uma mensagem de erro.
+                 */
                 if ($carteiras == 1){
                     return Response()->json([
                         'error' => true,
