@@ -6822,19 +6822,6 @@
 
 /***/ }),
 
-/***/ "./resources/views/conta/css/home-carteiras.scss":
-/*!*******************************************************!*\
-  !*** ./resources/views/conta/css/home-carteiras.scss ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ "./resources/views/conta/css/meu-perfil.scss":
 /*!***************************************************!*\
   !*** ./resources/views/conta/css/meu-perfil.scss ***!
@@ -7122,7 +7109,6 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/esqueci-senha.scss")))
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/nova-conta.scss")))
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/conta-header.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/home-carteiras.scss")))
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/meu-perfil.scss")))
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/editar-lancamento.scss")))
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/todas-carteiras.scss")))
