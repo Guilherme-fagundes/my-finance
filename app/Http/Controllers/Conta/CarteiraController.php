@@ -46,6 +46,17 @@ class CarteiraController extends Controller
         if ($request->ajax()) {
             if ($request->all()) {
 
+                $checkUserAcountType = User::where('id', session()->get('userId'))
+                    ->where('tipo_conta', '=', 'free')->first();
+                $carteiras = $checkUserAcountType->wallet()->where('user_id', $checkUserAcountType->id)->count();
+
+                if ($carteiras == 1){
+                    return Response()->json([
+                        'error' => true,
+                        'message' => 'Você está utilizando a conta gratuíta e seu plano não permite criar mais que uma carteira. Atualize sua conta para o plano PREMIUM'
+                    ]);
+                }
+
                 if (in_array('', $request->all())) {
                     return Response()->json([
                         'error' => true,
