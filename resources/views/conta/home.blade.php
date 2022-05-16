@@ -30,6 +30,30 @@
 
             </div>
 
+            <div class="row py-2 mt-3 rowHomeContent">
+                <div class="col-12">
+
+                    <div class="estatisticas">
+                        <div class="estatisticasCategorias estatisticasBox">
+                            total de categorias
+                        </div>
+                        <div class="estatisticasCarteiras estatisticasBox">
+                            total de carteiras
+
+                        </div>
+                        <div class="estatisticasSaldo estatisticasBox">
+                            saldo
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
     </section>
 
