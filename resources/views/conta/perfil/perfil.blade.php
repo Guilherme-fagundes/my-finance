@@ -4,7 +4,7 @@
 
 @section('main')
 
-    <section classs="sessAlert">
+    <section class="sessAlert">
         <div class="container">
             <div class="row alertErrorBox">
 

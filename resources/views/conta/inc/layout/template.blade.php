@@ -39,7 +39,7 @@
                             <li>
                                 <a href="{{ route('conta.home') }}" title="Dashboard">
                                     <span class="icon"><i class="fas fa-home"></i></span>
-                                    <span class="text">Dashboard</span>
+                                    <span class="text">Home</span>
                                 </a>
                             </li>
                             <li>
