@@ -34,14 +34,14 @@
                 <div class="col-12">
 
                     <div class="estatisticas">
-                        <div class="estatisticasCategorias estatisticasBox">
+                        <div class="estatisticasCategorias estatisticasBox rounded">
                             total de categorias
                         </div>
-                        <div class="estatisticasCarteiras estatisticasBox">
-                            total de carteiras
+                        <div class="estatisticasLancamentos estatisticasBox rounded">
+                            total de lancamentos
 
                         </div>
-                        <div class="estatisticasSaldo estatisticasBox">
+                        <div class="estatisticasSaldo estatisticasBox rounded">
                             saldo
 
                         </div>

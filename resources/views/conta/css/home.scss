@@ -26,12 +26,23 @@ body{
             }
 
             .estatisticasCategorias,
-            .estatisticasCarteiras,
+            .estatisticasLancamentos,
             .estatisticasSaldo{
                 background-color: white;
-                box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 3px 0px, rgba(14, 30, 37, 0.1) 0px 2px 4px 0px!important;
 
+            }
 
+            .estatisticasSaldo{
+                background-color: #0078ff;
+                color: #f2f2f2;
+            }
+            .estatisticasLancamentos{
+                background-color: #446A46;
+                color: #f2f2f2;
+            }
+            .estatisticasCategorias{
+                background-color: #2d3748;
+                color: #f2f2f2;
             }
         }
     }
