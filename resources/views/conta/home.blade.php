@@ -48,7 +48,7 @@
                         <div class="estatisticasSaldo estatisticasBox rounded">
 
                             <span class="descriptionTitle">Saldo geral</span>
-                            <span class="descriptionValue">R$ {{ number_format($saldoGeral, 2, ',', '.') }}</span>
+                            <span class="descriptionValue">R$ {{ number_format($saldoGeral, 2, ',', '.') ?? '0,00' }}</span>
                         </div>
 
 
