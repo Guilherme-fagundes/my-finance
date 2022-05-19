@@ -35,14 +35,44 @@ body{
             .estatisticasSaldo{
                 background-color: #0078ff;
                 color: #f2f2f2;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .descriptionTitle{
+                    font-size: .8em;
+                }
+                .descriptionValue{
+                    font-size: 1.8em;
+                    font-weight: 300;
+                }
             }
             .estatisticasLancamentos{
                 background-color: #446A46;
                 color: #f2f2f2;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .descriptionTitle{
+                    font-size: .8em;
+                }
+                .descriptionValue{
+                    font-size: 1.8em;
+                    font-weight: 300;
+                }
             }
             .estatisticasCategorias{
                 background-color: #2d3748;
                 color: #f2f2f2;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .descriptionTitle{
+                    font-size: .8em;
+                }
+                .descriptionValue{
+                    font-size: 1.8em;
+                    font-weight: 300;
+                }
             }
         }
     }

@@ -1,7 +1,6 @@
 @extends('conta.inc.layout.template')
 @extends('conta.inc.layout.main-header')
 
-
 @section('main')
 
     <section class="sessAlert">
@@ -14,7 +13,6 @@
                                 class="fas fa-info-circle"></i> {{ $msg }}</div>
                     @endforeach
                 @endif
-
             </div>
 
         </div>
@@ -35,15 +33,22 @@
 
                     <div class="estatisticas">
                         <div class="estatisticasCategorias estatisticasBox rounded">
-                            total de categorias
+                            @php
+                                $totalCategories = count($categories);
+                            @endphp
+                            <span class="descriptionTitle">Total de categorias</span>
+                            <span class="descriptionValue">{{ $totalCategories }}</span>
+
                         </div>
                         <div class="estatisticasLancamentos estatisticasBox rounded">
-                            total de lancamentos
+                            <span class="descriptionTitle">Total de lançamentos</span>
+                            <span class="descriptionValue">{{ count($lancamentos) }}</span>
 
                         </div>
                         <div class="estatisticasSaldo estatisticasBox rounded">
-                            saldo
 
+                            <span class="descriptionTitle">Saldo geral</span>
+                            <span class="descriptionValue">R$ {{ number_format($saldoGeral, 2, ',', '.') }}</span>
                         </div>
 
 

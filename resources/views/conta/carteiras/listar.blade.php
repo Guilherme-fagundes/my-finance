@@ -41,7 +41,7 @@
 
                 @foreach($wallets as $wallet)
                     @php
-                        $saldo = \Illuminate\Support\Facades\DB::table('launches')
+                        $receita = \Illuminate\Support\Facades\DB::table('launches')
                             ->where('user_id', session()->get('userId'))
                             ->where('wallet_id', $wallet->id)
                             ->where('tipo_lancamento', 'receita');
@@ -53,7 +53,7 @@
                     @endphp
 
                    @include('conta.carteiras.components.walletsList', ['wallet' => $wallet,
-                    'saldo' => $saldo,
+                    'receita' => $receita,
                     'despesas'=> $despesas])
                 @endforeach
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Conta;
 
 use App\Models\Address;
+use App\Models\Category;
+use App\Models\Launch;
 use App\Models\User;
 use http\Env\Response;
 use Illuminate\Http\Request;
@@ -36,9 +38,19 @@ class ContaController extends Controller
 
         }
 
+        $categories = Category::where('user_id', session()->get('userId'))->get();
+        $lancamentos = Launch::where('user_id', session()->get('userId'))->get();
+        $saldoGeral = Launch::where('user_id', session()->get('userId'))
+            ->where('tipo_lancamento', 'receita')->sum('valor');
+//
+
+
         return view('conta.home', [
             'title' => 'Conta | Home',
-            "user" => $userLogged
+            "user" => $userLogged,
+            'categories' => $categories,
+            'lancamentos' => $lancamentos,
+            'saldoGeral' => $saldoGeral
         ]);
     }
 

@@ -307,14 +307,44 @@ body {
 .sessHome .rowHomeContent .estatisticas .estatisticasSaldo {
   background-color: #0078ff;
   color: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasSaldo .descriptionTitle {
+  font-size: 0.8em;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasSaldo .descriptionValue {
+  font-size: 1.8em;
+  font-weight: 300;
 }
 .sessHome .rowHomeContent .estatisticas .estatisticasLancamentos {
   background-color: #446A46;
   color: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasLancamentos .descriptionTitle {
+  font-size: 0.8em;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasLancamentos .descriptionValue {
+  font-size: 1.8em;
+  font-weight: 300;
 }
 .sessHome .rowHomeContent .estatisticas .estatisticasCategorias {
   background-color: #2d3748;
   color: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasCategorias .descriptionTitle {
+  font-size: 0.8em;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasCategorias .descriptionValue {
+  font-size: 1.8em;
+  font-weight: 300;
 }
 body {
   background-color: #eee;
