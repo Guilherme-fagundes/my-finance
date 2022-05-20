@@ -77,4 +77,19 @@ body{
         }
     }
 
+    .rowUltimosLancamentosTitle{
+        border-top: 2px solid brown;
+        .ultimosLancamentosTitle{
+            font-weight: 300;
+            color: brown;
+
+        }
+    }
+
+    .rowUltimosLancamentosContent{
+        table{
+            font-size: .8em;
+        }
+    }
+
 }

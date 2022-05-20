@@ -346,6 +346,16 @@ body {
   font-size: 1.8em;
   font-weight: 300;
 }
+.sessHome .rowUltimosLancamentosTitle {
+  border-top: 2px solid brown;
+}
+.sessHome .rowUltimosLancamentosTitle .ultimosLancamentosTitle {
+  font-weight: 300;
+  color: brown;
+}
+.sessHome .rowUltimosLancamentosContent table {
+  font-size: 0.8em;
+}
 body {
   background-color: #eee;
 }

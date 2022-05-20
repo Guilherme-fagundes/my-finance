@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Conta;
 
-use App\Models\Address;
 use App\Models\Category;
 use App\Models\Launch;
 use App\Models\User;
@@ -42,15 +41,17 @@ class ContaController extends Controller
         $lancamentos = Launch::where('user_id', session()->get('userId'))->get();
         $saldoGeral = Launch::where('user_id', session()->get('userId'))
             ->where('tipo_lancamento', 'receita')->sum('valor');
-//
 
+        $ultimosLancamentos = DB::table('launches')
+            ->where('user_id', session()->get('userId'))->limit(5)->orderByDesc('id')->get();
 
         return view('conta.home', [
             'title' => 'Conta | Home',
             "user" => $userLogged,
             'categories' => $categories,
             'lancamentos' => $lancamentos,
-            'saldoGeral' => $saldoGeral
+            'saldoGeral' => $saldoGeral,
+            'ultimosLancamenrtos' => $ultimosLancamentos
         ]);
     }
 

@@ -45,15 +45,52 @@
                         <div class="estatisticasSaldo estatisticasBox rounded">
 
                             <span class="descriptionTitle">Saldo geral</span>
-                            <span class="descriptionValue">R$ {{ number_format($saldoGeral, 2, ',', '.') ?? '0,00' }}</span>
+                            <span
+                                class="descriptionValue">R$ {{ number_format($saldoGeral, 2, ',', '.') ?? '0,00' }}</span>
                         </div>
-
 
 
                     </div>
 
                 </div>
 
+            </div>
+
+            <div class="row mt-3 rowUltimosLancamentosTitle">
+                <div class="col-12">
+                    <h4 class="ultimosLancamentosTitle mt-2">Ultimos lançamentos</h4>
+
+                </div>
+
+            </div>
+
+            <div class="row py-2 mt-3 rowUltimosLancamentosContent">
+                <div class="col-12">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Tipo de lançamento</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($ultimosLancamenrtos as $lancamento)
+                        <tr>
+                            <td scope="row">{{ $lancamento->descricao }}</td>
+                            <td scope="row">{{ date('d/m/Y', strtotime($lancamento->data)) }}</td>
+                            <td>{{ number_format($lancamento->valor, 2, ',', '.') }}</td>
+                            <td><span class="badge {{ ($lancamento->tipo_lancamento == 'Receita' ? 'bg-primary' : 'bg-danger') }}">{{ $lancamento->tipo_lancamento }}</span></td>
+
+                        </tr>
+                        @endforeach
+
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
 
         </div>
