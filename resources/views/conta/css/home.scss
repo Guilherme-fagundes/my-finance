@@ -93,3 +93,23 @@ body{
     }
 
 }
+
+.sessMessageUpdate{
+    .messageUpdate{
+        padding: 8px 1em;
+        background-color: #DC3545FF;
+        color: #f2f2f2;
+        font-size: .8em;
+        border-radius: 3px;
+        a.btn-update{
+            color: #f2f2f2;
+            background-color: #446A46;
+            text-decoration: none;
+            padding: 3px 5px;
+            &:hover{
+                background-color: seagreen;
+                
+            }
+        }
+    }
+}

@@ -356,6 +356,23 @@ body {
 .sessHome .rowUltimosLancamentosContent table {
   font-size: 0.8em;
 }
+
+.sessMessageUpdate .messageUpdate {
+  padding: 8px 1em;
+  background-color: #dc3545;
+  color: #f2f2f2;
+  font-size: 0.8em;
+  border-radius: 3px;
+}
+.sessMessageUpdate .messageUpdate a.btn-update {
+  color: #f2f2f2;
+  background-color: #446A46;
+  text-decoration: none;
+  padding: 3px 5px;
+}
+.sessMessageUpdate .messageUpdate a.btn-update:hover {
+  background-color: seagreen;
+}
 body {
   background-color: #eee;
 }
