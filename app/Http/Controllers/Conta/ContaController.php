@@ -45,6 +45,14 @@ class ContaController extends Controller
         $ultimosLancamentos = DB::table('launches')
             ->where('user_id', session()->get('userId'))->limit(5)->orderByDesc('id')->get();
 
+        $ultimosLancamentos = DB::table('wallets')
+            ->join('launches', 'wallets.id', '=', 'launches.wallet_id')
+            ->join('categories', 'launches.category_id', '=', 'categories.id')
+            ->where('launches.user_id', session()->get('userId'))
+            ->limit(5)
+            ->orderByDesc('launches.id')
+            ->get(['*','categories.nome as category_name', 'wallets.nome as wallet_name']);
+
         return view('conta.home', [
             'title' => 'Conta | Home',
             "user" => $userLogged,
