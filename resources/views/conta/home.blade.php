@@ -34,12 +34,12 @@
                     <div class="estatisticas">
                         <div class="estatisticasCategorias estatisticasBox rounded">
                             <span class="descriptionTitle">Total de categorias</span>
-                            <span class="descriptionValue">{{ count($categories) }}</span>
+                            <span class="descriptionValue">{{ count($categories) ?? '0' }}</span>
 
                         </div>
                         <div class="estatisticasLancamentos estatisticasBox rounded">
                             <span class="descriptionTitle">Total de lançamentos</span>
-                            <span class="descriptionValue">{{ count($lancamentos) }}</span>
+                            <span class="descriptionValue">{{ count($lancamentos) ?? '0' }}</span>
 
                         </div>
                         <div class="estatisticasSaldo estatisticasBox rounded">
