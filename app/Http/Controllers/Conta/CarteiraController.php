@@ -51,7 +51,7 @@ class CarteiraController extends Controller
                 $checkUserAcountType = User::where('id', session()->get('userId'))
                     ->where('tipo_conta', '=', 'free')
                     ->orWhere('tipo_conta', '=', 'premium')->first();
-//                dd($checkUserAcountType);
+
                 $carteiras = $checkUserAcountType->wallet()->where('user_id', $checkUserAcountType->id)->count();
 
                 if ($checkUserAcountType->tipo_conta == 'free'){
