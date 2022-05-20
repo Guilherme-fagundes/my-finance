@@ -274,7 +274,7 @@
                         e.preventDefault();
 
                         var data = $(this).data();
-                        var delAction = window.confirm('Esta ação não poderá ser desfeita! Você deseja realmente deletar esta categoria?');
+                        var delAction = window.confirm('Esta ação não poderá ser desfeita! Todos os dados vinculádos a esta categoria serão eliminados. Você deseja realmente deletar esta categoria?');
                         if (delAction) {
 
                             $.ajax({
