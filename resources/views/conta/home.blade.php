@@ -1,5 +1,5 @@
 @extends('conta.inc.layout.template')
-@extends('conta.inc.layout.main-header')
+@extends('conta.inc.layout.main-header', ['user' => $user])
 
 @section('main')
 
@@ -81,7 +81,6 @@
                                 <th scope="col">Tipo de lançamento</th>
                                 <th scope="col">Data</th>
                                 <th scope="col">Valor</th>
-
 
                             </tr>
                             </thead>
