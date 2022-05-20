@@ -44,11 +44,6 @@ class ContaController extends Controller
         $totalDespesas = Launch::where('user_id', session()->get('userId'))
             ->where('tipo_lancamento', 'Despesa')->sum('valor');
 
-//        dd([
-//            'Receitas' => $totalReceitas,
-//            'despesas' => $totalDespesas,
-//            'saldo' => $totalReceitas - $totalDespesas
-//        ]);
 
         $ultimosLancamentos = DB::table('wallets')
             ->join('launches', 'wallets.id', '=', 'launches.wallet_id')
