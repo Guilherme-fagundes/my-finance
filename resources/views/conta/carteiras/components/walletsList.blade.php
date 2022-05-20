@@ -1,8 +1,8 @@
 <div class="col-12 col-md-4 mb-4 walletBox" id="wallet-{{ $wallet->id }}">
 
     @php
-        if (isset($saldo) && $despesas){
-            $saldoTotalCarteira = $saldo->get()->sum('valor') - $despesas->get()->sum('valor');
+        if (isset($receita) && $despesas){
+            $saldoTotalCarteira = $receita->get()->sum('valor') - $despesas->get()->sum('valor');
 
     @endphp
     <div class="card cardWallet w-100" style="background-color: {{ $wallet->cor }}; color: #f1f1f1;" id="{{ $wallet->id }}">
@@ -11,7 +11,7 @@
 
             <h3 class="card-text text-center saldo"><span>R$ {{ ( number_format($saldoTotalCarteira, 2, ',', '.') ?? '0,00' ) }}</span></h3>
             <p class="card-text text-center despesa"><span>Despesas: R$ {{ ( number_format($despesas->get()->sum('valor'), 2, ',', '.') ?? '0,00' ) }}</span></p>
-            <p class="card-text text-center receita"><span>Receitas: R$ {{ ( number_format($saldo->get()->sum('valor'), 2, ',', '.') ?? '0,00' ) }}</span></p>
+            <p class="card-text text-center receita"><span>Receitas: R$ {{ ( number_format($receita->get()->sum('valor'), 2, ',', '.') ?? '0,00' ) }}</span></p>
             <div class="walletActions">
                 <p>
                     <a href="#" data-saldo_carteira="{{ $saldoTotalCarteira }}"></a>

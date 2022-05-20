@@ -41,6 +41,7 @@ class CarteiraController extends Controller
      */
     public function novaPost(Request $request)
     {
+
         if ($request->ajax()) {
             if ($request->all()) {
 
@@ -48,18 +49,23 @@ class CarteiraController extends Controller
                  *  verifica o tipo de conta do usuário
                  */
                 $checkUserAcountType = User::where('id', session()->get('userId'))
-                    ->where('tipo_conta', '=', 'free')->first();
+                    ->where('tipo_conta', '=', 'free')
+                    ->orWhere('tipo_conta', '=', 'premium')->first();
+
                 $carteiras = $checkUserAcountType->wallet()->where('user_id', $checkUserAcountType->id)->count();
 
-                /**
-                 *  Caso a conta do usuário seja gratuíta [FREE], é bloqueado o cadastro de uma nova
-                 * carteira e exibindo uma mensagem de erro.
-                 */
-                if ($carteiras == 1){
-                    return Response()->json([
-                        'error' => true,
-                        'message' => 'Você está utilizando a conta gratuíta e seu plano não permite criar mais que uma carteira. Atualize sua conta para o plano PREMIUM'
-                    ]);
+                if ($checkUserAcountType->tipo_conta == 'free'){
+                    /**
+                     *  Caso a conta do usuário seja gratuíta [FREE], é bloqueado o cadastro de uma nova
+                     * carteira e exibindo uma mensagem de erro.
+                     */
+                    if ($carteiras == 1){
+                        return Response()->json([
+                            'error' => true,
+                            'message' => 'Você está utilizando a conta gratuíta e seu plano não permite criar mais que uma carteira. Atualize sua conta para o plano PREMIUM'
+                        ]);
+                    }
+
                 }
 
                 if (in_array('', $request->all())) {
@@ -69,40 +75,26 @@ class CarteiraController extends Controller
                     ]);
                 }
 
+                $saldo = [];
+                $despesas = [];
+                $saldoTotalCarteira = null;
 
-                if ($request->ajax()) {
-                    if ($request->all()) {
+                $wallet = new Wallet();
 
-                        if (in_array('', $request->all())) {
-                            return Response()->json([
-                                'error' => true,
-                                'message' => 'Para criar uma carteira não pode ter campos em branco.'
-                            ]);
-                        }
+                $wallet->user_id = session()->get('userId');
+                $wallet->nome = $request->descricao;
+                $wallet->cor = $request->cor_carteira;
 
-                        $saldo = [];
-                        $despesas = [];
-                        $saldoTotalCarteira = null;
+                $wallet->save();
 
-                        $wallet = new Wallet();
-
-                        $wallet->user_id = session()->get('userId');
-                        $wallet->nome = $request->descricao;
-                        $wallet->cor = $request->cor_carteira;
-
-                        $wallet->save();
-
-                        return Response()->json([
-                            'result' => view('conta.carteiras.components.walletsList', [
-                                'wallet' => $wallet,
-                                'saldo' => $saldo,
-                                'despesas' => $despesas,
-                                'saldoTotalCarteira' => $saldoTotalCarteira
-                            ])->render()
-                        ]);
-                    }
-                }
-
+                return Response()->json([
+                    'result' => view('conta.carteiras.components.walletsList', [
+                        'wallet' => $wallet,
+                        'saldo' => $saldo,
+                        'despesas' => $despesas,
+                        'saldoTotalCarteira' => $saldoTotalCarteira
+                    ])->render()
+                ]);
             }
         }
 
@@ -214,9 +206,9 @@ class CarteiraController extends Controller
             ->join('launches', 'categories.id', '=', 'launches.category_id')
             ->where('launches.user_id', session()->get('userId'))
             ->where('launches.wallet_id', $id)
+            ->orderByDesc('launches.id')
             ->paginate(5);
 
-//        dd($categoriasLancamento);
 
         $readCategories = Category::all()->all();
 

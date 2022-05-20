@@ -283,6 +283,83 @@ body {
   background-color: #eee;
 }
 
+.sessHome .rowTitleHome {
+  border-bottom: 2px solid brown;
+}
+.sessHome .rowTitleHome .tituloPaginaHome {
+  font-weight: 300;
+  font-size: 2em;
+  color: brown;
+}
+.sessHome .rowHomeContent .estatisticas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasBox {
+  padding: 1em 1em;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasCategorias,
+.sessHome .rowHomeContent .estatisticas .estatisticasLancamentos,
+.sessHome .rowHomeContent .estatisticas .estatisticasSaldo {
+  background-color: white;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasSaldo {
+  background-color: #0078ff;
+  color: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasSaldo .descriptionTitle {
+  font-size: 0.8em;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasSaldo .descriptionValue {
+  font-size: 1.8em;
+  font-weight: 300;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasLancamentos {
+  background-color: #446A46;
+  color: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasLancamentos .descriptionTitle {
+  font-size: 0.8em;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasLancamentos .descriptionValue {
+  font-size: 1.8em;
+  font-weight: 300;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasCategorias {
+  background-color: #2d3748;
+  color: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasCategorias .descriptionTitle {
+  font-size: 0.8em;
+}
+.sessHome .rowHomeContent .estatisticas .estatisticasCategorias .descriptionValue {
+  font-size: 1.8em;
+  font-weight: 300;
+}
+.sessHome .rowUltimosLancamentosTitle {
+  border-top: 2px solid brown;
+}
+.sessHome .rowUltimosLancamentosTitle .ultimosLancamentosTitle {
+  font-weight: 300;
+  color: brown;
+}
+.sessHome .rowUltimosLancamentosContent table {
+  font-size: 0.8em;
+}
+body {
+  background-color: #eee;
+}
+
 .sessLancamento .rowTitleLaunches {
   border-bottom: 2px solid brown;
 }

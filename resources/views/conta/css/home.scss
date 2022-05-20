@@ -1,0 +1,95 @@
+body{
+    background-color: #eee;
+
+}
+
+.sessHome{
+    .rowTitleHome{
+        border-bottom: 2px solid brown;
+
+        .tituloPaginaHome{
+            font-weight: 300;
+            font-size: 2em;
+            color: brown;
+        }
+    }
+
+    .rowHomeContent{
+        .estatisticas{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1em;
+
+            .estatisticasBox{
+                padding: 1em 1em;
+
+            }
+
+            .estatisticasCategorias,
+            .estatisticasLancamentos,
+            .estatisticasSaldo{
+                background-color: white;
+
+            }
+
+            .estatisticasSaldo{
+                background-color: #0078ff;
+                color: #f2f2f2;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .descriptionTitle{
+                    font-size: .8em;
+                }
+                .descriptionValue{
+                    font-size: 1.8em;
+                    font-weight: 300;
+                }
+            }
+            .estatisticasLancamentos{
+                background-color: #446A46;
+                color: #f2f2f2;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .descriptionTitle{
+                    font-size: .8em;
+                }
+                .descriptionValue{
+                    font-size: 1.8em;
+                    font-weight: 300;
+                }
+            }
+            .estatisticasCategorias{
+                background-color: #2d3748;
+                color: #f2f2f2;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .descriptionTitle{
+                    font-size: .8em;
+                }
+                .descriptionValue{
+                    font-size: 1.8em;
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+
+    .rowUltimosLancamentosTitle{
+        border-top: 2px solid brown;
+        .ultimosLancamentosTitle{
+            font-weight: 300;
+            color: brown;
+
+        }
+    }
+
+    .rowUltimosLancamentosContent{
+        table{
+            font-size: .8em;
+        }
+    }
+
+}
