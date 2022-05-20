@@ -33,11 +33,8 @@
 
                     <div class="estatisticas">
                         <div class="estatisticasCategorias estatisticasBox rounded">
-                            @php
-                                $totalCategories = count($categories);
-                            @endphp
                             <span class="descriptionTitle">Total de categorias</span>
-                            <span class="descriptionValue">{{ $totalCategories }}</span>
+                            <span class="descriptionValue">{{ count($categories) }}</span>
 
                         </div>
                         <div class="estatisticasLancamentos estatisticasBox rounded">
