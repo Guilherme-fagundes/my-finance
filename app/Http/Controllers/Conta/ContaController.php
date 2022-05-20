@@ -39,11 +39,16 @@ class ContaController extends Controller
 
         $categories = Category::where('user_id', session()->get('userId'))->get();
         $lancamentos = Launch::where('user_id', session()->get('userId'))->get();
-        $saldoGeral = Launch::where('user_id', session()->get('userId'))
+        $totalReceitas = Launch::where('user_id', session()->get('userId'))
             ->where('tipo_lancamento', 'receita')->sum('valor');
+        $totalDespesas = Launch::where('user_id', session()->get('userId'))
+            ->where('tipo_lancamento', 'Despesa')->sum('valor');
 
-        $ultimosLancamentos = DB::table('launches')
-            ->where('user_id', session()->get('userId'))->limit(5)->orderByDesc('id')->get();
+//        dd([
+//            'Receitas' => $totalReceitas,
+//            'despesas' => $totalDespesas,
+//            'saldo' => $totalReceitas - $totalDespesas
+//        ]);
 
         $ultimosLancamentos = DB::table('wallets')
             ->join('launches', 'wallets.id', '=', 'launches.wallet_id')
@@ -58,7 +63,7 @@ class ContaController extends Controller
             "user" => $userLogged,
             'categories' => $categories,
             'lancamentos' => $lancamentos,
-            'saldoGeral' => $saldoGeral,
+            'saldoGeral' => $totalReceitas - $totalDespesas,
             'ultimosLancamenrtos' => $ultimosLancamentos
         ]);
     }
