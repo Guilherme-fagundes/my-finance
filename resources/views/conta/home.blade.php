@@ -72,9 +72,10 @@
                             <th scope="col">Descrição</th>
                             <th scope="col">Carteira</th>
                             <th scope="col">Categoria</th>
+                            <th scope="col">Tipo de lançamento</th>
                             <th scope="col">Data</th>
                             <th scope="col">Valor</th>
-                            <th scope="col">Tipo de lançamento</th>
+
 
                         </tr>
                         </thead>
@@ -84,9 +85,9 @@
                             <td scope="row">{{ $lancamento->descricao }}</td>
                             <td scope="row">{{ $lancamento->wallet_name }}</td>
                             <td scope="row">{{ $lancamento->category_name }}</td>
+                            <td><span class="badge {{ ($lancamento->tipo_lancamento == 'Receita' ? 'bg-primary' : 'bg-danger') }}">{{ $lancamento->tipo_lancamento }}</span></td>
                             <td scope="row">{{ date('d/m/Y', strtotime($lancamento->data)) }}</td>
                             <td>{{ number_format($lancamento->valor, 2, ',', '.') }}</td>
-                            <td><span class="badge {{ ($lancamento->tipo_lancamento == 'Receita' ? 'bg-primary' : 'bg-danger') }}">{{ $lancamento->tipo_lancamento }}</span></td>
 
                         </tr>
                         @endforeach
