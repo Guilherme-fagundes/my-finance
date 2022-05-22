@@ -52,7 +52,7 @@
                             @foreach($categories as $category)
                                 <tr>
                                     <td>{{ $category->nome }}</td>
-                                    <td>{{ ($category->tipo == 2 ? 'Receita' : 'Despesa') }}</td>
+                                    <td><span class="badge {{ ($category->tipo == 2 ? 'bg-primary' : 'bg-danger') }}">{{ ($category->tipo == 2 ? 'Receita' : 'Despesa') }}</span></td>
                                     <td>{{ date("d/m/Y H:i:s", strtotime($category->created_at)) }}</td>
                                     <td>{{ ($category->updated_at == null ? 'Não atualizada' : date('d/m/Y H:i:s', strtotime($category->updated_at))) }}</td>
                                     <td class="categoryActions">
