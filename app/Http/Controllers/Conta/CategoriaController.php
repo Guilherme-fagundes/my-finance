@@ -24,7 +24,7 @@ class CategoriaController extends Controller
     public function index()
     {
         $userLogged = User::where('id', session()->get('userId'))->first();
-        $getCategories = Category::where('user_id', session()->get('userId'))->get();
+        $getCategories = Category::where('user_id', session()->get('userId'))->paginate(5);
 
 
 
@@ -37,7 +37,7 @@ class CategoriaController extends Controller
 
     /**
 
-     * <p>metodo responsável por validar e cadastrar novas categorias 
+     * <p>metodo responsável por validar e cadastrar novas categorias
      * no sistema</p>
      * @param Request $request
      * @return json Retorna as responstas das validações
@@ -84,7 +84,7 @@ class CategoriaController extends Controller
 
      * <p>Metodo responsável por fazer a leitura da categoria na modal de exibição</p>
      * @param Request $request
-     * @return json 
+     * @return json
      */
     public function edit(Request $request)
     {
@@ -145,7 +145,7 @@ class CategoriaController extends Controller
 
      * <p>Metodo responsável por deletar uma categoria do sistema</p>
      * @param Request $request
-     * @return json 
+     * @return json
      */
     public function delete(Request $request)
     {
