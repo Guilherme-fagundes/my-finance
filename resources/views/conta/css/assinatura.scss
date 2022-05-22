@@ -1,0 +1,70 @@
+body{
+    background-color: #eee;
+}
+.sessAssinatura{
+    .rowAssinaturaTitulo{
+        border-bottom: 2px solid brown;
+        margin-bottom: 1em;
+
+        .tituloAssinatura{
+            color: brown;
+            font-weight: 300;
+            font-size: 2em;
+        }
+        .tituloAssinaturaContent{
+            margin: 1em 0;
+            font-size: .8em;
+        }
+    }
+
+    .rowAssinaturaPlanos{
+        margin-bottom: 1em;
+        .card{
+            .card-body{
+                .tituloPlano{
+                    font-size: 1.5em;
+                    color: #0078ff;
+                    text-align: center;
+                    letter-spacing: 1px;
+                    font-weight: bold;
+                }
+                h1{
+                    font-style: italic;
+                }
+                .valorPlano{
+                    font-size: 3em;
+                    font-weight: 700;
+
+                }
+                .beneficiosPlano{
+                    list-style: none;
+                    margin-top: 3em;
+                    margin-bottom: 3em;
+                    li{
+                        color: seagreen;
+                        font-size: .8em;
+                        font-weight: bold;
+                        line-height: 1.5!important;
+                        letter-spacing: 1px;
+                        font-style: italic;
+                        i{
+                            font-weight: normal;
+                        }
+
+                    }
+
+                }
+
+                .btn-assinar{
+                    font-size: 1.7em;
+                    background-color: #0078ff;
+                    color: #f2f2f2;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+}

@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-12">
                         <p class="messageUpdate"><i class="fa-solid fa-circle-exclamation"></i> Você está utilizando a
-                            conta gratuíta, atualize para uma conta premium. <a href="#" class="btn-update">Atualizar</a></p>
+                            conta gratuíta, atualize para uma conta premium. <a href="{{ route('assinatura.index') }}" class="btn-update">Atualizar</a></p>
                     </div>
 
                 </div>
