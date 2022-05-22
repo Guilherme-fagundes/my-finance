@@ -6835,6 +6835,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/views/conta/css/assinatura.scss":
+/*!***************************************************!*\
+  !*** ./resources/views/conta/css/assinatura.scss ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/views/conta/css/home.scss":
 /*!*********************************************!*\
   !*** ./resources/views/conta/css/home.scss ***!
@@ -7123,6 +7136,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/nova-conta.scss")))
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/conta-header.scss")))
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/meu-perfil.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/assinatura.scss")))
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/home.scss")))
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/editar-lancamento.scss")))
 /******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/todas-carteiras.scss")))
