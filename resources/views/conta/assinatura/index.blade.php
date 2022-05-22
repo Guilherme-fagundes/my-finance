@@ -28,7 +28,7 @@
             <div class="row py-2 rowAssinaturaTitulo">
                 <div class="col-12">
                     <h1 class="tituloAssinatura mb-0"><i class="fa-solid fa-money-check-dollar"></i> Assinatura</h1>
-                    <p class="tituloAssinaturaContent">Assine um plano para ter mais recursos e ter controle total sobre seus gastos e ganhos.</p>
+                    <p class="tituloAssinaturaContent">Assine o plano <strong>PREMIUM</strong> para ter mais recursos e ter controle total sobre seus gastos e ganhos.</p>
                 </div>
 
             </div>
@@ -46,7 +46,6 @@
                                 <li><i class="fa-solid fa-circle-check"></i> Lançamentos ilimitados</li>
                             </ul>
                             <div class="d-grid gap-2">
-
                                 <a href="#" class="btn btn-assinar">Assinar</a>
                             </div>
                         </div>
