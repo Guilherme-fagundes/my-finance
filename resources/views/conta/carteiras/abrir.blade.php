@@ -74,7 +74,7 @@
                                     <td scope="row">{{ $lancamento->descricao }}</td>
                                     <td>{{ number_format($lancamento->valor, 2, ',', '.') }}</td>
                                     <td>{{ date("d/m/Y", strtotime($lancamento->data)) }}</td>
-                                    <td>{{ $lancamento->tipo_lancamento }}</td>
+                                    <td><span class="badge {{ ($lancamento->tipo_lancamento == 'Receita' ? 'bg-primary' : 'bg-danger') }}">{{ $lancamento->tipo_lancamento }}</span></td>
                                     <td>{{ $lancamento->nome }}</td>
                                     <td class="launchAction">
                                         <a href="{{ route('lancamento.edit', ['id' => $lancamento->id]) }}" data-launch_id="{{ $lancamento->id }}"
