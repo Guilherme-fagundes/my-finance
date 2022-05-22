@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Conta\AssinaturaController;
 use App\Http\Controllers\Conta\CarteiraController;
 use App\Http\Controllers\Conta\CategoriaController;
 use App\Http\Controllers\Conta\ContaController;
@@ -69,4 +70,6 @@ Route::prefix('app')->group(function (){
     Route::post('/categorias/editar/post', [CategoriaController::class, 'editPost'])->middleware(['checkuserlogin'])->name('categorias.edit.post');
     Route::any('/categorias/deletar', [CategoriaController::class, 'delete'])->middleware(['checkuserlogin'])->name('categorias.delete');
 
+    //Rotas assinaturas
+    Route::get('/assinatura', [AssinaturaController::class, 'index'])->middleware(['checkuserlogin'])->name('assinatura.index');
 });
