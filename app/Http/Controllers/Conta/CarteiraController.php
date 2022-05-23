@@ -120,6 +120,15 @@ class CarteiraController extends Controller
             }
 
             $delWallet = Wallet::where('id', '=', $request->get('carteira_id'))->first();
+            $user = User::where('id', session()->get('userId'))->first();
+
+            if ($user->tipo_conta == 'free' && $delWallet->tipo_plano == 'premium'){
+                return Response()->json([
+                    'error' => true,
+                    'message' => 'Você não tem permissão para realizar esta operação! Atualize para o plano PREMIUM.'
+                ]);
+
+            }
 
             if ($delWallet) {
                 $delWallet->delete();
@@ -161,6 +170,14 @@ class CarteiraController extends Controller
     public function editPost(Request $request)
     {
         if ($request->ajax()) {
+
+            $user = User::where('id', session()->get('userId'))->first();
+            if ($user->tipo_conta == 'free' && $request->tipo_plano == 'premium'){
+                return Response()->json([
+                    'error' => true,
+                    'message' => 'Você não tem permissão para realizar esta operação! Atualize para o plano PREMIUM.'
+                ]);
+            }
 
             if (in_array('', $request->all())) {
                 return Response()->json([
