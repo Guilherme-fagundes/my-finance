@@ -84,6 +84,7 @@ class CarteiraController extends Controller
                 $wallet->user_id = session()->get('userId');
                 $wallet->nome = $request->descricao;
                 $wallet->cor = $request->cor_carteira;
+                $wallet->tipo_plano = $request->tipo_plano;
 
                 $wallet->save();
 
