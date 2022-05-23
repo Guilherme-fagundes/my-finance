@@ -31,7 +31,7 @@
 
                     <div class="card cardNewWallet w-100">
                         <div class="card-body">
-                            <h2 class="card-title text-center"><i class="fa-solid fa-wallet"></i></h2>
+                            <h2 class="card-title mt-2 text-center"><i class="fa-solid fa-wallet"></i></h2>
                             <p class="card-text my-5 text-center cardNewWalletDesc">Para criar uma nova carteira clique aqui e comece a gerir seus gastos e lucros</p>
                             <p class="text-center"><span><i class="addNewWallet fa-solid fa-circle-plus"></i></span></p>
                         </div>
@@ -73,6 +73,7 @@
                             <div class="j-alert" role="alert"></div>
                             <form method="post" action="" class="j-formCreateNewWallet">
                                 @csrf
+                                <input type="hidden" name="tipo_plano" value="{{ $user->tipo_conta }}">
                                 <div class="mb-3">
                                     <label class="form-label"><i class="fa-solid fa-wallet"></i> Descrição</label>
                                     <input class="form-control" type="text" name="descricao" placeholder="Descrição ou nome da carteira">

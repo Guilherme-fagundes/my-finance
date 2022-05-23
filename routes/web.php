@@ -72,4 +72,6 @@ Route::prefix('app')->group(function (){
 
     //Rotas assinaturas
     Route::get('/assinatura', [AssinaturaController::class, 'index'])->middleware(['checkuserlogin'])->name('assinatura.index');
+    Route::get('/assinar-plano', [AssinaturaController::class, 'assinar'])->middleware(['checkuserlogin'])->name('assinatura.assinar');
+    Route::get('/cancelar-plano', [AssinaturaController::class, 'cancelar'])->middleware(['checkuserlogin'])->name('assinatura.cancelar');
 });
