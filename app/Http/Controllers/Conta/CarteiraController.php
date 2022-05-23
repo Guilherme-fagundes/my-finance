@@ -52,7 +52,8 @@ class CarteiraController extends Controller
                     ->where('tipo_conta', '=', 'free')
                     ->orWhere('tipo_conta', '=', 'premium')->first();
 
-                $carteiras = $checkUserAcountType->wallet()->where('user_id', $checkUserAcountType->id)->count();
+                $carteiras = $checkUserAcountType->wallet()->where('tipo_plano', $checkUserAcountType->tipo_conta)->count();
+                
 
                 if ($checkUserAcountType->tipo_conta == 'free'){
                     /**
@@ -120,6 +121,15 @@ class CarteiraController extends Controller
             }
 
             $delWallet = Wallet::where('id', '=', $request->get('carteira_id'))->first();
+            $user = User::where('id', session()->get('userId'))->first();
+
+            if ($user->tipo_conta == 'free' && $delWallet->tipo_plano == 'premium'){
+                return Response()->json([
+                    'error' => true,
+                    'message' => 'Você não tem permissão para realizar esta operação! Atualize para o plano PREMIUM.'
+                ]);
+
+            }
 
             if ($delWallet) {
                 $delWallet->delete();
@@ -162,6 +172,14 @@ class CarteiraController extends Controller
     {
         if ($request->ajax()) {
 
+            $user = User::where('id', session()->get('userId'))->first();
+            if ($user->tipo_conta == 'free' && $request->tipo_plano == 'premium'){
+                return Response()->json([
+                    'error' => true,
+                    'message' => 'Você não tem permissão para realizar esta operação! Atualize para o plano PREMIUM.'
+                ]);
+            }
+
             if (in_array('', $request->all())) {
                 return Response()->json([
                     'error' => true,
@@ -194,6 +212,11 @@ class CarteiraController extends Controller
     {
         $userLogged = User::where('id', session()->get('userId'))->first();
         $wallet = Wallet::where('id', '=', $id)->first();
+
+        if ($userLogged->tipo_conta == 'free' && $wallet->tipo_plano == 'premium'){
+            return redirect()->back()->withErrors(['Você não tem permissão para abrir esta carteira! Atualize para o plano premium.']);
+
+        }
 
         $readDespesas = DB::table('categories')
             ->where('user_id', session()->get('userId'))

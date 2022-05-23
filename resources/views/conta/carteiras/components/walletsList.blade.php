@@ -79,6 +79,7 @@
                     <div class="j-alert" role="alert"></div>
                     <form method="post" action="" class="j-formEditWallet">
                         @csrf
+                        <input type="hidden" name="tipo_plano" value="" id="tipoPlano">
                         <div class="mb-3">
                             <label class="form-label"><i class="fa-solid fa-wallet"></i> Descrição</label>
                             <input class="form-control" type="text" id="walletName" name="descricao"
@@ -161,6 +162,7 @@
                         $("#walletName").val(response.result.nome);
                         $("#walletCollor").val(response.result.cor);
                         $("#walletEditId").val(response.result.id);
+                        $("#tipoPlano").val(response.result.tipo_plano);
 
                     }
                 });
