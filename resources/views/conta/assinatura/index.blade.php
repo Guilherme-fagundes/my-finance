@@ -46,7 +46,7 @@
                                 <li><i class="fa-solid fa-circle-check"></i> Lançamentos ilimitados</li>
                             </ul>
                             <div class="d-grid gap-2">
-                                <a href="#" class="btn btn-assinar">Assinar</a>
+                                <a href="{{ route('assinatura.assinar') }}" class="btn btn-assinar">Assinar</a>
                             </div>
                         </div>
                     </div>

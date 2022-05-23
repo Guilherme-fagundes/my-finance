@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Conta;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AssinaturaController extends Controller
 {
@@ -17,5 +18,18 @@ class AssinaturaController extends Controller
             'user' => $userLogged
         ]);
 
+    }
+
+    public function assinar()
+    {
+        $updatePlan = DB::table('users')
+            ->where('id', session()->get('userId'))
+            ->update([
+                'tipo_conta' => 'premium'
+            ]);
+        if ($updatePlan){
+            return redirect()->route('conta.home');
+
+        }
     }
 }
