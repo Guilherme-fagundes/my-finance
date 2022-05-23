@@ -7,6 +7,17 @@
     box-shadow: none!important;
     outline: 0!important;
 }
+.leftSiderBar{
+    width: 15%;
+    position: fixed;
+    height: 100vh;
+}
+.main{
+    width: calc(100% - 15%);
+    margin-left: 15%;
+    padding: 0;
+
+}
 
 //Tabelas
 .table{
