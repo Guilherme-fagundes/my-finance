@@ -66,13 +66,15 @@
 
             <div class="row py-2 mt-3 rowUltimosLancamentosContent">
                 <div class="col-12">
-                   @if(count($ultimosLancamenrtos) == 0)
+                    @if(count($ultimosLancamenrtos) == 0)
 
-                        <div class="alert alert-warning"><i class="fa-solid fa-circle-exclamation"></i> Não existem lançamentos no momento</div>
+                        <div class="alert alert-warning"><i class="fa-solid fa-circle-exclamation"></i> Não existem
+                            lançamentos no momento
+                        </div>
 
                     @else
 
-                        <table class="table">
+                        <table class="table tabelaUltimosLancamentos">
                             <thead>
                             <tr>
                                 <th scope="col">Descrição</th>
@@ -90,7 +92,9 @@
                                     <td scope="row">{{ $lancamento->descricao }}</td>
                                     <td scope="row">{{ $lancamento->wallet_name }}</td>
                                     <td scope="row">{{ $lancamento->category_name }}</td>
-                                    <td><span class="badge {{ ($lancamento->tipo_lancamento == 'Receita' ? 'bg-primary' : 'bg-danger') }}">{{ $lancamento->tipo_lancamento }}</span></td>
+                                    <td><span
+                                            class="badge {{ ($lancamento->tipo_lancamento == 'Receita' ? 'bg-primary' : 'bg-danger') }}">{{ $lancamento->tipo_lancamento }}</span>
+                                    </td>
                                     <td scope="row">{{ date('d/m/Y', strtotime($lancamento->data)) }}</td>
                                     <td>{{ number_format($lancamento->valor, 2, ',', '.') }}</td>
 

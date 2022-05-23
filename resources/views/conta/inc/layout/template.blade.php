@@ -22,7 +22,7 @@
     <div class="sessionMainContent">
         <div class="row">
 
-            <div class="col-2 leftSiderBar position-fixed vh-100 px-0 overflow-auto">
+            <div class="leftSiderBar">
                 <article class="articleDashboard">
                     <div class="articleDashboardHeader text-center">
                         @if (!empty($user->foto))
@@ -70,7 +70,7 @@
                     </div>
                 </article>
             </div>
-            <div class="col-10 offset-2 px-0" id="">
+            <div class="main" id="">
 
                 @yield('main-header')
                 @yield('main')
