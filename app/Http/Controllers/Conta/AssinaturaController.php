@@ -32,4 +32,18 @@ class AssinaturaController extends Controller
 
         }
     }
+
+
+    public function cancelar()
+    {
+        $updatePlan = DB::table('users')
+            ->where('id', session()->get('userId'))
+            ->update([
+                'tipo_conta' => 'free'
+            ]);
+        if ($updatePlan){
+            return redirect()->route('conta.home');
+
+        }
+    }
 }

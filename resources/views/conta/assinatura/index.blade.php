@@ -63,6 +63,7 @@
                    <div class="col-12 bg-white py-3">
                        <h5 class="text-center tituloBoasVindasPlanoPremium mb-3">Olá {{ $user->nome }} {{ $user->sobrenome }}, seja bem vindo ao plano PREMIUM</h5>
                        <p class="assinaturaPremiumDescricao">Este espaço seria onde estariam o relatório de cobranças mensais, porém como é apenas de deonstração, não será implementada a integração com algum Gateway de pagamento.</p>
+                       <a href="{{ route('assinatura.cancelar') }}" class="btn btn-cancelarAssionatura">Clique aqui para cancelar assinatura</a>
                    </div>
                 @endif
             </div>
