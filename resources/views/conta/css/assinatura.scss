@@ -19,6 +19,7 @@ body{
 
     .rowAssinaturaPlanos{
         margin-bottom: 1em;
+
         .card{
             .card-body{
                 .tituloPlano{
@@ -64,6 +65,17 @@ body{
                     text-transform: uppercase;
                 }
             }
+        }
+        .tituloBoasVindasPlanoPremium{
+            font-weight: 300;
+            font-size: 1.8em;
+            color: #0078ff;
+        }
+        .assinaturaPremiumDescricao{
+            font-size: .8em;
+            color: #333;
+            line-height: 1.5;
+            
         }
     }
 
