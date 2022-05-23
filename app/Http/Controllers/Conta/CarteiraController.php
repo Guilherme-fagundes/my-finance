@@ -195,6 +195,11 @@ class CarteiraController extends Controller
         $userLogged = User::where('id', session()->get('userId'))->first();
         $wallet = Wallet::where('id', '=', $id)->first();
 
+        if ($userLogged->tipo_conta == 'free' && $wallet->tipo_plano == 'premium'){
+            return redirect()->back()->withErrors(['Você não tem permissão para abrir esta carteira! Atualize para o plano premium.']);
+
+        }
+
         $readDespesas = DB::table('categories')
             ->where('user_id', session()->get('userId'))
             ->where('tipo', '=', 1)->get();
