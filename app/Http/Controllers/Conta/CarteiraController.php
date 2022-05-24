@@ -53,7 +53,7 @@ class CarteiraController extends Controller
                     ->orWhere('tipo_conta', '=', 'premium')->first();
 
                 $carteiras = $checkUserAcountType->wallet()->where('tipo_plano', $checkUserAcountType->tipo_conta)->count();
-                
+
 
                 if ($checkUserAcountType->tipo_conta == 'free'){
                     /**
@@ -208,33 +208,56 @@ class CarteiraController extends Controller
     /**
      * @param int $id
      */
-    public function openWallet(int $id)
+    public function openWallet(int $id, Request $request)
     {
         $userLogged = User::where('id', session()->get('userId'))->first();
         $wallet = Wallet::where('id', '=', $id)->first();
+
+        if ($request->all()){
+
+            $readDespesas = DB::table('categories')
+                ->where('user_id', session()->get('userId'))
+                ->where('tipo', '=', 1)->get();
+
+            $readReceitas = DB::table('categories')
+                ->where('user_id', session()->get('userId'))
+                ->where('tipo', '=', 2)->get();
+
+            $categoriasLancamento = DB::table('categories')
+                ->join('launches', 'categories.id', '=', 'launches.category_id')
+                ->where('launches.user_id', session()->get('userId'))
+                ->where('launches.wallet_id', $id)
+                ->where('launches.tipo_lancamento', 'like', "%{$request->tipo_lancamento}%")
+                ->where('launches.descricao', 'like', "%{$request->descricao}%")
+                ->whereBetween('data', [$request->data_inicio, $request->data_fim])
+                ->orderByDesc('launches.id');
+            $readCategories = Category::all()->all();
+
+        }else{
+            $readDespesas = DB::table('categories')
+                ->where('user_id', session()->get('userId'))
+                ->where('tipo', '=', 1)->get();
+
+            $readReceitas = DB::table('categories')
+                ->where('user_id', session()->get('userId'))
+                ->where('tipo', '=', 2)->get();
+
+            $categoriasLancamento = DB::table('categories')
+                ->join('launches', 'categories.id', '=', 'launches.category_id')
+                ->where('launches.user_id', session()->get('userId'))
+                ->where('launches.wallet_id', $id)
+                ->orderByDesc('launches.id');
+
+
+            $readCategories = Category::all()->all();
+        }
 
         if ($userLogged->tipo_conta == 'free' && $wallet->tipo_plano == 'premium'){
             return redirect()->back()->withErrors(['Você não tem permissão para abrir esta carteira! Atualize para o plano premium.']);
 
         }
 
-        $readDespesas = DB::table('categories')
-            ->where('user_id', session()->get('userId'))
-            ->where('tipo', '=', 1)->get();
 
-        $readReceitas = DB::table('categories')
-            ->where('user_id', session()->get('userId'))
-            ->where('tipo', '=', 2)->get();
-
-        $categoriasLancamento = DB::table('categories')
-            ->join('launches', 'categories.id', '=', 'launches.category_id')
-            ->where('launches.user_id', session()->get('userId'))
-            ->where('launches.wallet_id', $id)
-            ->orderByDesc('launches.id')
-            ->paginate(5);
-
-
-        $readCategories = Category::all()->all();
 
 
         return view('conta.carteiras.abrir', [
@@ -243,7 +266,7 @@ class CarteiraController extends Controller
             'wallet' => $wallet,
             'despesas' => $readDespesas,
             'receitas' => $readReceitas,
-            'lancamentos' => $categoriasLancamento,
+            'lancamentos' => $categoriasLancamento->paginate(5),
             'categories' => $readCategories
         ]);
     }
