@@ -145,18 +145,8 @@
                         </table>
                     @endif
 
-{{--                        {{ $lancamentos->links() }}--}}
-                    @if(request()->all())
-                        {{ $lancamentos->appends(
-                                [
-                                    'tipo_lancamento' => request()->input('tipo_lancamento'),
-                                    'descricao' => request()->input('descricao'),
-                                    'data_inicio' => request()->input('data_inicio'),
-                                    'data_fim' => request()->input('data_fim')
-                                ])->links() }}
-                    @else
-                        {{ $lancamentos->links() }}
-                    @endif
+                    {{ $lancamentos->links() }}
+
 
                 </div>
 
