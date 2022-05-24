@@ -45,6 +45,57 @@
                         <span>Aqui você pode visualizar e gerenciar seus lançamentos</span></p>
 
                 </div>
+                <div class="col-12 my-2">
+
+                    <form method="get" class="j-formSearchLaunch" action="{{ route('carteira.abrir', ['id' => $wallet->id]) }}">
+                        <div class="row">
+                            <div class="col-12 col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-filter"></i> Tipo de lançamento</label>
+                                    <select name="tipo_lancamento" class="form-select">
+                                        <option value="Despesa">Despesa</option>
+                                        <option value="Receita">Receita</option>
+
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-wallet"></i> Descrição</label>
+                                    <input type="text" name="descricao" class="form-control">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-filter"></i> Data inicio</label>
+                                    <input type="date" name="data_inicio" class="form-control">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="fa-solid fa-filter"></i> Data fim</label>
+                                    <input type="date" name="data_fim" class="form-control">
+
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-2">
+                                <div class="mb-3 mt-4">
+                                    <button type="submit" class="btn btn-success mt-1"><i class="fa-solid fa-filter"></i></button>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
             </div>
 
             <div class="row mt-3 py-2">
@@ -94,7 +145,18 @@
                         </table>
                     @endif
 
-                    {{ $lancamentos->links() }}
+{{--                        {{ $lancamentos->links() }}--}}
+                    @if(request()->all())
+                        {{ $lancamentos->appends(
+                                [
+                                    'tipo_lancamento' => request()->input('tipo_lancamento'),
+                                    'descricao' => request()->input('descricao'),
+                                    'data_inicio' => request()->input('data_inicio'),
+                                    'data_fim' => request()->input('data_fim')
+                                ])->links() }}
+                    @else
+                        {{ $lancamentos->links() }}
+                    @endif
 
                 </div>
 
