@@ -47,7 +47,8 @@
                 </div>
                 <div class="col-12 my-2">
 
-                    <form method="get" class="j-formSearchLaunch" action="{{ route('carteira.abrir', ['id' => $wallet->id]) }}">
+                    <form method="post" class="j-formSearchLaunch" action="{{ route('carteira.search', ['id' => $wallet->id]) }}">
+                        @csrf
                         <div class="row">
                             <div class="col-12 col-md-2">
                                 <div class="mb-3">
@@ -145,7 +146,17 @@
                         </table>
                     @endif
 
-                    {{ $lancamentos->links() }}
+                    @if(request()->post())
+                            {{ $lancamentos
+                                    ->appends(['tipo_lancamento' => request()->input('tipo_lancamento'),
+                                            'descricao' => request()->input('descricao'),
+                                             'data_inicio' => request()->input('data_inicio'),
+                                             'data_fim' => request()->input('data_fim'),
+                                             ])
+                                    ->links() }}
+                    @else
+                            {{ $lancamentos->links() }}
+                    @endif
 
 
                 </div>

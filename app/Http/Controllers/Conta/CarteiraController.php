@@ -247,4 +247,43 @@ class CarteiraController extends Controller
         ]);
     }
 
+    public function search(Request $request, int $id)
+    {
+        $userLogged = User::where('id', session()->get('userId'))->first();
+        $wallet = Wallet::where('id', '=', $id)->first();
+
+        if ($request->all()){
+
+            $readDespesas = DB::table('categories')
+                ->where('user_id', session()->get('userId'))
+                ->where('tipo', '=', 1)->get();
+
+            $readReceitas = DB::table('categories')
+                ->where('user_id', session()->get('userId'))
+                ->where('tipo', '=', 2)->get();
+
+            $categoriasLancamento = DB::table('categories')
+                ->join('launches', 'categories.id', '=', 'launches.category_id')
+                ->where('launches.user_id', session()->get('userId'))
+                ->where('launches.wallet_id', $id)
+                ->where('launches.tipo_lancamento', 'like', "%{$request->tipo_lancamento}%")
+                ->where('launches.descricao', 'like', "%{$request->descricao}%")
+                ->whereBetween('launches.data', [$request->data_inicio, $request->data_fim])
+                ->orderByDesc('launches.id')->paginate(3);
+
+
+            $readCategories = Category::all()->all();
+
+            return view('conta.carteiras.abrir', [
+                'title' => env('APP_NAME') . ' | Carteira ' . $wallet->nome,
+                'user' => $userLogged,
+                'wallet' => $wallet,
+                'despesas' => $readDespesas,
+                'receitas' => $readReceitas,
+                'lancamentos' => $categoriasLancamento,
+                'categories' => $readCategories
+            ]);
+        }
+    }
+
 }

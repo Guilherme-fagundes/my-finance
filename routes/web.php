@@ -55,6 +55,7 @@ Route::prefix('app')->group(function (){
     Route::any('/carteiras/editar/post', [CarteiraController::class, 'editPost'])->middleware(['checkuserlogin'])->name('carteiras.editar.post');
 
     Route::get('/carteira/{id}', [CarteiraController::class, 'openWallet'])->middleware(['checkuserlogin'])->name('carteira.abrir');
+    Route::any('/carteira/{id?}/pesquisar', [CarteiraController::class, 'search'])->middleware(['checkuserlogin'])->name('carteira.search');
 
     //Rotas lançamentos
     Route::any('/lancamento/post', [LancamentoController::class, 'novoLancamentoPost'])->middleware(['checkuserlogin'])->name('lancamento.novo.post');
