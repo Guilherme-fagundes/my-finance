@@ -6822,6 +6822,19 @@
 
 /***/ }),
 
+/***/ "./resources/views/conta/css/conta-header.scss":
+/*!*****************************************************!*\
+  !*** ./resources/views/conta/css/conta-header.scss ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/views/conta/css/meu-perfil.scss":
 /*!***************************************************!*\
   !*** ./resources/views/conta/css/meu-perfil.scss ***!
@@ -6926,6 +6939,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/views/home/css/home.scss":
+/*!********************************************!*\
+  !*** ./resources/views/home/css/home.scss ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/views/conta/css/reset.scss":
 /*!**********************************************!*\
   !*** ./resources/views/conta/css/reset.scss ***!
@@ -6969,19 +6995,6 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************************!*\
   !*** ./resources/views/conta/css/nova-conta.scss ***!
   \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/views/conta/css/conta-header.scss":
-/*!*****************************************************!*\
-  !*** ./resources/views/conta/css/conta-header.scss ***!
-  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7079,6 +7092,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		var installedChunks = {
 /******/ 			"/conta/js/bootstrap/bootstrap.bundle": 0,
 /******/ 			"conta/css/styles": 0,
+/******/ 			"home/css/style": 0,
 /******/ 			"conta/css/bootstrap/bootstrap": 0
 /******/ 		};
 /******/ 		
@@ -7129,20 +7143,21 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./node_modules/bootstrap/dist/js/bootstrap.bundle.js")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/reset.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/login.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/esqueci-senha.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/nova-conta.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/conta-header.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/meu-perfil.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/assinatura.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/home.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/editar-lancamento.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/todas-carteiras.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/abrir-carteira.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/listar-categorias.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["conta/css/styles","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./node_modules/bootstrap/scss/bootstrap.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./node_modules/bootstrap/dist/js/bootstrap.bundle.js")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/home/css/home.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/reset.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/login.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/esqueci-senha.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/nova-conta.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/conta-header.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/meu-perfil.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/assinatura.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/home.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/editar-lancamento.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/todas-carteiras.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/abrir-carteira.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/listar-categorias.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["conta/css/styles","home/css/style","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./node_modules/bootstrap/scss/bootstrap.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

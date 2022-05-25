@@ -13,6 +13,7 @@ const {js} = require("laravel-mix");
  */
 
 mix
+    .sass('resources/views/home/css/home.scss', 'public/home/css/style.css').version()
     .sass('resources/views/conta/css/reset.scss', 'public/conta/css/styles.css').version()
     .sass('resources/views/conta/css/login.scss', 'public/conta/css/styles.css').version()
     .sass('resources/views/conta/css/esqueci-senha.scss', 'public/conta/css/styles.css').version()
