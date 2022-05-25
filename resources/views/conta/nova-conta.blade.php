@@ -57,7 +57,6 @@
                                  "expired-callback" => "expiredCallbackFunction",
                                  "error-callback" => "errorCallbackFunction",
  ]) !!}
-                        <p><small>Ao clicar em cadastrar, você automaticamente aceita <a href="#">os termos de uso e de privacidade</a></small></p>
 
 
                     </div>
