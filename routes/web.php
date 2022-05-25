@@ -6,6 +6,7 @@ use App\Http\Controllers\Conta\CategoriaController;
 use App\Http\Controllers\Conta\ContaController;
 use App\Http\Controllers\Conta\LancamentoController;
 use App\Http\Controllers\Conta\UserLoginController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('app')->group(function (){
     Route::get('/', [ContaController::class, 'home'])->middleware(['checkuserlogin'])->name('conta.home');
