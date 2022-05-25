@@ -57,7 +57,6 @@
                                  "expired-callback" => "expiredCallbackFunction",
                                  "error-callback" => "errorCallbackFunction",
  ]) !!}
-                        <p><small>Ao clicar em cadastrar, você automaticamente aceita <a href="#">os termos de uso e de privacidade</a></small></p>
 
 
                     </div>
@@ -78,11 +77,7 @@
 </div>
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script type="text/javascript">
-    // var onloadCallback = function() {
-    //     alert("grecaptcha is ready!");
-    // };
-</script>
+
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
         async defer>
 </script>
