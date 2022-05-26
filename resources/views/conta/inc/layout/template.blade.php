@@ -29,7 +29,7 @@
                         @if (!empty($user->foto))
                             <img src="{{ asset('storage/conta/usuario/'.session()->get('userId').'/'. $user->foto) }}" class="rounded-circle" width="100" height="100">
                         @else
-                            <img src="{{ asset('storage/default_empty.jpg') }}" class="rounded-circle" width="100" height="100">
+                            <img src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty-300x240.jpg" class="rounded-circle" width="100" height="100">
                         @endif
                         <p class="userName mt-3 mb-0 text-white"><small>{{ $user->nome ?? '' }} {{ $user->sobrenome ?? '' }}</small></p>
                         <p class="userE-mail mt-1 text-white"><small>{{ $user->email }}</small></p>

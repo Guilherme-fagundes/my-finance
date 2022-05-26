@@ -41,7 +41,7 @@
                             <img src="{{ asset('storage/conta/usuario/'.session()->get('userId').'/'. $user->foto) }}"
                                  class="rounded-circle" width="100" height="100">
                         @else
-                            <img src="{{ asset('storage/default_empty.jpg') }}" class="rounded-circle" width="100"
+                            <img src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty-300x240.jpg" class="rounded-circle" width="100"
                                  height="100">
                         @endif
                         <input type="file" name="foto" id="userAlterFoto" class="d-none">
