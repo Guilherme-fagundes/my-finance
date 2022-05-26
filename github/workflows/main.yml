@@ -11,4 +11,6 @@ job:
       - name: Install dependencies
           uses: php-actions/composer@v6
           with:
-            command: composer install
+            run: composer install
+            run: npm install
+            run: npm run prod
