@@ -13,6 +13,11 @@ class AssinaturaController extends Controller
     {
         $userLogged = User::where('id', session()->get('userId'))->first();
 
+        if ($userLogged->nome == null || $userLogged->sobrenome == null) {
+            return redirect()->route('conta.perfil')->withErrors(['error' => 'Complete seu perfil']);
+
+        }
+
         return view('conta.assinatura.index', [
             'title' => ENV('APP_NAME'). ' | Assinatura',
             'user' => $userLogged

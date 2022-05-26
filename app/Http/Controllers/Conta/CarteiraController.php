@@ -24,6 +24,11 @@ class CarteiraController extends Controller
         $userLogged = User::where('id', session()->get('userId'))->first();
         $wallets = $userLogged->wallet()->get();
 
+        if ($userLogged->nome == null || $userLogged->sobrenome == null) {
+            return redirect()->route('conta.perfil')->withErrors(['error' => 'Complete seu perfil']);
+
+        }
+
 
 
         return view('conta.carteiras.listar', [
