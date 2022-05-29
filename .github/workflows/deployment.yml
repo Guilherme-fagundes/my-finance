@@ -10,6 +10,7 @@ on:
 
 build:
 
+  release:
     runs-on: ubuntu-latest
 
     steps:
