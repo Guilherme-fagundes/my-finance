@@ -9,7 +9,6 @@ on:
       - main
 
 jobs:
-  laravel-install:
 
     runs-on: ubuntu-latest
 
