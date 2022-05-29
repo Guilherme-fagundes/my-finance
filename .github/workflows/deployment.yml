@@ -2,12 +2,14 @@ name: Laravel
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  laravel-test:
+  laravel-install:
 
     runs-on: ubuntu-latest
 
