@@ -23,6 +23,10 @@ body{
         margin-top: 2em;
         .tableCategories{
             font-size: .8em;
+            @media all and (max-width: 375px) {
+                font-size: .5em;
+
+            }
             .categoryActions{
                 @media all and (max-width: 39.375em) {
                     display: flex;

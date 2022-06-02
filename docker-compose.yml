@@ -21,8 +21,8 @@ services:
       ports:
         - 3306:3306
       volumes:
-        - ./dockerdata/dbmysql:/var/lib/mysql
+        - ./dockerdata/db:/var/lib/mysql
       environment:
-        - MYSQL_DATABASE=meubanco
-        - MYSQL_ROOT_PASSWORD=passroot
-        - MYSQL_USER=user
+        - MYSQL_DATABASE=${DB_DATABASE}
+        - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+        - MYSQL_ROOT_USER=${DB_USERNAME}

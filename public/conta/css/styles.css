@@ -245,6 +245,11 @@
   margin-bottom: 1em;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) !important;
 }
+@media all and (max-width: 412px) {
+  .main-header .main-header-content {
+    font-size: 0.6em;
+  }
+}
 .main-header .main-header-content .header-action .logout {
   text-decoration: none;
   color: white;
@@ -554,10 +559,20 @@ body {
   font-size: 2em;
   color: brown;
 }
+@media all and (max-width: 412px) {
+  .sessWallet .rowTitleWallet .tituloMinhaCarteira {
+    font-size: 1.2em;
+  }
+}
 .sessWallet .rowTitleWallet .descricaoMinhaCarteira {
   font-size: 0.8em;
   color: #333;
   margin-top: 1em;
+}
+@media all and (max-width: 412px) {
+  .sessWallet .rowTitleWallet .descricaoMinhaCarteira {
+    font-size: 0.6em;
+  }
 }
 .sessWallet .rowTitleWallet .walletHeader {
   display: flex;
@@ -568,6 +583,11 @@ body {
   margin-right: 10px;
   white-space: nowrap;
 }
+@media all and (412px) {
+  .sessWallet .rowTitleWallet .walletHeader .btn-nova-despesa {
+    font-size: 0.4em;
+  }
+}
 @media all and (max-width: 52.5em) {
   .sessWallet .rowTitleWallet .walletHeader .btn-nova-despesa .text {
     display: none;
@@ -575,6 +595,11 @@ body {
 }
 .sessWallet .rowTitleWallet .walletHeader .btn-nova-renda {
   white-space: nowrap;
+}
+@media all and (412px) {
+  .sessWallet .rowTitleWallet .walletHeader .btn-nova-renda {
+    font-size: 0.4em;
+  }
 }
 @media all and (max-width: 52.5em) {
   .sessWallet .rowTitleWallet .walletHeader .btn-nova-renda .text {
@@ -585,6 +610,11 @@ body {
   margin-right: 10px;
   white-space: nowrap;
 }
+@media all and (412px) {
+  .sessWallet .rowTitleWallet .walletHeader .btn-voltar {
+    font-size: 0.4em;
+  }
+}
 @media all and (max-width: 52.5em) {
   .sessWallet .rowTitleWallet .walletHeader .btn-voltar .text {
     display: none;
@@ -592,6 +622,11 @@ body {
 }
 .sessWallet .tabelaRelatorios {
   font-size: 0.8em;
+}
+@media all and (max-width: 412px) {
+  .sessWallet .tabelaRelatorios {
+    font-size: 0.4em !important;
+  }
 }
 @media all and (max-width: 35.625em) {
   .sessWallet .tabelaRelatorios {
@@ -658,6 +693,11 @@ body {
 }
 .sessCategories .rowContentCategory .tableCategories {
   font-size: 0.8em;
+}
+@media all and (max-width: 375px) {
+  .sessCategories .rowContentCategory .tableCategories {
+    font-size: 0.5em;
+  }
 }
 @media all and (max-width: 39.375em) {
   .sessCategories .rowContentCategory .tableCategories .categoryActions {

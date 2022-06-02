@@ -8,11 +8,20 @@ body{
             font-weight: 300;
             font-size: 2em;
             color: brown;
+            @media all and (max-width: 412px) {
+                font-size: 1.2em;
+
+            }
+
         }
         .descricaoMinhaCarteira{
             font-size: .8em;
             color: #333;
             margin-top: 1em;
+            @media all and (max-width: 412px) {
+                font-size: .6em;
+
+            }
 
         }
         .walletHeader{
@@ -22,6 +31,10 @@ body{
             .btn-nova-despesa{
                 margin-right: 10px;
                 white-space: nowrap;
+                @media all and (412px) {
+                    font-size: .4em;
+
+                }
                 @media all and (max-width: 52.5em) {
                     .text{
                         display: none;
@@ -31,6 +44,10 @@ body{
             }
             .btn-nova-renda{
                 white-space: nowrap;
+                @media all and (412px) {
+                    font-size: .4em;
+
+                }
                 @media all and (max-width: 52.5em) {
                     .text{
                         display: none;
@@ -41,6 +58,10 @@ body{
             .btn-voltar{
                 margin-right: 10px;
                 white-space: nowrap;
+                @media all and (412px) {
+                    font-size: .4em;
+
+                }
                 @media all and (max-width: 52.5em) {
                     .text{
                         display: none;
@@ -53,6 +74,10 @@ body{
 
     .tabelaRelatorios{
         font-size: .8em;
+        @media all and (max-width: 412px) {
+            font-size: .4em!important;
+
+        }
         @media all and (max-width: 35.625em) {
             font-size: .6em;
         }
