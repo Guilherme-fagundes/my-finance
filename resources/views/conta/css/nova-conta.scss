@@ -10,7 +10,11 @@
         width: 35%;
         margin: 0 auto;
         padding: 1em 1em;
-        min-width: 450px;
+        @media all and (max-width: 412px) {
+            width: 80%;
+            margin: 0 auto;
+
+        }
         .newAcountBoxHeader{
             padding: 1em 0;
             text-align: center;
