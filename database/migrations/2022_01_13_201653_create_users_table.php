@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email', 100)->unique();
             $table->string('pass', 255);
             $table->integer('status');
-            $table->string('ip', 10);
+            $table->string('ip', 100);
             $table->string('user_agent', 255);
 
         });
