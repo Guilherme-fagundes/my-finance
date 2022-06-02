@@ -31,12 +31,22 @@
   font-size: 1.8em;
   font-weight: 500;
 }
+@media all and (max-width: 375px) {
+  .container .content h1 {
+    font-size: 1em;
+  }
+}
 .container .content .dadosAluno {
   margin-top: 1em;
   margin-bottom: 1em;
 }
 .container .content .dadosAluno p {
   line-height: 1.5;
+}
+@media all and (max-width: 375px) {
+  .container .content .dadosAluno p {
+    font-size: 0.4em;
+  }
 }
 .container .content .dadosAcesso {
   margin-top: 1em;
@@ -50,6 +60,12 @@
   letter-spacing: 1px;
   text-decoration: none;
   border-radius: 3px;
+}
+@media all and (max-width: 375px) {
+  .container .content .dadosAcesso a.btn-acessarApp {
+    font-size: 0.4em;
+    padding: 6px 1em;
+  }
 }
 .container .content .dadosAcesso a.btn-acessarApp:hover {
   background-color: blue;
