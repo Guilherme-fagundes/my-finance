@@ -23,7 +23,7 @@
     <div class="sessionMainContent">
         <div class="row">
 
-            <div class="col-2 position-fixed vh-100 leftSiderBar px-0">
+            <div class="col-2 position-fixed h-100 leftSiderBar px-0">
                 <article class="articleDashboard">
                     <div class="articleDashboardHeader text-center">
                         @if (!empty($user->foto))

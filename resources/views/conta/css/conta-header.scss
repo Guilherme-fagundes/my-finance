@@ -1,6 +1,6 @@
 .leftSiderBar{
     background-color: #261C2C;
-    @media screen and (max-width: 75.625em) {
+    @media all and (max-width: 75.625em) {
         .leftSiderBar{
             width:  70px;
             min-width:  4.375em;
