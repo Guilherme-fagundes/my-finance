@@ -474,6 +474,11 @@ body {
     font-size: 0.6em;
   }
 }
+@media all and (max-width: 375px) {
+  .sessHome .rowUltimosLancamentosContent table.tabelaUltimosLancamentos {
+    font-size: 0.4em;
+  }
+}
 
 .sessMessageUpdate .messageUpdate {
   padding: 8px 1em;
