@@ -11,9 +11,10 @@
         margin: 0 auto;
         padding: 1em 1em;
         margin-bottom: 1em!important;
+        min-width: 320px;
 
         @media all and (max-width: 412px) {
-            width: 80%;
+            width: 80%!important;
             margin: 0 auto;
 
         }
