@@ -216,14 +216,17 @@
 }
 @media screen and (max-width: 75.625em) {
   .leftSiderBar .articleDashboard .articleDashboardHeader img {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
   }
   .leftSiderBar .articleDashboard .articleDashboardHeader p.userE-mail {
     display: none;
   }
   .leftSiderBar .articleDashboard .articleDashboardHeader p.userName {
-    font-size: 0.8em;
+    font-size: 0.6em;
+  }
+  .leftSiderBar .articleDashboard .articleDashboardHeader p.tipoConta {
+    font-size: 0.6em;
   }
 }
 .leftSiderBar .articleDashboard .articleDashboardHeader p.userE-mail {
