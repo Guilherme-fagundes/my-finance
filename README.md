@@ -78,11 +78,6 @@ Instale as dependencias do composer:
 composer install
 ```
 
-Rode o comando para gerar o APP_KEY:
-```bash
-php artisan key:generate
-```
-
 Configure o arquivo .env conforme suas configurações.
 
 ### Configuraçao para disparo de email:
@@ -114,6 +109,20 @@ MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=null
 MAIL_FROM_NAME="${APP_NAME}"
 ```
+Rode o comando para gerar o APP_KEY:
+```bash
+php artisan key:generate
+```
 
+Caso esteja utilizando linux:
+```bash
+sudo chmod 777 -R storage/
+```
+
+Crie o banco de dados com nome de ```my_finance``` com charset ```utf8mb4``` e collation ```utf8mb4_unicode_ci```
+
+Execute as migrations
+
+```php artisan migrate```
 
 
