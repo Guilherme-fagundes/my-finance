@@ -24,5 +24,5 @@ public/conta
 .project
 .buildpath
 .settings
-dockerdata
+dockerdata/db
 instrucao_instalacao.md
