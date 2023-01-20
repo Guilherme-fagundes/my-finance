@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\Conta\AssinaturaController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Conta\ContaController;
 use App\Http\Controllers\Conta\CarteiraController;
 use App\Http\Controllers\Conta\CategoriaController;
-use App\Http\Controllers\Conta\ContaController;
-use App\Http\Controllers\Conta\LancamentoController;
 use App\Http\Controllers\Conta\UserLoginController;
-use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Conta\AssinaturaController;
+use App\Http\Controllers\Conta\LancamentoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+//Rotas do admin
+Route::prefix('admin')->group(function(){
+    Route::get('/', [LoginController::class, 'index'])->name('admin.home');
+});
+
 
 Route::prefix('app')->group(function (){
     Route::get('/', [ContaController::class, 'home'])->middleware(['checkuserlogin'])->name('conta.home');
