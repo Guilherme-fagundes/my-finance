@@ -9,6 +9,8 @@ class LoginController extends Controller
 {
     public function index()
     {
-        echo 'ola admin';
+        return view('admin.index', [
+            'title' => env('APP_NAME'). ' | Dashboard'
+        ]);
     }
 }
