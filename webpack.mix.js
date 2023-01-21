@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-const {js} = require("laravel-mix");
+const { js } = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -30,3 +30,15 @@ mix
 
 
     .js('node_modules/bootstrap/dist/js/bootstrap.bundle.js', 'public/conta/js/bootstrap/bootstrap.bundle.js').version();
+
+
+//tailwind
+mix.
+    js("resources/js/app.js", "public/js")
+    .postCss("resources/css/app.css", "public/css", [
+        require("tailwindcss"),
+    ]);
+
+    //Admin
+    mix
+        .sass('resources/views/admin/scss/login.scss', 'public/admin/css/style.css').version();

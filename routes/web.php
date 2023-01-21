@@ -26,6 +26,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 //Rotas do admin
 Route::prefix('admin')->group(function(){
     Route::get('/', [LoginController::class, 'index'])->name('admin.home');
+    Route::get('/login', [LoginController::class, 'login'])->name('admin.login');
 });
 
 

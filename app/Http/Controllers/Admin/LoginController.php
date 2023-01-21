@@ -13,4 +13,12 @@ class LoginController extends Controller
             'title' => env('APP_NAME'). ' | Dashboard'
         ]);
     }
+
+
+    public function login()
+    {
+        return view('admin.login', [
+            'title' => env('APP_NAME'). ' | Entrar'
+        ]);
+    }
 }
