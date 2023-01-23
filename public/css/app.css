@@ -576,8 +576,8 @@ video {
 .w-full {
   width: 100%;
 }
-.w-5\/12 {
-  width: 41.666667%;
+.w-4\/12 {
+  width: 33.333333%;
 }
 .items-center {
   align-items: center;
@@ -707,12 +707,6 @@ video {
 
   .sm\:w-full {
     width: 100%;
-  }
-}
-@media (min-width: 768px) {
-
-  .md\:w-1\/2 {
-    width: 50%;
   }
 }
 

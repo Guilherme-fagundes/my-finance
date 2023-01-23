@@ -27,6 +27,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::prefix('admin')->group(function(){
     Route::get('/', [LoginController::class, 'index'])->name('admin.home');
     Route::get('/login', [LoginController::class, 'login'])->name('admin.login');
+    Route::get('/recuperar-senha', [LoginController::class, 'passRecover'])->name('admin.pass');
 });
 
 

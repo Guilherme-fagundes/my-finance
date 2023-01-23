@@ -21,4 +21,11 @@ class LoginController extends Controller
             'title' => env('APP_NAME'). ' | Entrar'
         ]);
     }
+
+    public function passRecover()
+    {
+        return view('admin.pass-recover', [
+            'title' => env('APP_NAME') . ' | Recuperar nenha'
+        ]);
+    }
 }
