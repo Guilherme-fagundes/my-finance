@@ -28,4 +28,12 @@ class LoginController extends Controller
             'title' => env('APP_NAME') . ' | Recuperar nenha'
         ]);
     }
+
+    public function newpass()
+    {
+        return view('admin.new-pass', [
+            'title' => env('APP_NAME'). ' | Informe a nova senha'
+        ]);
+    }
+
 }
