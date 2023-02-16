@@ -1,5 +1,15 @@
 
-.admin-header .admin-header-content {
+.admin-header .admin-header-content,
+.admin-header .admin-header-nav {
   width: 90%;
   margin: 0 auto;
+}
+.admin-header .admin-header-nav {
+  display: flex;
+  align-items: center;
+  margin-top: 1em;
+}
+.admin-header .admin-header-nav a {
+  font-size: 0.8em;
+  border: 2px solid white;
 }
