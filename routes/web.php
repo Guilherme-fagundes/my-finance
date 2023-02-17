@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Conta\ContaController;
 use App\Http\Controllers\Conta\CarteiraController;
 use App\Http\Controllers\Conta\CategoriaController;
@@ -29,6 +30,9 @@ Route::prefix('admin')->group(function(){
     Route::get('/login', [LoginController::class, 'login'])->name('admin.login');
     Route::get('/recuperar-senha', [LoginController::class, 'passRecover'])->name('admin.pass');
     Route::get('/nova-senha', [LoginController::class, 'newPass'])->name('admin.newPass');
+
+    //Usuarios
+    Route::get('/usuarios', [UserController::class, 'index'])->name('admin.user.index');
 });
 
 
