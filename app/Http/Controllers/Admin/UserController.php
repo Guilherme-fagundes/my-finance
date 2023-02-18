@@ -12,6 +12,7 @@ class UserController extends Controller
     {
 
 
+
         return view('admin.users.index', [
             'title' => env('APP_NAME'). ' | Usuários'
         ]);
