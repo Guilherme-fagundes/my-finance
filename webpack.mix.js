@@ -41,5 +41,7 @@ mix.
 
     //Admin
     mix
+        .sass('resources/views/admin/scss/reset.scss', 'public/assets/admin/css/style.css').version()
         .sass('resources/views/admin/scss/login.scss', 'public/assets/admin/css/style.css').version()
-        .sass('resources/views/admin/scss/header.scss', 'public/assets/admin/css/style.css').version();
+        .sass('resources/views/admin/scss/header.scss', 'public/assets/admin/css/style.css').version()
+        .sass('resources/views/admin/scss/users.scss', 'public/assets/admin/css/style.css').version();

@@ -7202,6 +7202,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/views/admin/scss/reset.scss":
+/*!***********************************************!*\
+  !*** ./resources/views/admin/scss/reset.scss ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/views/admin/scss/login.scss":
 /*!***********************************************!*\
   !*** ./resources/views/admin/scss/login.scss ***!
@@ -7219,6 +7232,19 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************!*\
   !*** ./resources/views/admin/scss/header.scss ***!
   \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/views/admin/scss/users.scss":
+/*!***********************************************!*\
+  !*** ./resources/views/admin/scss/users.scss ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7394,8 +7420,8 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		var installedChunks = {
 /******/ 			"/conta/js/bootstrap/bootstrap.bundle": 0,
 /******/ 			"conta/css/styles": 0,
-/******/ 			"home/css/style": 0,
 /******/ 			"assets/admin/css/style": 0,
+/******/ 			"home/css/style": 0,
 /******/ 			"css/app": 0,
 /******/ 			"conta/css/bootstrap/bootstrap": 0
 /******/ 		};
@@ -7447,24 +7473,26 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./node_modules/bootstrap/dist/js/bootstrap.bundle.js")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/home/css/home.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/reset.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/login.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/esqueci-senha.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/nova-conta.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/conta-header.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/meu-perfil.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/assinatura.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/home.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/editar-lancamento.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/todas-carteiras.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/abrir-carteira.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/listar-categorias.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./node_modules/bootstrap/scss/bootstrap.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/admin/scss/login.scss")))
-/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/admin/scss/header.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["conta/css/styles","home/css/style","assets/admin/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./node_modules/bootstrap/dist/js/bootstrap.bundle.js")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/home/css/home.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/reset.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/login.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/esqueci-senha.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/nova-conta.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/conta-header.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/meu-perfil.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/assinatura.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/home.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/editar-lancamento.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/todas-carteiras.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/abrir-carteira.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/conta/css/listar-categorias.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./node_modules/bootstrap/scss/bootstrap.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/admin/scss/reset.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/admin/scss/login.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/admin/scss/header.scss")))
+/******/ 	__webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/views/admin/scss/users.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["conta/css/styles","assets/admin/css/style","home/css/style","css/app","conta/css/bootstrap/bootstrap"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

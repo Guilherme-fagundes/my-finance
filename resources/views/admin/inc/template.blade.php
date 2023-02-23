@@ -11,7 +11,7 @@
 
 
 </head>
-<body>
+<body class="bg-gray-200">
 
     <header class="admin-header py-4 bg-blue-500">
         <div class="admin-header-content flex justify-between items-center">

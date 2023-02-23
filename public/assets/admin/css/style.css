@@ -1,4 +1,5 @@
 
+
 .admin-header .admin-header-content,
 .admin-header .admin-header-nav {
   width: 90%;
@@ -12,4 +13,9 @@
 .admin-header .admin-header-nav a {
   font-size: 0.8em;
   border: 2px solid white;
+}
+.sessUsers .usersContent {
+  width: 90%;
+  margin: 0 auto;
+  padding: 1em;
 }
