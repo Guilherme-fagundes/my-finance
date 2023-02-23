@@ -32,6 +32,10 @@
   border: none !important;
   background-color: #0078ff;
 }
+
+.main-body-content {
+  background-color: white;
+}
 .sessLogin {
   width: 100%;
   height: 100vh;

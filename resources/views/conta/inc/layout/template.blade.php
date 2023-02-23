@@ -74,7 +74,9 @@
             <div class="col-10 offset-2 px-0" id="">
 
                 @yield('main-header')
-                @yield('main')
+               <div class="main-body-content mx-3">
+                    @yield('main')
+               </div>
             </div>
         </div>
     </div>
