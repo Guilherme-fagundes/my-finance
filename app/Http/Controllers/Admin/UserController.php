@@ -18,4 +18,11 @@ class UserController extends Controller
         ]);
 
     }
+
+    public function myProfile()
+    {
+        return view('admin.users.my-profile', [
+            'title'=> env('APP_NAME'). ' | Meu perfil'
+        ]);
+    }
 }

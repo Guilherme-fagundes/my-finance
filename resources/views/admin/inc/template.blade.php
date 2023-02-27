@@ -26,7 +26,7 @@
         <div class="admin-header-nav mt-4">
             <a href="{{ route('admin.index') }}" class="py-2 px-4 bg-white text-blue-500 hover:bg-blue-500 hover:text-white">Dashboard</a>
             <a href="{{ route('admin.user.index') }}" class="py-2 px-4 bg-white text-blue-500 hover:bg-blue-500 hover:text-white">Usuarios</a>
-            <a href="#" class="py-2 px-4 bg-white text-blue-500 hover:bg-blue-500 hover:text-white">Meu perfil</a>
+            <a href="{{ route('admin.user.my-profile') }}" class="py-2 px-4 bg-white text-blue-500 hover:bg-blue-500 hover:text-white">Meu perfil</a>
             <a href="#" class="py-2 px-4 bg-white text-blue-500 hover:bg-blue-500 hover:text-white">Planos</a>
             <a href="#" class="py-2 px-4 bg-white text-blue-500 hover:bg-blue-500 hover:text-white">Assinaturas</a>
             <a href="#" class="py-2 px-4 bg-white text-blue-500 hover:bg-blue-500 hover:text-white">Configurações</a>

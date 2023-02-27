@@ -33,6 +33,9 @@ Route::prefix('admin')->group(function(){
 
     //Usuarios
     Route::get('/usuarios', [UserController::class, 'index'])->name('admin.user.index');
+
+    //Meu perfil
+    Route::get('/meu-perfil', [UserController::class, 'myProfile'])->name('admin.user.my-profile');
 });
 
 
