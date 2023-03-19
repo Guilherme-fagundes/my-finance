@@ -11,7 +11,11 @@
 
             <div class="my-profile-content w-full mx-auto my-4">
 
-                <form class="form-my-Profile w-full">
+
+                <form class="form-my-Profile w-full jMyDatas">
+                    <div class="w-full my-2">
+                        <h3 class="text-base capitalize">meus dados</h3>
+                    </div>
 
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -44,6 +48,35 @@
                     </div>
 
                 </form>
+
+
+                <form class="form-my-Profile w-full jMyPass">
+                    <div class="w-full my-2">
+                        <h3 class="text-base capitalize">Minha senha</h3>
+                    </div>
+
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="block text-gray-500 capitalize text-sm">Senha</label>
+                            <input type="password" name="pass" class="w-full block bg-gray-100 text-gray-500 border-blue-700"/>
+
+                        </div>
+
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="block text-gray-500 capitalize text-sm">Confirmar senha</label>
+                            <input type="password" name="cPass" class="w-full backdrop:block bg-gray-100 text-gray-500 border-blue-700"/>
+
+                        </div>
+
+                    </div>
+
+                    <div class="flex flex-wrap mb-6">
+                        <button class="px-4 py-3 bg-blue-700 text-sm hover:bg-blue-500 text-white">Salvar nova senha</button>
+
+                    </div>
+
+                </form>
+
 
             </div>
 
