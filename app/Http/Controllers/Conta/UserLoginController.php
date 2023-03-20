@@ -14,16 +14,16 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * <b>Esta classe é o controlador responsavel por fazer as autenticações do 
+ * <b>Esta classe é o controlador responsavel por fazer as autenticações do
  * usuário no sistema.</b>
- * 
+ *
  * @copyright (c) 2022, Guilherme K Fagundes
  */
 class UserLoginController extends Controller
 {
     /**
      * <p>Metodo do controlador para exibir a tela de login e validar a sessão</p>
-     * 
+     *
      */
     public function login()
     {
@@ -38,7 +38,7 @@ class UserLoginController extends Controller
     }
 
     /**
-     * <p>Metodo do controlador responsavel por receber, validar e retornar 
+     * <p>Metodo do controlador responsavel por receber, validar e retornar
      * mensagens para o usuario na tela de login </p>
      * @param Request $request
      */
@@ -128,8 +128,8 @@ class UserLoginController extends Controller
 
     /**
 
-     * <p>Metodo responsavel por receber, validar a requisição do usuário e 
-     * retornar mensagens para a VIEW quando o mesmo envia o formulario 
+     * <p>Metodo responsavel por receber, validar a requisição do usuário e
+     * retornar mensagens para a VIEW quando o mesmo envia o formulario
      * de recuperação</p>
      * @param Request $request
      * @return json
@@ -225,6 +225,7 @@ class UserLoginController extends Controller
                         $createUser->email = $request->email;
                         $createUser->pass = Hash::make($request->pass);
                         $createUser->status = 0;
+                        $createUser->level = 'cliente';
                         $createUser->tipo_conta = "free";
                         $createUser->ip = $request->ip();
                         $createUser->user_agent = $request->userAgent();
@@ -253,10 +254,10 @@ class UserLoginController extends Controller
     }
 
     /**
-     * <p>Metodo responsavel por realizar a confirmação e atualização 
+     * <p>Metodo responsavel por realizar a confirmação e atualização
      * do cadastro do usuário</p>
      * @param Request $request
-     * 
+     *
      */
     public function confirmUserAcount(Request $request)
     {
@@ -291,7 +292,7 @@ class UserLoginController extends Controller
     }
 
     /**
-     * <p>Metodo responsavel por validar e atualizar os dados da requisiçao de 
+     * <p>Metodo responsavel por validar e atualizar os dados da requisiçao de
      * nova senha<p>
      * @param Request $request
      * @return json
