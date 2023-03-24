@@ -1,6 +1,6 @@
 FROM php:8.1-apache
-WORKDIR /var/www
-ADD . /var/www
+#WORKDIR /var/www
+#ADD . /var/www
 RUN apt update && apt upgrade -y
 RUN docker-php-ext-install pdo pdo_mysql
 RUN pecl install xdebug \
@@ -10,7 +10,7 @@ RUN a2enmod rewrite
 RUN service apache2 restart
 EXPOSE 80
 
-#RUN chown -R www-data:www-data /var/www
-RUN chown -R www-data:www-data storage/
-RUN chmod 777 -R storage/
+RUN chown -R www-data:www-data /var/www
+#RUN chown -R www-data:www-data storage/
+#RUN chmod 777 -R storage/
 
