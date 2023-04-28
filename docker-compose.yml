@@ -1,32 +1,40 @@
 version: '3'
-
 services:
-    php:
-      build: .
-      ports:
-        - 80:80
-        - 443:443
-      volumes:
-        - ./:/var/www
-        - ./dockerdata/apache2/apache2.conf:/etc/apache2/apache2.conf
-      links:
-        - db
-
-      depends_on:
-        - db
-    db:
-      image: mysql:5.7
-      expose:
-        - 3306
-      ports:
-        - 3306:3306
-      volumes:
-        - ./dockerdata/db:/var/lib/mysql
-      environment:
-        - MYSQL_DATABASE=${DB_DATABASE}
-        - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
-        - MYSQL_ROOT_USER=${DB_USERNAME}
-        - MYSQL_USER=${DB_USERNAME}
-        - MYSQL_PASSWORD=${DB_PASSWORD}
-volumes:
-    dockerdata:
+  web:
+    build: .
+    networks:
+      - rede-web
+    container_name: php8.1-apache
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./:/var/www
+      - ./dockerdata/apache2/apache2.conf:/etc/apache2/apache2.conf
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    networks:
+      - rede-web
+    ports:
+      - 9000:80
+    environment:
+      - MARIADB_ROOT_PASSWORD=${DB_PASSWORD}
+      - MARIADB_DATABASE=${DB_DATABASE}
+      - PMA_ARBITRARY=1
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: always
+    networks:
+      - rede-web
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    environment:
+      - MARIADB_ROOT_PASSWORD=${DB_PASSWORD}
+      - MARIADB_DATABASE=${DB_DATABASE}
+networks:
+  rede-web:
+    driver: bridge

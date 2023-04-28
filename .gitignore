@@ -25,4 +25,5 @@ public/conta
 .buildpath
 .settings
 dockerdata/db
+mariadb/*
 
