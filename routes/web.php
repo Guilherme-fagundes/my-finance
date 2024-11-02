@@ -75,8 +75,6 @@ Route::prefix('app')->group(function (){
     Route::post('/categorias/editar/post', [CategoriaController::class, 'editPost'])->middleware(['checkuserlogin'])->name('categorias.edit.post');
     Route::any('/categorias/deletar', [CategoriaController::class, 'delete'])->middleware(['checkuserlogin'])->name('categorias.delete');
 
-    //Rotas assinaturas
-    Route::get('/assinatura', [AssinaturaController::class, 'index'])->middleware(['checkuserlogin'])->name('assinatura.index');
-    Route::get('/assinar-plano', [AssinaturaController::class, 'assinar'])->middleware(['checkuserlogin'])->name('assinatura.assinar');
-    Route::get('/cancelar-plano', [AssinaturaController::class, 'cancelar'])->middleware(['checkuserlogin'])->name('assinatura.cancelar');
+
+
 });
