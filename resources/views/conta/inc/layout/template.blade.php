@@ -61,12 +61,7 @@
                                     <span class="text">Carteiras</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ route('assinatura.index') }}" title="assinatura">
-                                    <span class="icon"><i class="fa-solid fa-money-check-dollar"></i></span>
-                                    <span class="text">Assinatura</span>
-                                </a>
-                            </li>
+
                         </ul>
                     </div>
                 </article>
